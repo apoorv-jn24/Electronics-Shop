@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jain Electricals – Your Trusted Electrical Store for Quality Products. LED lights, wires, switches, fans, and more in your city." />
-  <meta name="keywords" content="electrical shop, LED lights, wires, switches, fans, electrical accessories, Jain Electricals" />
-  <meta name="author" content="Jain Electricals" />
+  <meta name="description" content="Everest Electricals – Leading electrical shop & repair service in your city. Quality LED lights, wires, switches, fans, and professional electrical repairs. 20+ years serving the community. Call +91 98765 43210." />
+  <meta name="keywords" content="electrical shop, electrical repair, LED lights, wires, switches, fans, electrical accessories, Everest Electricals, home wiring, appliance repair, electrician" />
+  <meta name="author" content="Everest Electricals" />
+  <meta name="robots" content="index, follow" />
   <!-- Open Graph -->
-  <meta property="og:title" content="Jain Electricals – Trusted Electrical Store" />
-  <meta property="og:description" content="Quality electrical products for homes and businesses. Lights, wires, switches, fans and more." />
+  <meta property="og:title" content="Everest Electricals – Electrical Shop & Repair Services" />
+  <meta property="og:description" content="Quality electrical products and expert repair services for homes and businesses. 20+ years of trusted service." />
   <meta property="og:type" content="website" />
-  <title>Jain Electricals – Your Trusted Electrical Store</title>
+  <meta property="og:url" content="https://everest-electricals.vercel.app/" />
+  <title>Everest Electricals – Electrical Shop &amp; Repair Services in Your City</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -23,25 +26,26 @@
   <div id="preloader">
     <div class="preloader-inner">
       <div class="bolt-icon"><i class="fas fa-bolt"></i></div>
-      <p>Jain Electricals</p>
+      <p>Everest Electricals</p>
     </div>
   </div>
 
   <!-- ========== NAVBAR ========== -->
   <header id="navbar">
     <nav class="nav-container container">
-      <a href="#home" class="nav-logo" aria-label="Jain Electricals Home">
+      <a href="#home" class="nav-logo" aria-label="Everest Electricals Home">
         <span class="logo-icon"><i class="fas fa-bolt"></i></span>
-        <span class="logo-text">Jain <span class="accent">Electricals</span></span>
+        <span class="logo-text">Everest <span class="accent">Electricals</span></span>
       </a>
 
       <ul class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
-        <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
-        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="#home"     class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#about"    class="nav-link" id="nav-about">About</a></li>
         <li><a href="#products" class="nav-link" id="nav-products">Products</a></li>
+        <li><a href="#repairs"  class="nav-link nav-link--highlight" id="nav-repairs">⚡ Repairs</a></li>
         <li><a href="#services" class="nav-link" id="nav-services">Services</a></li>
-        <li><a href="#gallery" class="nav-link" id="nav-gallery">Gallery</a></li>
-        <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
+        <li><a href="#gallery"  class="nav-link" id="nav-gallery">Gallery</a></li>
+        <li><a href="#contact"  class="nav-link" id="nav-contact">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -61,25 +65,36 @@
     <div class="hero-particles" id="heroParticles"></div>
 
     <div class="container hero-content">
-      <div class="hero-badge">
-        <i class="fas fa-star"></i> Trusted Since 2005
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <i class="fas fa-star"></i> Trusted Since 2005
+        </div>
+        <div class="hero-badge hero-badge--repair">
+          <i class="fas fa-tools"></i> Emergency Repairs Available
+        </div>
       </div>
+
       <h1 class="hero-title">
-        Jain <span class="hero-accent">Electricals</span>
+        Everest <span class="hero-accent">Electricals</span>
       </h1>
-      <p class="hero-tagline">Your Trusted Electrical Store for Quality Products</p>
+      <p class="hero-tagline">Your Trusted Electrical Store for Quality Products &amp; Expert Repairs</p>
       <p class="hero-desc">
-        Providing premium electrical products, lighting solutions, and accessories
+        Providing premium electrical products, expert repair services, and accessories
         for homes and businesses since 2005.
       </p>
+
       <div class="hero-buttons">
         <a href="#products" class="btn btn-primary" id="heroViewProducts">
           <i class="fas fa-th-large"></i> View Products
+        </a>
+        <a href="#repairs" class="btn btn-repair" id="heroRepairBtn">
+          <i class="fas fa-tools"></i> Repair Services
         </a>
         <a href="#contact" class="btn btn-outline" id="heroContactUs">
           <i class="fas fa-envelope"></i> Contact Us
         </a>
       </div>
+
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-number" data-target="20">0</span><span>+</span>
@@ -95,6 +110,11 @@
           <span class="stat-number" data-target="500">0</span><span>+</span>
           <span class="stat-label">Products</span>
         </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="2000">0</span><span>+</span>
+          <span class="stat-label">Repairs Done</span>
+        </div>
       </div>
     </div>
 
@@ -108,22 +128,30 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Who We Are</span>
-        <h2 class="section-title">About <span class="accent">Jain Electricals</span></h2>
-        <p class="section-subtitle">Powering homes and businesses with quality products since 2005</p>
+        <h2 class="section-title">About <span class="accent">Everest Electricals</span></h2>
+        <p class="section-subtitle">Powering homes and businesses with quality products &amp; expert repairs since 2005</p>
       </div>
 
       <div class="about-grid">
         <div class="about-image-col">
           <div class="about-img-wrapper">
             <div class="about-img-card main-img">
-              <img src="images/about-shop.svg" alt="Jain Electricals shop interior" loading="lazy" />
+              <img
+                src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=80"
+                alt="Everest Electricals shop interior"
+                loading="lazy"
+              />
             </div>
             <div class="about-exp-badge">
               <span class="exp-num">20+</span>
               <span class="exp-text">Years of<br>Excellence</span>
             </div>
             <div class="about-img-card side-img">
-              <img src="images/about-products.svg" alt="Electrical products" loading="lazy" />
+              <img
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+                alt="Electrical products display"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -131,14 +159,14 @@
         <div class="about-content-col">
           <h3 class="about-heading">Your Neighbourhood Electrical Expert</h3>
           <p class="about-text">
-            Jain Electricals has been providing reliable electrical products and accessories
+            Everest Electricals has been providing reliable electrical products and repair services
             for homes and businesses across the city. We specialize in quality wiring materials,
-            lighting solutions, switches, and electrical tools.
+            lighting solutions, switches, electrical tools, and professional repair work.
           </p>
           <p class="about-text">
-            From a single light bulb to a complete home wiring kit, we stock everything you
-            need. Our knowledgeable staff is always ready to guide you to the right product
-            for your specific requirements.
+            From a single light bulb to a complete home wiring project or appliance repair,
+            we handle it all. Our experienced team is always ready to guide you to the right
+            product or fix your electrical problem quickly and safely.
           </p>
 
           <div class="about-features">
@@ -150,17 +178,17 @@
               </div>
             </div>
             <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-wrench"></i></div>
+              <div>
+                <h4>Expert Repair Services</h4>
+                <p>Trained technicians for home appliance, wiring, and electrical repairs.</p>
+              </div>
+            </div>
+            <div class="feature-item">
               <div class="feature-icon"><i class="fas fa-users"></i></div>
               <div>
                 <h4>Trusted by Locals</h4>
                 <p>Serving 5,000+ satisfied customers across homes, offices and shops.</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon"><i class="fas fa-headset"></i></div>
-              <div>
-                <h4>Expert Guidance</h4>
-                <p>Our trained staff helps you choose the right electrical products easily.</p>
               </div>
             </div>
           </div>
@@ -168,6 +196,50 @@
           <a href="#contact" class="btn btn-primary" id="aboutContactBtn">
             <i class="fas fa-phone"></i> Get In Touch
           </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US SECTION ========== -->
+  <section id="why-us" class="why-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Advantage</span>
+        <h2 class="section-title">Why Choose <span class="accent">Everest Electricals</span></h2>
+        <p class="section-subtitle">We go beyond just selling products – we build lasting trust</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card" id="whyFamily">
+          <div class="why-icon"><i class="fas fa-home"></i></div>
+          <h3>Family-Owned Business</h3>
+          <p>We treat every customer like family. Personal attention, honest advice, and genuine care in every interaction.</p>
+        </div>
+        <div class="why-card" id="whyLocal">
+          <div class="why-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>Local Service, Local Trust</h3>
+          <p>We are your neighbours. Quick response, same-day service available, and deep knowledge of local electrical needs.</p>
+        </div>
+        <div class="why-card why-card--featured" id="whyRepair">
+          <div class="why-icon"><i class="fas fa-tools"></i></div>
+          <h3>Expert Repair Team</h3>
+          <p>Our skilled technicians can repair fans, appliances, wiring faults, and switches quickly and at fair prices.</p>
+        </div>
+        <div class="why-card" id="whyQuality">
+          <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Quality Guarantee</h3>
+          <p>We stock only branded, certified products. All repairs come with a service warranty for your peace of mind.</p>
+        </div>
+        <div class="why-card" id="whyPricing">
+          <div class="why-icon"><i class="fas fa-tag"></i></div>
+          <h3>Fair &amp; Transparent Pricing</h3>
+          <p>No hidden charges. We believe in clear pricing for both products and repair services before any work begins.</p>
+        </div>
+        <div class="why-card" id="whySpeed">
+          <div class="why-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Fast &amp; Reliable</h3>
+          <p>We understand electrical issues can't wait. Emergency repair support and quick product delivery available.</p>
         </div>
       </div>
     </div>
@@ -184,45 +256,38 @@
 
       <!-- Filter Tabs -->
       <div class="product-filters" role="tablist" aria-label="Product categories">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" id="filterAll">All Products</button>
-        <button class="filter-btn" data-filter="lighting" role="tab" aria-selected="false" id="filterLighting">Lighting</button>
-        <button class="filter-btn" data-filter="wiring" role="tab" aria-selected="false" id="filterWiring">Wiring</button>
-        <button class="filter-btn" data-filter="switches" role="tab" aria-selected="false" id="filterSwitches">Switches</button>
-        <button class="filter-btn" data-filter="fans" role="tab" aria-selected="false" id="filterFans">Fans</button>
-        <button class="filter-btn" data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories">Accessories</button>
+        <button class="filter-btn active" data-filter="all"        role="tab" aria-selected="true"  id="filterAll">All Products</button>
+        <button class="filter-btn"         data-filter="lighting"  role="tab" aria-selected="false" id="filterLighting">Lighting</button>
+        <button class="filter-btn"         data-filter="wiring"    role="tab" aria-selected="false" id="filterWiring">Wiring</button>
+        <button class="filter-btn"         data-filter="switches"  role="tab" aria-selected="false" id="filterSwitches">Switches</button>
+        <button class="filter-btn"         data-filter="fans"      role="tab" aria-selected="false" id="filterFans">Fans</button>
+        <button class="filter-btn"         data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories">Accessories</button>
       </div>
 
       <div class="products-grid" id="productsGrid">
 
-        <!-- LED Lights -->
         <div class="product-card" data-category="lighting" id="productLED">
           <div class="product-img-wrap">
-            <div class="product-img product-img--led">
-              <i class="fas fa-lightbulb"></i>
-            </div>
+            <div class="product-img product-img--led"><i class="fas fa-lightbulb"></i></div>
             <div class="product-badge">Bestseller</div>
           </div>
           <div class="product-body">
             <span class="product-category">Lighting</span>
             <h3 class="product-name">LED Lights</h3>
-            <p class="product-desc">Energy-efficient LED bulbs and panel lights for every room. Available in warm and cool white.</p>
+            <p class="product-desc">Energy-efficient LED bulbs and panel lights for every room. Warm and cool white options.</p>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                <span>(4.5)</span>
+                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('LED Lights')" id="enquireLED">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Electrical Wires -->
         <div class="product-card" data-category="wiring" id="productWires">
           <div class="product-img-wrap">
-            <div class="product-img product-img--wire">
-              <i class="fas fa-plug"></i>
-            </div>
+            <div class="product-img product-img--wire"><i class="fas fa-plug"></i></div>
           </div>
           <div class="product-body">
             <span class="product-category">Wiring</span>
@@ -231,43 +296,35 @@
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <span>(5.0)</span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.0)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('Electrical Wires')" id="enquireWires">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Switches & Sockets -->
         <div class="product-card" data-category="switches" id="productSwitches">
           <div class="product-img-wrap">
-            <div class="product-img product-img--switch">
-              <i class="fas fa-toggle-on"></i>
-            </div>
+            <div class="product-img product-img--switch"><i class="fas fa-toggle-on"></i></div>
             <div class="product-badge">New</div>
           </div>
           <div class="product-body">
             <span class="product-category">Switches</span>
-            <h3 class="product-name">Switches & Sockets</h3>
+            <h3 class="product-name">Switches &amp; Sockets</h3>
             <p class="product-desc">Modular switches, sockets and plates from top brands. Stylish designs for modern homes.</p>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i>
-                <span>(4.0)</span>
+                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.0)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Switches & Sockets')" id="enquireSwitches">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('Switches &amp; Sockets')" id="enquireSwitches">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Ceiling Fans -->
         <div class="product-card" data-category="fans" id="productFans">
           <div class="product-img-wrap">
-            <div class="product-img product-img--fan">
-              <i class="fas fa-fan"></i>
-            </div>
+            <div class="product-img product-img--fan"><i class="fas fa-fan"></i></div>
           </div>
           <div class="product-body">
             <span class="product-category">Fans</span>
@@ -276,42 +333,34 @@
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                <span>(4.5)</span>
+                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('Ceiling Fans')" id="enquireFans">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Extension Boards -->
         <div class="product-card" data-category="accessories" id="productExtBoards">
           <div class="product-img-wrap">
-            <div class="product-img product-img--ext">
-              <i class="fas fa-power-off"></i>
-            </div>
+            <div class="product-img product-img--ext"><i class="fas fa-power-off"></i></div>
           </div>
           <div class="product-body">
             <span class="product-category">Accessories</span>
             <h3 class="product-name">Extension Boards</h3>
-            <p class="product-desc">Multi-socket extension boards with surge protection for safe use at home and office.</p>
+            <p class="product-desc">Multi-socket extension boards with surge protection for safe home and office use.</p>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i>
-                <span>(4.2)</span>
+                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.2)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('Extension Boards')" id="enquireExtBoards">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Electrical Accessories -->
         <div class="product-card" data-category="accessories" id="productAccess">
           <div class="product-img-wrap">
-            <div class="product-img product-img--access">
-              <i class="fas fa-tools"></i>
-            </div>
+            <div class="product-img product-img--access"><i class="fas fa-tools"></i></div>
           </div>
           <div class="product-body">
             <span class="product-category">Accessories</span>
@@ -320,53 +369,44 @@
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                <span>(4.8)</span>
+                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.8)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('Electrical Accessories')" id="enquireAccess">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Bulbs and Lighting -->
         <div class="product-card" data-category="lighting" id="productBulbs">
           <div class="product-img-wrap">
-            <div class="product-img product-img--bulb">
-              <i class="fas fa-sun"></i>
-            </div>
+            <div class="product-img product-img--bulb"><i class="fas fa-sun"></i></div>
             <div class="product-badge">Popular</div>
           </div>
           <div class="product-body">
             <span class="product-category">Lighting</span>
-            <h3 class="product-name">Bulbs & Lighting</h3>
+            <h3 class="product-name">Bulbs &amp; Lighting</h3>
             <p class="product-desc">Decorative, downlights, street lights and specialty bulbs. Complete lighting solutions.</p>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <span>(4.9)</span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(4.9)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Bulbs & Lighting')" id="enquireBulbs">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('Bulbs &amp; Lighting')" id="enquireBulbs">Enquire Now</button>
             </div>
           </div>
         </div>
 
-        <!-- Power Strips -->
         <div class="product-card" data-category="accessories" id="productPower">
           <div class="product-img-wrap">
-            <div class="product-img product-img--power">
-              <i class="fas fa-charging-station"></i>
-            </div>
+            <div class="product-img product-img--power"><i class="fas fa-charging-station"></i></div>
           </div>
           <div class="product-body">
             <span class="product-category">Accessories</span>
             <h3 class="product-name">Power Strips</h3>
-            <p class="product-desc">Heavy-duty power strips with USB charging ports and individual switches for each socket.</p>
+            <p class="product-desc">Heavy-duty power strips with USB charging ports and individual switches per socket.</p>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i>
-                <span>(4.3)</span>
+                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.3)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('Power Strips')" id="enquirePower">Enquire Now</button>
             </div>
@@ -374,6 +414,126 @@
         </div>
 
       </div><!-- /products-grid -->
+    </div>
+  </section>
+
+  <!-- ========== REPAIR SERVICES SECTION ========== -->
+  <section id="repairs" class="repair-section section-padding">
+    <div class="repair-bg-pattern"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag section-tag--repair">Emergency Available</span>
+        <h2 class="section-title repair-title">Professional <span class="accent">Repair Services</span></h2>
+        <p class="section-subtitle repair-subtitle">Fast, reliable, and affordable electrical repair services at your doorstep</p>
+      </div>
+
+      <!-- Repair CTA Banner -->
+      <div class="repair-cta-banner" id="repairCtaBanner">
+        <div class="repair-cta-icon"><i class="fas fa-bolt"></i></div>
+        <div class="repair-cta-text">
+          <h3>Need Emergency Electrical Repair?</h3>
+          <p>Call us immediately for same-day service. Our technicians are ready to help.</p>
+        </div>
+        <a href="tel:+919876543210" class="btn btn-repair-cta" id="repairCallBtn">
+          <i class="fas fa-phone"></i> Call Now
+        </a>
+      </div>
+
+      <!-- Repair Cards Grid -->
+      <div class="repair-grid">
+
+        <div class="repair-card" id="repairAppliance">
+          <div class="repair-card-icon"><i class="fas fa-blender"></i></div>
+          <h3>Home Appliance Repair</h3>
+          <p>Repair of fans, coolers, geysers, and small household electrical appliances. Quick diagnosis and fix.</p>
+          <ul class="repair-list">
+            <li><i class="fas fa-check"></i> Ceiling &amp; Table Fans</li>
+            <li><i class="fas fa-check"></i> Water Heaters / Geysers</li>
+            <li><i class="fas fa-check"></i> Room Coolers</li>
+            <li><i class="fas fa-check"></i> Small Appliances</li>
+          </ul>
+          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Home Appliance Repair')" id="enquireAppliance">
+            Get Service <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="repair-card repair-card--featured" id="repairWiring">
+          <div class="repair-card-badge">Most Requested</div>
+          <div class="repair-card-icon"><i class="fas fa-network-wired"></i></div>
+          <h3>Wiring &amp; Fault Repair</h3>
+          <p>Expert diagnosis and repair of faulty wiring, short circuits, earthing issues, and power faults.</p>
+          <ul class="repair-list">
+            <li><i class="fas fa-check"></i> Short Circuit Repair</li>
+            <li><i class="fas fa-check"></i> Earthing Solutions</li>
+            <li><i class="fas fa-check"></i> MCB / Fuse Replacement</li>
+            <li><i class="fas fa-check"></i> Cable Rewiring</li>
+          </ul>
+          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Wiring & Fault Repair')" id="enquireWiringRepair">
+            Get Service <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="repair-card" id="repairSwitch">
+          <div class="repair-card-icon"><i class="fas fa-toggle-on"></i></div>
+          <h3>Switch &amp; Socket Repair</h3>
+          <p>Replace and repair faulty switches, sockets, junction boxes, and modular wiring accessories.</p>
+          <ul class="repair-list">
+            <li><i class="fas fa-check"></i> Switch Replacement</li>
+            <li><i class="fas fa-check"></i> Socket Repair / Install</li>
+            <li><i class="fas fa-check"></i> Junction Box Fixing</li>
+            <li><i class="fas fa-check"></i> Modular Panel Work</li>
+          </ul>
+          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Switch & Socket Repair')" id="enquireSwitchRepair">
+            Get Service <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="repair-card" id="repairFan">
+          <div class="repair-card-icon"><i class="fas fa-fan"></i></div>
+          <h3>Fan Repair &amp; Servicing</h3>
+          <p>Ceiling fan speed issues, noise, motor winding, capacitor replacement, and complete fan overhaul.</p>
+          <ul class="repair-list">
+            <li><i class="fas fa-check"></i> Speed Regulation Fix</li>
+            <li><i class="fas fa-check"></i> Capacitor Replacement</li>
+            <li><i class="fas fa-check"></i> Motor Winding</li>
+            <li><i class="fas fa-check"></i> Blade &amp; Body Repair</li>
+          </ul>
+          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Fan Repair & Servicing')" id="enquireFanRepair">
+            Get Service <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="repair-card" id="repairTroubleshoot">
+          <div class="repair-card-icon"><i class="fas fa-search"></i></div>
+          <h3>Electrical Troubleshooting</h3>
+          <p>Complete electrical inspection of your home or office to identify hidden faults and safety hazards.</p>
+          <ul class="repair-list">
+            <li><i class="fas fa-check"></i> Safety Audit</li>
+            <li><i class="fas fa-check"></i> Fault Identification</li>
+            <li><i class="fas fa-check"></i> Voltage Testing</li>
+            <li><i class="fas fa-check"></i> Load Balancing Check</li>
+          </ul>
+          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Electrical Troubleshooting')" id="enquireTroubleshoot">
+            Get Service <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="repair-card" id="repairLighting">
+          <div class="repair-card-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>Light Fitting &amp; Repair</h3>
+          <p>Install new lights, fix flickering lights, replace fittings, and set up complete indoor/outdoor lighting.</p>
+          <ul class="repair-list">
+            <li><i class="fas fa-check"></i> Light Installation</li>
+            <li><i class="fas fa-check"></i> Flickering Light Fix</li>
+            <li><i class="fas fa-check"></i> Fitting Replacement</li>
+            <li><i class="fas fa-check"></i> Outdoor Lighting Setup</li>
+          </ul>
+          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Light Fitting & Repair')" id="enquireLightRepair">
+            Get Service <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div><!-- /repair-grid -->
     </div>
   </section>
 
@@ -392,9 +552,18 @@
           <div class="service-icon-wrap">
             <div class="service-icon"><i class="fas fa-store"></i></div>
           </div>
-          <h3>Electrical Product Supply</h3>
-          <p>We stock and supply a wide range of quality electrical products for all types of residential and commercial needs.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          <h3>Quality Product Sales &amp; Supply</h3>
+          <p>We stock and supply a wide range of certified electrical products for all residential and commercial needs at the best prices.</p>
+          <a href="#products" class="service-link">View Products <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card service-card--repair" id="serviceRepair">
+          <div class="service-icon-wrap">
+            <div class="service-icon service-icon--repair"><i class="fas fa-tools"></i></div>
+          </div>
+          <h3>Professional Repair Services</h3>
+          <p>Skilled technicians for home appliance repair, electrical fault diagnosis, wiring, and switch/socket repair with service warranty.</p>
+          <a href="#repairs" class="service-link">Explore Repairs <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card" id="serviceWiring">
@@ -411,16 +580,7 @@
             <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
           </div>
           <h3>Lighting Solutions</h3>
-          <p>From simple bulbs to full interior and exterior lighting solutions. We help you choose the right lighting for your space.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card" id="serviceAccessories">
-          <div class="service-icon-wrap">
-            <div class="service-icon"><i class="fas fa-toolbox"></i></div>
-          </div>
-          <h3>Shop & Home Accessories</h3>
-          <p>Full range of electrical accessories for shops and homes including panels, switches, and industrial-grade equipment.</p>
+          <p>From simple bulbs to full interior and exterior lighting setups. We help you choose the right lighting for your space.</p>
           <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
 
@@ -428,20 +588,56 @@
           <div class="service-icon-wrap">
             <div class="service-icon"><i class="fas fa-comments"></i></div>
           </div>
-          <h3>Product Consultation</h3>
-          <p>Not sure which product to buy? Our expert staff provides honest consultation to help you pick the right electrical materials.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          <h3>Free Product Consultation</h3>
+          <p>Not sure which product to buy? Our expert staff gives honest, free consultation to help you pick the right electrical materials.</p>
+          <a href="#contact" class="service-link">Talk to Us <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card" id="serviceDelivery">
           <div class="service-icon-wrap">
             <div class="service-icon"><i class="fas fa-truck"></i></div>
           </div>
-          <h3>Bulk Order & Delivery</h3>
-          <p>Special pricing on bulk orders for contractors and builders. Fast and reliable local delivery available on request.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          <h3>Bulk Orders &amp; Delivery</h3>
+          <p>Special pricing for contractors and builders. Fast and reliable local delivery available on bulk orders upon request.</p>
+          <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BRANDS SECTION ========== -->
+  <section id="brands" class="brands-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Authorized Dealer</span>
+        <h2 class="section-title">Brands We <span class="accent">Stock</span></h2>
+        <p class="section-subtitle">We carry products from India's most trusted electrical brands</p>
+      </div>
+      <div class="brands-track-wrapper">
+        <div class="brands-track" id="brandsTrack">
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Havells</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Anchor</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Legrand</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Finolex</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Philips</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Bajaj</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Orient</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Crompton</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Polycab</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Syska</div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Havells</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Anchor</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Legrand</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Finolex</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Philips</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Bajaj</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Orient</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Crompton</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Polycab</div>
+          <div class="brand-pill"><i class="fas fa-bolt"></i> Syska</div>
+        </div>
       </div>
     </div>
   </section>
@@ -457,71 +653,58 @@
 
       <div class="gallery-grid">
         <div class="gallery-item gallery-item--large" id="galleryItem1">
-          <div class="gallery-inner gallery-inner--shop">
-            <div class="gallery-svg-placeholder">
-              <i class="fas fa-store"></i>
-              <span>Shop Interior</span>
-            </div>
+          <div class="gallery-inner">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="Electrical shop tools and equipment" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Shop Interior</span>
             </div>
           </div>
         </div>
+
         <div class="gallery-item" id="galleryItem2">
-          <div class="gallery-inner gallery-inner--lights">
-            <div class="gallery-svg-placeholder">
-              <i class="fas fa-lightbulb"></i>
+          <div class="gallery-inner">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="LED lights display" loading="lazy" />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
               <span>LED Lights Display</span>
             </div>
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span>LED Lights</span>
-            </div>
           </div>
         </div>
+
         <div class="gallery-item" id="galleryItem3">
-          <div class="gallery-inner gallery-inner--switches">
-            <div class="gallery-svg-placeholder">
-              <i class="fas fa-toggle-on"></i>
-              <span>Switch Display</span>
-            </div>
+          <div class="gallery-inner">
+            <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?w=500&q=80" alt="Electrical switches and sockets" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
-              <span>Switches & Sockets</span>
+              <span>Switches &amp; Sockets</span>
             </div>
           </div>
         </div>
+
         <div class="gallery-item" id="galleryItem4">
-          <div class="gallery-inner gallery-inner--wires">
-            <div class="gallery-svg-placeholder">
-              <i class="fas fa-plug"></i>
-              <span>Wire Section</span>
-            </div>
+          <div class="gallery-inner">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80" alt="Electrical wires and cables" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Electrical Wires</span>
             </div>
           </div>
         </div>
+
         <div class="gallery-item gallery-item--tall" id="galleryItem5">
-          <div class="gallery-inner gallery-inner--shelf">
-            <div class="gallery-svg-placeholder">
-              <i class="fas fa-th-list"></i>
-              <span>Product Shelves</span>
-            </div>
+          <div class="gallery-inner">
+            <img src="https://images.unsplash.com/photo-1609220136736-443140cfeaa8?w=500&q=80" alt="Product shelves" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Product Shelves</span>
             </div>
           </div>
         </div>
+
         <div class="gallery-item" id="galleryItem6">
-          <div class="gallery-inner gallery-inner--fans">
-            <div class="gallery-svg-placeholder">
-              <i class="fas fa-fan"></i>
-              <span>Ceiling Fans</span>
-            </div>
+          <div class="gallery-inner">
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500&q=80" alt="Ceiling fans display" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Ceiling Fans</span>
@@ -532,13 +715,73 @@
     </div>
   </section>
 
+  <!-- ========== TESTIMONIALS SECTION ========== -->
+  <section id="testimonials" class="testimonials-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Customer Reviews</span>
+        <h2 class="section-title">What Customers <span class="accent">Say</span></h2>
+        <p class="section-subtitle">Real feedback from our satisfied customers</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card" id="testimonial1">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Got my ceiling fan repaired in just 2 hours. The technician was professional and the price was very reasonable. Everest Electricals is my go-to shop for everything electrical!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RK</div>
+            <div>
+              <strong>Rahul Kumar</strong>
+              <span>Local Resident</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card testimonial-card--featured" id="testimonial2">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Best electrical shop in the area! They have all the brands you need. Staff is very knowledgeable and helped me choose the right MCB for my office. Genuine products at honest prices."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">PS</div>
+            <div>
+              <strong>Priya Sharma</strong>
+              <span>Shop Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial3">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="testimonial-text">"I had a wiring problem at home that no one could fix quickly. Everest Electricals sent someone the same day, identified the fault within minutes, and fixed it safely. Highly recommended!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AM</div>
+            <div>
+              <strong>Ajay Mehta</strong>
+              <span>Homeowner</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ========== CONTACT SECTION ========== -->
   <section id="contact" class="contact-section section-padding">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Reach Us</span>
         <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
-        <p class="section-subtitle">Visit us in-store or reach out using the form below</p>
+        <p class="section-subtitle">Visit us in-store, call us, or fill the form below</p>
       </div>
 
       <div class="contact-grid">
@@ -551,9 +794,10 @@
               <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div>
                 <strong>Address</strong>
-                <p>Jain Electricals, Main Market Road,<br>Near Bus Stand, Your City – 400001</p>
+                <p>Everest Electricals, Main Market Road,<br>Near Bus Stand, Your City – 400001</p>
               </div>
             </div>
+
             <div class="contact-detail" id="contactPhone">
               <div class="contact-icon"><i class="fas fa-phone"></i></div>
               <div>
@@ -562,13 +806,15 @@
                 <p><a href="tel:+919876543211">+91 98765 43211</a></p>
               </div>
             </div>
+
             <div class="contact-detail" id="contactEmail">
               <div class="contact-icon"><i class="fas fa-envelope"></i></div>
               <div>
                 <strong>Email</strong>
-                <p><a href="mailto:info@jainelectricals.in">info@jainelectricals.in</a></p>
+                <p><a href="mailto:info@everestelectricals.in">info@everestelectricals.in</a></p>
               </div>
             </div>
+
             <div class="contact-detail" id="contactHours">
               <div class="contact-icon"><i class="fas fa-clock"></i></div>
               <div>
@@ -596,7 +842,7 @@
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160994904!2d72.74109995709657!3d19.082522051337153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin"
               width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" title="Jain Electricals Location Map">
+              referrerpolicy="no-referrer-when-downgrade" title="Everest Electricals Location Map">
             </iframe>
           </div>
         </div>
@@ -605,24 +851,26 @@
         <div class="contact-form-col">
           <form class="contact-form" id="contactForm" novalidate>
             <h3>Send Us a Message</h3>
-            <p class="form-subtitle">We'll get back to you within 24 hours.</p>
+            <p class="form-subtitle">We'll get back to you within a few hours.</p>
 
-            <div class="form-group">
-              <label for="formName">Full Name <span class="required">*</span></label>
-              <div class="input-wrap">
-                <i class="fas fa-user"></i>
-                <input type="text" id="formName" name="name" placeholder="Your full name" required autocomplete="name" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="formName">Full Name <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="formName" name="name" placeholder="Your full name" required autocomplete="name" />
+                </div>
+                <span class="form-error" id="nameError"></span>
               </div>
-              <span class="form-error" id="nameError"></span>
-            </div>
 
-            <div class="form-group">
-              <label for="formPhone">Phone Number <span class="required">*</span></label>
-              <div class="input-wrap">
-                <i class="fas fa-phone"></i>
-                <input type="tel" id="formPhone" name="phone" placeholder="Your phone number" required autocomplete="tel" />
+              <div class="form-group">
+                <label for="formPhone">Phone Number <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <i class="fas fa-phone"></i>
+                  <input type="tel" id="formPhone" name="phone" placeholder="10-digit mobile number" required autocomplete="tel" />
+                </div>
+                <span class="form-error" id="phoneError"></span>
               </div>
-              <span class="form-error" id="phoneError"></span>
             </div>
 
             <div class="form-group">
@@ -634,23 +882,49 @@
               <span class="form-error" id="emailError"></span>
             </div>
 
-            <div class="form-group">
-              <label for="formProduct">Product / Service</label>
-              <div class="input-wrap">
-                <i class="fas fa-shopping-cart"></i>
-                <select id="formProduct" name="product">
-                  <option value="">Select a product/service (optional)</option>
-                  <option value="LED Lights">LED Lights</option>
-                  <option value="Electrical Wires">Electrical Wires</option>
-                  <option value="Switches & Sockets">Switches & Sockets</option>
-                  <option value="Ceiling Fans">Ceiling Fans</option>
-                  <option value="Extension Boards">Extension Boards</option>
-                  <option value="Electrical Accessories">Electrical Accessories</option>
-                  <option value="Bulbs & Lighting">Bulbs & Lighting</option>
-                  <option value="Power Strips">Power Strips</option>
-                  <option value="Consultation">Consultation</option>
-                  <option value="Other">Other</option>
-                </select>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="formProduct">Product / Service</label>
+                <div class="input-wrap">
+                  <i class="fas fa-shopping-cart"></i>
+                  <select id="formProduct" name="product">
+                    <option value="">Select (optional)</option>
+                    <optgroup label="Products">
+                      <option value="LED Lights">LED Lights</option>
+                      <option value="Electrical Wires">Electrical Wires</option>
+                      <option value="Switches &amp; Sockets">Switches &amp; Sockets</option>
+                      <option value="Ceiling Fans">Ceiling Fans</option>
+                      <option value="Extension Boards">Extension Boards</option>
+                      <option value="Electrical Accessories">Electrical Accessories</option>
+                      <option value="Bulbs &amp; Lighting">Bulbs &amp; Lighting</option>
+                      <option value="Power Strips">Power Strips</option>
+                    </optgroup>
+                    <optgroup label="Repair Services">
+                      <option value="Repair Service">General Repair Service</option>
+                      <option value="Home Appliance Repair">Home Appliance Repair</option>
+                      <option value="Wiring &amp; Fault Repair">Wiring &amp; Fault Repair</option>
+                      <option value="Switch &amp; Socket Repair">Switch &amp; Socket Repair</option>
+                      <option value="Fan Repair &amp; Servicing">Fan Repair &amp; Servicing</option>
+                      <option value="Electrical Troubleshooting">Electrical Troubleshooting</option>
+                      <option value="Light Fitting &amp; Repair">Light Fitting &amp; Repair</option>
+                    </optgroup>
+                    <option value="Consultation">Consultation</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="formUrgency">When do you need service?</label>
+                <div class="input-wrap">
+                  <i class="fas fa-calendar-alt"></i>
+                  <select id="formUrgency" name="urgency">
+                    <option value="">Select urgency</option>
+                    <option value="Today – Emergency">🚨 Today – Emergency</option>
+                    <option value="This Week">📅 This Week</option>
+                    <option value="Not Urgent – Planning">🗓️ Not Urgent – Planning</option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -658,7 +932,7 @@
               <label for="formMessage">Message <span class="required">*</span></label>
               <div class="input-wrap textarea-wrap">
                 <i class="fas fa-comment-dots"></i>
-                <textarea id="formMessage" name="message" placeholder="Describe your requirement..." rows="5" required></textarea>
+                <textarea id="formMessage" name="message" placeholder="Describe your requirement or issue in detail..." rows="4" required></textarea>
               </div>
               <span class="form-error" id="messageError"></span>
             </div>
@@ -669,7 +943,7 @@
 
             <div class="form-success" id="formSuccess" role="alert" aria-live="polite" style="display:none;">
               <i class="fas fa-check-circle"></i>
-              <p>Thank you! Your message has been sent. We'll contact you soon.</p>
+              <p>Thank you! Your message has been sent. We'll contact you shortly.</p>
             </div>
           </form>
         </div>
@@ -684,9 +958,9 @@
 
         <div class="footer-col footer-brand">
           <a href="#home" class="footer-logo">
-            <i class="fas fa-bolt"></i> Jain <span>Electricals</span>
+            <i class="fas fa-bolt"></i> Everest <span>Electricals</span>
           </a>
-          <p>Your trusted partner for quality electrical products. Serving homes and businesses with reliability since 2005.</p>
+          <p>Your trusted partner for quality electrical products and expert repair services. Serving homes and businesses with reliability since 2005.</p>
           <div class="footer-social">
             <a href="https://wa.me/919876543210" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -700,6 +974,7 @@
             <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
             <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
             <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Repair Services</a></li>
             <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
             <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
             <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
@@ -707,14 +982,14 @@
         </div>
 
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4>Repair Services</h4>
           <ul class="footer-links">
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> LED Lights</a></li>
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> Electrical Wires</a></li>
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> Switches & Sockets</a></li>
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> Ceiling Fans</a></li>
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> Extension Boards</a></li>
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> Power Strips</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Appliance Repair</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Wiring &amp; Fault Fix</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Switch &amp; Socket Repair</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Fan Repair</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Troubleshooting</a></li>
+            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Light Fitting</a></li>
           </ul>
         </div>
 
@@ -731,7 +1006,7 @@
             </li>
             <li>
               <i class="fas fa-envelope"></i>
-              <a href="mailto:info@jainelectricals.in">info@jainelectricals.in</a>
+              <a href="mailto:info@everestelectricals.in">info@everestelectricals.in</a>
             </li>
             <li>
               <i class="fas fa-clock"></i>
@@ -745,7 +1020,7 @@
 
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <p>&copy; <span id="footerYear"></span> Jain Electricals. All rights reserved.</p>
+        <p>&copy; <span id="footerYear"></span> Everest Electricals. All rights reserved.</p>
         <p>Designed with <i class="fas fa-heart"></i> for quality electrical solutions</p>
       </div>
     </div>
@@ -767,10 +1042,10 @@
   <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box">
       <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-      <div class="modal-icon"><i class="fas fa-shopping-cart"></i></div>
+      <div class="modal-icon" id="modalIconWrap"><i class="fas fa-shopping-cart"></i></div>
       <h3 id="modalTitle">Product Enquiry</h3>
       <p id="modalProductName" class="modal-product-name">LED Lights</p>
-      <p>Interested in this product? Contact us directly:</p>
+      <p id="modalDesc">Interested in this product? Contact us directly:</p>
       <div class="modal-actions">
         <a href="https://wa.me/919876543210" class="btn btn-whatsapp" target="_blank" id="modalWhatsapp">
           <i class="fab fa-whatsapp"></i> WhatsApp
