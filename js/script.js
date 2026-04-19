@@ -83,8 +83,8 @@ function createParticles() {
     const x        = Math.random() * 100;
     const duration = Math.random() * 15 + 10;
     const delay    = Math.random() * 12;
-    // Some particles are red (repair theme)
-    const color = Math.random() > 0.7 ? '#FF4C29' : '#FFD700';
+    // Some particles are orange (accent)
+    const color = Math.random() > 0.7 ? '#FF6B00' : '#1B3A6B';
     p.style.cssText = `
       width:${size}px; height:${size}px;
       left:${x}%; bottom:-10px;
@@ -244,7 +244,7 @@ function openEnquiry(productName) {
   modalDesc.textContent        = 'Interested in this product? Contact us directly:';
 
   const msg = encodeURIComponent(`Hello! I'm interested in *${productName}* from Everest Electricals. Please share details and pricing.`);
-  whatsappLink.href = `https://wa.me/919876543210?text=${msg}`;
+  whatsappLink.href = `https://wa.me/[REAL_PHONE_DIGITS]?text=${msg}`;
 
   enquiryModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -259,7 +259,7 @@ function openRepairEnquiry(serviceName) {
   modalDesc.textContent        = 'Need this repair service? Reach out to us:';
 
   const msg = encodeURIComponent(`Hello! I need *${serviceName}* from Everest Electricals. Please contact me at your earliest.`);
-  whatsappLink.href = `https://wa.me/919876543210?text=${msg}`;
+  whatsappLink.href = `https://wa.me/[REAL_PHONE_DIGITS]?text=${msg}`;
 
   enquiryModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -339,17 +339,58 @@ contactForm.addEventListener('submit', e => {
   }
   if (!valid) return;
 
-  const submitBtn = document.getElementById('submitFormBtn');
+  const submitBtn    = document.getElementById('submitFormBtn');
+  const errorBanner  = document.getElementById('formErrorBanner');
+  const mailtoLink   = document.getElementById('mailtoFallback');
   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
   submitBtn.disabled  = true;
 
-  setTimeout(() => {
+  // Build mailto fallback body
+  const product  = document.getElementById('formProduct').value;
+  const urgency  = document.getElementById('formUrgency').value;
+  const body = `Name: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AProduct/Service: ${product}%0AUrgency: ${urgency}%0AMessage: ${msg}`;
+  if (mailtoLink) {
+    mailtoLink.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
+  }
+
+  // Try EmailJS if available, else fall back to mailto redirect
+  const EMAILJS_SERVICE  = 'YOUR_SERVICE_ID';   // replace with your EmailJS service ID
+  const EMAILJS_TEMPLATE = 'YOUR_TEMPLATE_ID';  // replace with your EmailJS template ID
+  const EMAILJS_KEY      = 'YOUR_PUBLIC_KEY';   // replace with your EmailJS public key
+
+  function handleSuccess() {
     contactForm.reset();
     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
     submitBtn.disabled  = false;
+    if (errorBanner) errorBanner.style.display = 'none';
     formSuccess.style.display = 'flex';
     setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
-  }, 1800);
+  }
+
+  function handleError() {
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+    submitBtn.disabled  = false;
+    if (errorBanner) errorBanner.style.display = 'flex';
+    // Auto-open mailto as fallback
+    window.location.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
+  }
+
+  if (typeof emailjs !== 'undefined' && EMAILJS_SERVICE !== 'YOUR_SERVICE_ID') {
+    emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      from_name: name,
+      from_phone: phone,
+      from_email: email,
+      product: product,
+      urgency: urgency,
+      message: msg,
+    }, EMAILJS_KEY)
+      .then(handleSuccess)
+      .catch(handleError);
+  } else {
+    // EmailJS not configured – open mailto directly
+    window.location.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
+    handleSuccess();
+  }
 });
 
 /* ========================================
@@ -402,6 +443,17 @@ if (waFloat) {
   waFloat.style.cssText += 'opacity:0;transform:scale(0.5);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);';
   setTimeout(() => { waFloat.style.opacity = '1'; waFloat.style.transform = 'scale(1)'; }, 3000);
 }
+
+/* ========================================
+   ENQUIRE NOW – WhatsApp pre-fill (direct buttons outside modal)
+   ======================================== */
+document.querySelectorAll('[data-wa-product]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const product = btn.getAttribute('data-wa-product');
+    const msg = encodeURIComponent(`Hi, I'm interested in *${product}* from Everest Electricals. Please share details and pricing.`);
+    window.open(`https://wa.me/[REAL_PHONE_DIGITS]?text=${msg}`, '_blank');
+  });
+});
 
 /* ========================================
    SERVICE CARD RIPPLE
@@ -478,4 +530,4 @@ window.prefillForm = function (value, urgency) {
   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#FFD700;font-size:16px;font-weight:bold;background:#0A1F44;padding:8px 16px;border-radius:6px;');
+console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#FF6B00;font-size:16px;font-weight:bold;background:#1B3A6B;padding:8px 16px;border-radius:6px;');
