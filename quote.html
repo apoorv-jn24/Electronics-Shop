@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Quote | Everest Electricals</title>
+  <meta name="description" content="Request a bulk order quote from Everest Electricals. We supply quality electrical goods across Saroorpur, Baraut, and Baghpat at competitive trade prices." />
+  <link rel="canonical" href="https://everest-electricals.vercel.app/quote.html" />
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Quote specific tweaks */
+    #navbar { background: var(--white); box-shadow: var(--shadow); position: relative; top: 0; }
+    .quote-page { padding: 80px 0; background: var(--off-white); min-height: calc(100vh - 200px); }
+    .quote-container { max-width: 700px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .quote-header { text-align: center; margin-bottom: 32px; }
+    .quote-header h1 { font-family: var(--font-heading); color: var(--primary); font-size: var(--fs-h2); margin-bottom: 12px; }
+    .quote-header p { color: var(--text-mid); }
+    .quote-success { display: none; text-align: center; padding: 40px 20px; }
+    .quote-success i { font-size: 3rem; color: #10B981; margin-bottom: 16px; }
+    .quote-success h3 { font-size: var(--fs-h3); color: var(--text-dark); margin-bottom: 8px; }
+    
+    @media (max-width: 640px) {
+      .quote-container { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== TOP BAR ========== -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner container">
+      <span class="topbar-item">
+        <i class="fas fa-truck"></i> Free delivery on bulk orders above ₹2,000
+      </span>
+      <span class="topbar-divider"></span>
+      <span class="topbar-item">
+        <i class="fas fa-phone"></i> Call us: <a href="tel:[REAL_PHONE]">[REAL_PHONE]</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <header id="navbar">
+    <nav class="nav-container container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+        <span class="logo-text">Everest <span class="accent">Electricals</span></span>
+      </a>
+      <!-- Simplified Nav for Quote page -->
+      <a href="index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">&larr; Back to Home</a>
+    </nav>
+  </header>
+
+  <!-- ========== QUOTE SECTION ========== -->
+  <section class="quote-page">
+    <div class="container">
+      <div class="quote-container" id="quoteBox">
+        
+        <div class="quote-header">
+          <h1>Request a Quote</h1>
+          <p>Fill out the details below. Our team will verify stock and get back to you with our best trade pricing within 24 hours.</p>
+        </div>
+
+        <form id="quoteForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Full Name <span class="required">*</span></label>
+              <div class="input-wrap">
+                <i class="fas fa-user"></i>
+                <input type="text" id="quoteName" placeholder="e.g. Ramesh Singh" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Company / Firm Name (Optional)</label>
+              <div class="input-wrap">
+                <i class="fas fa-building"></i>
+                <input type="text" id="quoteCompany" placeholder="e.g. RS Construction">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Phone Number <span class="required">*</span></label>
+              <div class="input-wrap">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="quotePhone" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <div class="input-wrap">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="quoteEmail" placeholder="your@email.com">
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group" style="margin-top: 20px;">
+            <label>Product Details &amp; Quantities <span class="required">*</span></label>
+            <div class="input-wrap textarea-wrap">
+              <i class="fas fa-list-ol"></i>
+              <textarea id="quoteMessage" rows="5" placeholder="List the items you need (e.g. 50x Finolex 1.5mm wire coils, 20x Anchor switches)..." required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+            <i class="fas fa-paper-plane"></i> Submit Quote Request
+          </button>
+        </form>
+
+        <!-- Simulated Success State -->
+        <div class="quote-success" id="quoteSuccessState">
+          <i class="fas fa-check-circle"></i>
+          <h3>Request Received Successfully!</h3>
+          <p style="color: var(--text-mid); margin-bottom: 24px;">Thank you. Our sales team will review your requirements and contact you shortly with a tailored quote.</p>
+          <a href="index.html" class="btn btn-outline" style="display: inline-flex;"><i class="fas fa-arrow-left"></i> Return Home</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (Simplified) ========== -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="currentYearQuote"></span> Everest Electricals. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('currentYearQuote').textContent = new Date().getFullYear();
+    
+    // Form Simulation
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('quoteName').value;
+      const phone = document.getElementById('quotePhone').value;
+      const msg = document.getElementById('quoteMessage').value;
+      
+      if(!name || !phone || !msg) {
+        alert("Please fill in all required fields (Name, Phone, Product Details).");
+        return;
+      }
+      
+      this.style.display = 'none';
+      document.querySelector('.quote-header').style.display = 'none';
+      document.getElementById('quoteSuccessState').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

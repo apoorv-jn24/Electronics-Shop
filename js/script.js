@@ -530,4 +530,88 @@ window.prefillForm = function (value, urgency) {
   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#FF6B00;font-size:16px;font-weight:bold;background:#1B3A6B;padding:8px 16px;border-radius:6px;');
+console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#F59E0B;font-size:16px;font-weight:bold;background:#0C2340;padding:8px 16px;border-radius:6px;');
+
+/* ========================================
+   COMPARE PANEL (FIX 4)
+   ======================================== */
+const comparePanel     = document.getElementById('comparePanel');
+const comparePanelCount = document.getElementById('comparePanelCount');
+const btnCompareNow    = document.getElementById('btnCompareNow');
+const btnCompareClear  = document.getElementById('btnCompareClear');
+const compareSlots     = [
+  document.getElementById('compareSlot1'),
+  document.getElementById('compareSlot2'),
+  document.getElementById('compareSlot3'),
+];
+let compareSelected = []; // array of product name strings
+
+function updateComparePanel() {
+  const count = compareSelected.length;
+  if (comparePanelCount) comparePanelCount.textContent = `${count} / 3 selected`;
+  compareSlots.forEach((slot, i) => {
+    if (!slot) return;
+    if (compareSelected[i]) {
+      slot.textContent = compareSelected[i];
+      slot.classList.add('filled');
+    } else {
+      slot.textContent = '— empty —';
+      slot.classList.remove('filled');
+    }
+  });
+  if (comparePanel) comparePanel.classList.toggle('visible', count > 0);
+  if (btnCompareNow) btnCompareNow.disabled = count < 2;
+}
+
+document.querySelectorAll('.compare-check').forEach(checkbox => {
+  checkbox.addEventListener('change', function () {
+    const product = this.getAttribute('data-product');
+    if (this.checked) {
+      if (compareSelected.length >= 3) {
+        this.checked = false;
+        showToast('⚠️ Maximum 3 products can be compared at once.');
+        return;
+      }
+      compareSelected.push(product);
+    } else {
+      compareSelected = compareSelected.filter(p => p !== product);
+    }
+    updateComparePanel();
+  });
+});
+
+if (btnCompareNow) {
+  btnCompareNow.addEventListener('click', () => {
+    showToast(`🔍 Comparing: ${compareSelected.join(' vs ')}`);
+  });
+}
+
+if (btnCompareClear) {
+  btnCompareClear.addEventListener('click', () => {
+    compareSelected = [];
+    document.querySelectorAll('.compare-check').forEach(cb => { cb.checked = false; });
+    updateComparePanel();
+  });
+}
+
+/* ========================================
+   NEWSLETTER FORM (FIX 8 – simulated success)
+   ======================================== */
+const newsletterForm    = document.getElementById('newsletterForm');
+const newsletterSuccess = document.getElementById('newsletterSuccess');
+
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('⚠️ Please enter a valid email address.');
+      return;
+    }
+    // Simulated success – no backend
+    newsletterForm.style.display = 'none';
+    if (newsletterSuccess) {
+      newsletterSuccess.style.display = 'flex';
+    }
+  });
+}

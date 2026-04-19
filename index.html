@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Everest Electricals – Leading electrical shop &amp; repair service in Saroorpur Kalan, UP. Quality LED lights, wires, switches, fans, and professional electrical repairs. Serving Saroorpur, Baraut, Baghpat &amp; nearby areas since 2005." />
-  <meta name="keywords" content="electrical shop, electrical repair, LED lights, wires, switches, fans, electrical accessories, Everest Electricals, home wiring, appliance repair, electrician" />
+
+  <!-- SEO Meta (FIX 7) -->
+  <title>Everest Electricals | Quality Electrical Supplies &amp; Repair Services India</title>
+  <meta name="description" content="Everest Electricals – Your trusted electrical shop in Saroorpur Kalan, UP since 2005. ISI-certified LED lights, wires, switches, fans, MCBs &amp; expert repair services. Serving Saroorpur, Baraut, Baghpat &amp; nearby areas." />
+  <meta name="keywords" content="electrical shop Saroorpur, LED lights, wires, switches, fans, electrical accessories, Everest Electricals, home wiring, appliance repair, electrician Baghpat, ISI certified" />
   <meta name="author" content="Everest Electricals" />
   <meta name="robots" content="index, follow" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Everest Electricals – Electrical Shop & Repair Services" />
-  <meta property="og:description" content="Quality electrical products and expert repair services for homes and businesses. 20+ years of trusted service." />
+  <link rel="canonical" href="https://everest-electricals.vercel.app/" />
+
+  <!-- Open Graph (FIX 7) -->
+  <meta property="og:title" content="Everest Electricals | Electrical Shop &amp; Repair Services" />
+  <meta property="og:description" content="ISI-certified electrical products and expert repair services for homes &amp; businesses in Western UP. 20+ years of trusted service since 2005." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://everest-electricals.vercel.app/" />
-  <title>Everest Electricals – Electrical Shop &amp; Repair Services in Your City</title>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&amp;q=80" />
+  <meta property="og:locale" content="en_IN" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -27,6 +34,26 @@
     <div class="preloader-inner">
       <div class="bolt-icon"><i class="fas fa-bolt"></i></div>
       <p>Everest Electricals</p>
+    </div>
+  </div>
+
+  <!-- ========== TOP BAR (FIX 3) ========== -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner container">
+      <span class="topbar-item">
+        <i class="fas fa-truck"></i>
+        Free delivery on bulk orders above ₹2,000
+      </span>
+      <span class="topbar-divider"></span>
+      <span class="topbar-item">
+        <i class="fas fa-phone"></i>
+        Call us: <a href="tel:[REAL_PHONE]">[REAL_PHONE]</a>
+      </span>
+      <span class="topbar-divider"></span>
+      <span class="topbar-item">
+        <i class="fas fa-clock"></i>
+        Mon–Sat: 9 AM – 8 PM
+      </span>
     </div>
   </div>
 
@@ -48,7 +75,18 @@
         <li><a href="#contact"  class="nav-link" id="nav-contact">Contact</a></li>
       </ul>
 
+      <!-- Search bar (TODO: wire up search functionality) -->
+      <div class="nav-search" id="navSearch">
+        <input type="text" placeholder="Search products…" aria-label="Search products" id="navSearchInput" />
+        <button class="nav-search-btn" aria-label="Search" id="navSearchBtn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
       <div class="nav-actions">
+        <a href="quote.html" class="nav-quote-btn" id="navQuoteBtn">
+          <i class="fas fa-file-alt"></i> Get a Quote
+        </a>
         <a href="tel:[REAL_PHONE]" class="nav-call-btn" aria-label="Call us now">
           <i class="fas fa-phone"></i> Call Now
         </a>
@@ -59,54 +97,65 @@
     </nav>
   </header>
 
-  <!-- ========== HERO SECTION ========== -->
+
+  <!-- ========== HERO SECTION (FIX 2) ========== -->
   <section id="home" class="hero-section">
     <div class="hero-bg-overlay"></div>
     <div class="hero-particles" id="heroParticles"></div>
 
     <div class="container hero-content">
+
+      <!-- Star rating (FIX 5) -->
+      <div class="hero-rating" id="heroRating">
+        <span class="hero-rating-stars">★★★★★</span>
+        <strong>4.8/5</strong>
+        <span>by 300+ customers</span>
+      </div>
+
+      <!-- Badges -->
       <div class="hero-badges">
         <div class="hero-badge">
-          <i class="fas fa-star"></i> Trusted Since 2005
+          <i class="fas fa-award"></i> Trusted Since 2005
         </div>
         <div class="hero-badge hero-badge--repair">
           <i class="fas fa-tools"></i> Emergency Repairs Available
         </div>
       </div>
 
+      <!-- Main headline -->
       <h1 class="hero-title">
-        Everest <span class="hero-accent">Electricals</span>
+        Quality Electrical Supplies,<br>
+        <span class="hero-accent">Delivered to Your Door</span>
       </h1>
-      <p class="hero-tagline">Your Trusted Electrical Store for Quality Products &amp; Expert Repairs</p>
-      <p class="hero-desc">
-        Providing premium electrical products, expert repair services, and accessories
-        for homes and businesses since 2005.
+      <p class="hero-tagline">
+        Trusted by contractors, builders &amp; homeowners across North India.<br>
+        ISI-certified products · Expert repair team · Same-day service.
       </p>
 
+      <!-- CTAs (FIX 2) -->
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary" id="heroShopNow">
+          <i class="fas fa-bolt"></i> Shop Now
+        </a>
+        <a href="quote.html" class="btn btn-outline" id="heroGetQuote">
+          <i class="fas fa-file-alt"></i> Get a Quote
+        </a>
+      </div>
+
+      <!-- Trust bar — 3 key stats (FIX 2) -->
       <div class="hero-trust-strip">
         <div class="hero-trust-item">
-          <i class="fas fa-map-marker-alt"></i> <span>Local Service, Same-Day</span>
+          <i class="fas fa-boxes"></i> <span>500+ Products</span>
         </div>
         <div class="hero-trust-item">
-          <i class="fas fa-shield-alt"></i> <span>ISI Certified Products</span>
+          <i class="fas fa-shipping-fast"></i> <span>Same-Day Service</span>
         </div>
         <div class="hero-trust-item">
-          <i class="fas fa-tag"></i> <span>Fair &amp; Transparent Pricing</span>
+          <i class="fas fa-headset"></i> <span>Expert Support</span>
         </div>
       </div>
 
-      <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary" id="heroViewProducts">
-          <i class="fas fa-th-large"></i> View Products
-        </a>
-        <a href="#repairs" class="btn btn-repair" id="heroRepairBtn">
-          <i class="fas fa-tools"></i> Repair Services
-        </a>
-        <a href="#contact" class="btn btn-outline" id="heroContactUs">
-          <i class="fas fa-envelope"></i> Contact Us
-        </a>
-      </div>
-
+      <!-- Animated stat counters (kept from original) -->
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-number" data-target="20">20</span><span>+</span>
@@ -130,9 +179,55 @@
       </div>
     </div>
 
-    <a href="#about" class="hero-scroll-down" aria-label="Scroll down">
+    <a href="#why" class="hero-scroll-down" aria-label="Scroll down">
       <i class="fas fa-chevron-down"></i>
     </a>
+  </section>
+
+  <!-- ========== WHY CHOOSE US (FIX 5) ========== -->
+  <section id="why" class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Customers Choose Us</span>
+        <h2 class="section-title">Built on Trust, <span style="color:var(--accent)">Delivered with Care</span></h2>
+        <p class="section-subtitle">Four reasons why thousands of homes and businesses rely on us</p>
+      </div>
+      <div class="why-grid">
+
+        <div class="why-card" id="whyAccredited">
+          <div class="why-card-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Accredited Supplier</h3>
+          <p>We stock only ISI-marked, BIS-approved products from India's most trusted brands. Every item is quality-verified before it reaches you.</p>
+        </div>
+
+        <div class="why-card" id="whySameDay">
+          <div class="why-card-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h3>Same-Day Local Delivery</h3>
+          <p>Order before noon and get your electrical supplies delivered the same day within our service area. Bulk orders dispatched within 24 hours.</p>
+        </div>
+
+        <div class="why-card" id="whyExpert">
+          <div class="why-card-icon">
+            <i class="fas fa-user-cog"></i>
+          </div>
+          <h3>Expert Repair Team</h3>
+          <p>Our trained technicians diagnose and fix electrical faults fast — fans, wiring, appliances, switches. Same-day on-site repair service available.</p>
+        </div>
+
+        <div class="why-card" id="whyReturns">
+          <div class="why-card-icon">
+            <i class="fas fa-undo-alt"></i>
+          </div>
+          <h3>Hassle-Free Returns</h3>
+          <p>Not satisfied? We offer easy returns and exchanges on all products. Your satisfaction is our priority — no questions asked within 7 days.</p>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <!-- ========== ABOUT SECTION ========== -->
@@ -235,154 +330,255 @@
         <button class="filter-btn"         data-filter="wiring"    role="tab" aria-selected="false" id="filterWiring">Wiring</button>
         <button class="filter-btn"         data-filter="switches"  role="tab" aria-selected="false" id="filterSwitches">Switches</button>
         <button class="filter-btn"         data-filter="fans"      role="tab" aria-selected="false" id="filterFans">Fans</button>
-        <button class="filter-btn"         data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories">Accessories</button>
-      </div>
+        <button class="filter-btn"         data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories">Accessor      <!-- Breadcrumb (FIX 3) -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#home">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Products</span>
+      </nav>
 
       <div class="products-grid" id="productsGrid">
 
-        <div class="product-card" data-category="lighting" id="productLED">
+        <!-- CARD 1: LED Lights -->
+        <div class="product-card" data-category="lighting" data-sku="EE-LED-001" id="productLED">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=500&q=80" alt="LED Lights" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=500&q=80" alt="Havells LED Lights" loading="lazy" width="500" height="340" />
             <div class="product-badge">Bestseller</div>
           </div>
           <div class="product-body">
+            <span class="product-brand">Havells</span>
             <span class="product-category">Lighting</span>
-            <h3 class="product-name">LED Lights</h3>
-            <p class="product-desc">Energy-efficient LED bulbs and panel lights for every room. Warm and cool white options.</p>
+            <h3 class="product-name">LED Panel Lights</h3>
+            <span class="product-sku">SKU: EE-LED-001</span>
+            <div class="product-price-row">
+              <span class="product-price">₹499</span>
+              <span class="product-price-vat">inc. GST</span>
+            </div>
+            <span class="stock-badge stock-in">In Stock</span>
+            <p class="product-desc">Energy-efficient LED panel lights for every room. Warm &amp; cool white options, ISI-marked.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('LED Lights')" id="enquireLED">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('LED Panel Lights')" id="enquireLED">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="LED Panel Lights" /> Compare</label>
             </div>
           </div>
         </div>
 
-        <div class="product-card" data-category="wiring" id="productWires">
+        <!-- CARD 2: Electrical Wires -->
+        <div class="product-card" data-category="wiring" data-sku="EE-WIR-010" id="productWires">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=500&q=80" alt="Electrical Wires" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=500&q=80" alt="Finolex Electrical Wires" loading="lazy" width="500" height="340" />
           </div>
           <div class="product-body">
+            <span class="product-brand">Finolex</span>
             <span class="product-category">Wiring</span>
-            <h3 class="product-name">Electrical Wires</h3>
+            <h3 class="product-name">1.5 sq.mm Copper Wire</h3>
+            <span class="product-sku">SKU: EE-WIR-010</span>
+            <div class="product-price-row">
+              <span class="product-price">₹1,150</span>
+              <span class="product-price-vat">per 90m coil · inc. GST</span>
+            </div>
+            <span class="stock-badge stock-in">In Stock</span>
             <p class="product-desc">ISI-marked copper wires in various gauges. Suitable for domestic and commercial wiring.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.0)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Electrical Wires')" id="enquireWires">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('1.5 sq.mm Copper Wire')" id="enquireWires">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="1.5 sq.mm Copper Wire" /> Compare</label>
             </div>
           </div>
         </div>
 
-        <div class="product-card" data-category="switches" id="productSwitches">
+        <!-- CARD 3: Switches & Sockets -->
+        <div class="product-card" data-category="switches" data-sku="EE-SWT-020" id="productSwitches">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Switches & Sockets" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Anchor Switches &amp; Sockets" loading="lazy" width="500" height="340" />
             <div class="product-badge">New</div>
           </div>
           <div class="product-body">
+            <span class="product-brand">Anchor</span>
             <span class="product-category">Switches</span>
-            <h3 class="product-name">Switches &amp; Sockets</h3>
+            <h3 class="product-name">Modular Switch Plate</h3>
+            <span class="product-sku">SKU: EE-SWT-020</span>
+            <div class="product-price-row">
+              <span class="product-price">₹349</span>
+              <span class="product-price-vat">inc. GST</span>
+            </div>
+            <span class="stock-badge stock-in">In Stock</span>
             <p class="product-desc">Modular switches, sockets and plates from top brands. Stylish designs for modern homes.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.0)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Switches &amp; Sockets')" id="enquireSwitches">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('Modular Switch Plate')" id="enquireSwitches">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="Modular Switch Plate" /> Compare</label>
             </div>
           </div>
         </div>
 
-        <div class="product-card" data-category="fans" id="productFans">
+        <!-- CARD 4: Ceiling Fans -->
+        <div class="product-card" data-category="fans" data-sku="EE-FAN-030" id="productFans">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&q=80" alt="Ceiling Fans" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&q=80" alt="Orient Ceiling Fans" loading="lazy" width="500" height="340" />
           </div>
           <div class="product-body">
+            <span class="product-brand">Orient</span>
             <span class="product-category">Fans</span>
-            <h3 class="product-name">Ceiling Fans</h3>
-            <p class="product-desc">Energy-saving BLDC and standard ceiling fans in multiple sizes and colours from top brands.</p>
+            <h3 class="product-name">BLDC Ceiling Fan 1200mm</h3>
+            <span class="product-sku">SKU: EE-FAN-030</span>
+            <div class="product-price-row">
+              <span class="product-price">₹2,799</span>
+              <span class="product-price-vat">inc. GST</span>
+            </div>
+            <span class="stock-badge stock-low">Low Stock</span>
+            <p class="product-desc">Energy-saving BLDC ceiling fan with remote control. Saves up to 60% electricity vs standard fans.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Ceiling Fans')" id="enquireFans">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('BLDC Ceiling Fan 1200mm')" id="enquireFans">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="BLDC Ceiling Fan 1200mm" /> Compare</label>
             </div>
           </div>
         </div>
 
-        <div class="product-card" data-category="accessories" id="productExtBoards">
+        <!-- CARD 5: MCB (seeded – FIX 4) -->
+        <div class="product-card" data-category="accessories" data-sku="EE-MCB-040" id="productMCB">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=500&q=80" alt="Extension Boards" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=500&q=80" alt="Legrand MCB" loading="lazy" width="500" height="340" />
+            <div class="product-badge">Trade Pick</div>
           </div>
           <div class="product-body">
+            <span class="product-brand">Legrand</span>
             <span class="product-category">Accessories</span>
-            <h3 class="product-name">Extension Boards</h3>
-            <p class="product-desc">Multi-socket extension boards with surge protection for safe home and office use.</p>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.2)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('Extension Boards')" id="enquireExtBoards">Enquire Now</button>
+            <h3 class="product-name">MCB 32A Single Pole</h3>
+            <span class="product-sku">SKU: EE-MCB-040</span>
+            <div class="product-price-row">
+              <span class="product-price">₹245</span>
+              <span class="product-price-vat">inc. GST</span>
             </div>
-          </div>
-        </div>
-
-        <div class="product-card" data-category="accessories" id="productAccess">
-          <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=500&q=80" alt="Electrical Accessories" loading="lazy" />
-          </div>
-          <div class="product-body">
-            <span class="product-category">Accessories</span>
-            <h3 class="product-name">Electrical Accessories</h3>
-            <p class="product-desc">MCBs, distribution boards, conduit pipes, junction boxes, and all wiring accessories.</p>
+            <span class="stock-badge stock-in">In Stock</span>
+            <p class="product-desc">ISI-certified 32A single-pole MCB for domestic distribution boards. BIS approved.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.8)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Electrical Accessories')" id="enquireAccess">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('MCB 32A Single Pole')" id="enquireMCB">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="MCB 32A Single Pole" /> Compare</label>
             </div>
           </div>
         </div>
 
-        <div class="product-card" data-category="lighting" id="productBulbs">
+        <!-- CARD 6: Distribution Board (seeded – FIX 4) -->
+        <div class="product-card" data-category="accessories" data-sku="EE-DB-050" id="productDB">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=500&q=80" alt="Bulbs & Lighting" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=500&q=80" alt="Polycab Distribution Board" loading="lazy" width="500" height="340" />
+          </div>
+          <div class="product-body">
+            <span class="product-brand">Polycab</span>
+            <span class="product-category">Accessories</span>
+            <h3 class="product-name">8-Way Distribution Board</h3>
+            <span class="product-sku">SKU: EE-DB-050</span>
+            <div class="product-price-row">
+              <span class="product-price">₹1,890</span>
+              <span class="product-price-vat">inc. GST</span>
+            </div>
+            <span class="stock-badge stock-in">In Stock</span>
+            <p class="product-desc">8-way consumer unit with main switch and MCB slots. Double-door for safety, ISI-marked.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
+            <div class="product-footer">
+              <div class="product-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.2)</span>
+              </div>
+              <button class="btn-enquire" onclick="openEnquiry('8-Way Distribution Board')" id="enquireDB">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="8-Way Distribution Board" /> Compare</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 7: Bulbs & Lighting -->
+        <div class="product-card" data-category="lighting" data-sku="EE-BLB-060" id="productBulbs">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=500&q=80" alt="Philips LED Bulbs" loading="lazy" width="500" height="340" />
             <div class="product-badge">Popular</div>
           </div>
           <div class="product-body">
+            <span class="product-brand">Philips</span>
             <span class="product-category">Lighting</span>
-            <h3 class="product-name">Bulbs &amp; Lighting</h3>
-            <p class="product-desc">Decorative, downlights, street lights and specialty bulbs. Complete lighting solutions.</p>
+            <h3 class="product-name">LED Bulb 9W (Pack of 6)</h3>
+            <span class="product-sku">SKU: EE-BLB-060</span>
+            <div class="product-price-row">
+              <span class="product-price">₹389</span>
+              <span class="product-price-vat">inc. GST</span>
+            </div>
+            <span class="stock-badge stock-in">In Stock</span>
+            <p class="product-desc">Philips 9W LED GLS bulbs (pack of 6). Warm white, E27 base, 2-year warranty.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(4.9)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Bulbs &amp; Lighting')" id="enquireBulbs">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('LED Bulb 9W Pack of 6')" id="enquireBulbs">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="LED Bulb 9W Pack of 6" /> Compare</label>
             </div>
           </div>
         </div>
 
-        <div class="product-card" data-category="accessories" id="productPower">
+        <!-- CARD 8: Extension Board -->
+        <div class="product-card" data-category="accessories" data-sku="EE-EXT-070" id="productExtBoards">
           <div class="product-img-wrap">
-            <img src="https://images.unsplash.com/photo-1583682617703-ef9a7cfa2a78?w=500&q=80" alt="Power Strips" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1583682617703-ef9a7cfa2a78?w=500&q=80" alt="Bajaj Extension Boards" loading="lazy" width="500" height="340" />
           </div>
           <div class="product-body">
+            <span class="product-brand">Bajaj</span>
             <span class="product-category">Accessories</span>
-            <h3 class="product-name">Power Strips</h3>
-            <p class="product-desc">Heavy-duty power strips with USB charging ports and individual switches per socket.</p>
+            <h3 class="product-name">6-Socket Extension Board</h3>
+            <span class="product-sku">SKU: EE-EXT-070</span>
+            <div class="product-price-row">
+              <span class="product-price">₹599</span>
+              <span class="product-price-vat">inc. GST</span>
+            </div>
+            <span class="stock-badge stock-out">Out of Stock</span>
+            <p class="product-desc">Heavy-duty 6-socket extension board with surge protection, master switch and 2m cable.</p>
+            <div class="product-urgency"><i class="fas fa-clock"></i> Back in stock shortly — enquire to reserve</div>
             <div class="product-footer">
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.3)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Power Strips')" id="enquirePower">Enquire Now</button>
+              <button class="btn-enquire" onclick="openEnquiry('6-Socket Extension Board')" id="enquireExtBoards">Add to Basket</button>
+            </div>
+            <div class="compare-wrap">
+              <label><input type="checkbox" class="compare-check" data-product="6-Socket Extension Board" /> Compare</label>
             </div>
           </div>
         </div>
@@ -390,6 +586,20 @@
       </div><!-- /products-grid -->
     </div>
   </section>
+
+  <!-- ========== COMPARE PANEL (FIX 4) ========== -->
+  <div class="compare-panel" id="comparePanel" aria-live="polite">
+    <div class="compare-panel-items" id="comparePanelItems">
+      <span class="compare-panel-count" id="comparePanelCount">0 / 3 selected</span>
+      <div class="compare-slot" id="compareSlot1">— empty —</div>
+      <div class="compare-slot" id="compareSlot2">— empty —</div>
+      <div class="compare-slot" id="compareSlot3">— empty —</div>
+    </div>
+    <div class="compare-panel-actions">
+      <button class="btn-compare-now" id="btnCompareNow" disabled>Compare Now</button>
+      <button class="btn-compare-clear" id="btnCompareClear" title="Clear all">✕ Clear</button>
+    </div>
+  </div>
 
   <!-- ========== REPAIR SERVICES SECTION ========== -->
   <section id="repairs" class="repair-section section-padding">
@@ -689,13 +899,13 @@
     </div>
   </section>
 
-  <!-- ========== TESTIMONIALS SECTION ========== -->
+  <!-- ========== TESTIMONIALS SECTION (FIX 5) ========== -->
   <section id="testimonials" class="testimonials-section section-padding">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Customer Reviews</span>
         <h2 class="section-title">What Customers <span class="accent">Say</span></h2>
-        <p class="section-subtitle">Real feedback from our satisfied customers</p>
+        <p class="section-subtitle">Real feedback from homes, offices and contractors we've served</p>
       </div>
 
       <div class="testimonials-grid">
@@ -705,12 +915,12 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             <i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Got my ceiling fan repaired in just 2 hours. The technician was professional and the price was very reasonable. Everest Electricals is my go-to shop for everything electrical!"</p>
+          <p class="testimonial-text">"Got my ceiling fan repaired in just 2 hours. The technician was professional and the price was very fair. Everest Electricals is my go-to shop for everything electrical in Baraut!"</p>
           <div class="testimonial-author">
             <div class="author-avatar">RK</div>
             <div>
-              <strong>Rahul Kumar</strong>
-              <span>Local Resident</span>
+              <strong>Rajesh Kumar</strong>
+              <span>Homeowner, Baraut</span>
             </div>
           </div>
         </div>
@@ -720,12 +930,12 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             <i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Best electrical shop in the area! They have all the brands you need. Staff is very knowledgeable and helped me choose the right MCB for my office. Genuine products at honest prices."</p>
+          <p class="testimonial-text">"Best electrical shop in Western UP! All major brands in stock. Their team helped me choose the right MCB and distribution board for my factory expansion. Genuine products, honest pricing."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">PS</div>
+            <div class="author-avatar">VS</div>
             <div>
-              <strong>Priya Sharma</strong>
-              <span>Shop Owner</span>
+              <strong>Vikas Sharma</strong>
+              <span>Factory Owner, Baghpat</span>
             </div>
           </div>
         </div>
@@ -735,12 +945,12 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
           </div>
-          <p class="testimonial-text">"I had a wiring problem at home that no one could fix quickly. Everest Electricals sent someone the same day, identified the fault within minutes, and fixed it safely. Highly recommended!"</p>
+          <p class="testimonial-text">"I had a short circuit at home late evening. Everest Electricals sent a technician the same day, fixed it safely and even checked the whole wiring. Couldn't be happier. Highly recommended!"</p>
           <div class="testimonial-author">
-            <div class="author-avatar">AM</div>
+            <div class="author-avatar">SM</div>
             <div>
-              <strong>Ajay Mehta</strong>
-              <span>Homeowner</span>
+              <strong>Sunita Malik</strong>
+              <span>Homeowner, Saroorpur Kalan</span>
             </div>
           </div>
         </div>
@@ -928,7 +1138,30 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========== NEWSLETTER SECTION (FIX 8) ========== -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h2>Get Trade Deals &amp; Offers</h2>
+          <p>Subscribe for exclusive discounts, new arrivals and electrical tips straight to your inbox.</p>
+        </div>
+        <div>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="email" id="newsletterEmail" placeholder="Enter your email address" aria-label="Email address" required />
+            <button type="submit" class="btn-newsletter" id="newsletterSubmit">
+              <i class="fas fa-paper-plane"></i> Get Trade Deals
+            </button>
+          </form>
+          <div class="newsletter-success" id="newsletterSuccess">
+            <i class="fas fa-check-circle"></i> You're subscribed! Watch your inbox for deals.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (FIX 5 – accreditations) ========== -->
   <footer class="footer" id="footer">
     <div class="footer-top">
       <div class="container footer-grid">
@@ -943,6 +1176,13 @@
             <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
+          <!-- Accreditation badges (FIX 5) -->
+          <div class="footer-accred">
+            <span class="accred-badge"><i class="fas fa-certificate"></i> ISI Marked</span>
+            <span class="accred-badge"><i class="fas fa-shield-alt"></i> BIS Approved</span>
+            <span class="accred-badge"><i class="fas fa-award"></i> ISO 9001</span>
+          </div>
+        </div>
         </div>
 
         <div class="footer-col">
@@ -1015,6 +1255,19 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <!-- ========== MOBILE FLOATING HELP BAR (FIX 6 & 8) ========== -->
+  <div class="mobile-help-bar" id="mobileHelpBar">
+    <div class="mobile-help-inner">
+      <div class="mobile-help-text">
+        <strong>📞 Need help?</strong>
+        We're open Mon–Sat 9 AM – 8 PM
+      </div>
+      <a href="tel:[REAL_PHONE]" class="btn-mobile-call" id="mobileCallBtn">
+        <i class="fas fa-phone"></i> Call Us
+      </a>
+    </div>
+  </div>
+
   <!-- ========== ENQUIRY MODAL ========== -->
   <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box">
@@ -1034,6 +1287,74 @@
       <p class="modal-alt">Or <a href="#contact" onclick="closeModal()">send us a message</a> using the contact form.</p>
     </div>
   </div>
+
+  <!-- ========== JSON-LD PRODUCT SCHEMA (FIX 7) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "Everest Electricals",
+        "description": "ISI-certified electrical shop offering quality products and expert repair services in Saroorpur Kalan, UP since 2005.",
+        "url": "https://everest-electricals.vercel.app/",
+        "telephone": "[REAL_PHONE]",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "26HJ+VM7, Saroorpur Kalan",
+          "addressLocality": "Sarurpur",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "250619",
+          "addressCountry": "IN"
+        },
+        "openingHours": ["Mo-Sa 09:00-20:00", "Su 08:00-20:00"],
+        "priceRange": "₹"
+      },
+      {
+        "@type": "Product",
+        "name": "LED Panel Lights",
+        "brand": { "@type": "Brand", "name": "Havells" },
+        "sku": "EE-LED-001",
+        "offers": { "@type": "Offer", "price": "499", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
+      },
+      {
+        "@type": "Product",
+        "name": "1.5 sq.mm Copper Wire",
+        "brand": { "@type": "Brand", "name": "Finolex" },
+        "sku": "EE-WIR-010",
+        "offers": { "@type": "Offer", "price": "1150", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
+      },
+      {
+        "@type": "Product",
+        "name": "Modular Switch Plate",
+        "brand": { "@type": "Brand", "name": "Anchor" },
+        "sku": "EE-SWT-020",
+        "offers": { "@type": "Offer", "price": "349", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
+      },
+      {
+        "@type": "Product",
+        "name": "BLDC Ceiling Fan 1200mm",
+        "brand": { "@type": "Brand", "name": "Orient" },
+        "sku": "EE-FAN-030",
+        "offers": { "@type": "Offer", "price": "2799", "priceCurrency": "INR", "availability": "https://schema.org/LimitedAvailability", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
+      },
+      {
+        "@type": "Product",
+        "name": "MCB 32A Single Pole",
+        "brand": { "@type": "Brand", "name": "Legrand" },
+        "sku": "EE-MCB-040",
+        "offers": { "@type": "Offer", "price": "245", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
+      },
+      {
+        "@type": "Product",
+        "name": "8-Way Distribution Board",
+        "brand": { "@type": "Brand", "name": "Polycab" },
+        "sku": "EE-DB-050",
+        "offers": { "@type": "Offer", "price": "1890", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
+      }
+    ]
+  }
+  </script>
 
   <!-- EmailJS SDK (optional – wire up Service/Template/Key in script.js to enable) -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
