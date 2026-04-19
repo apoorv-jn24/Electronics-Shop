@@ -2273,3 +2273,199 @@ a#heroGetQuote:hover, .hero-buttons .btn-outline:hover {
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } .newsletter-inner { flex-direction: column; align-items: flex-start; } }
 
+/* ═══════════════════════════════════════════════════════════
+   28-FIX PATCH — navy #1a1a2e + gold #f5c842
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── FIX 1-3: NAVBAR ── */
+#navbar.scrolled {
+  background: #fff !important;
+  border-bottom: 1px solid rgba(26,26,46,0.12) !important;
+  box-shadow: 0 2px 12px rgba(26,26,46,0.08) !important;
+}
+.nav-quote-btn {
+  background: #f5c842 !important;
+  color: #1a1a2e !important;
+  font-weight: 700 !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  min-height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.nav-quote-btn:hover { background: #d4a900 !important; color: #1a1a2e !important; }
+@media (max-width: 768px) { .hamburger { display: flex !important; } }
+
+/* ── FIX 4-6: HERO ── */
+.hero-tagline {
+  font-size: 18px !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5) !important;
+  max-width: 580px !important;
+  margin: 0 auto 36px !important;
+}
+.stat-item .stat-icon {
+  display: flex; align-items: center; justify-content: center;
+  color: #f5c842; font-size: 20px; margin-bottom: 6px;
+}
+a#heroShopNow, a#heroGetQuote,
+.hero-buttons .btn-primary, .hero-buttons .btn-outline {
+  padding: 14px 32px !important;
+  min-height: 44px !important;
+}
+
+/* ── FIX 7-10: PRODUCT CARDS ── */
+.product-img-wrap { height: 200px !important; overflow: hidden !important; flex-shrink: 0 !important; }
+.product-img-wrap img { width: 100% !important; height: 200px !important; object-fit: cover !important; }
+.product-name {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  min-height: 2.6em;
+}
+.product-rating { font-size: 14px !important; display: flex !important; align-items: center !important; gap: 4px !important; flex-wrap: wrap !important; }
+.product-rating i { font-size: 14px !important; color: #f5c842 !important; }
+.product-rating .review-count { font-size: 12px; color: #94a3b8; margin-left: 4px; white-space: nowrap; }
+.product-card { transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease !important; }
+.product-card:hover { border: 2px solid #f5c842 !important; transform: translateY(-4px) !important; box-shadow: 0 10px 32px rgba(26,26,46,0.14) !important; }
+
+/* ── FIX 11-13: REPAIR SERVICES ── */
+.repair-section { background: #f7f7f7 !important; }
+.repair-section .section-title,
+.repair-section .repair-title,
+.repair-section .repair-subtitle,
+.repair-section .section-subtitle { color: #1a1a2e !important; }
+.repair-card { color: #1a1a2e !important; }
+.repair-card h3 { color: #1a1a2e !important; }
+.repair-card > p { color: #475569 !important; display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
+.repair-card--featured { color: #fff !important; }
+.repair-card--featured h3 { color: #f5c842 !important; }
+.repair-card--featured > p { color: rgba(255,255,255,0.8) !important; }
+.repair-list li { color: #475569 !important; }
+.repair-list i { color: #f5c842 !important; }
+.repair-card--featured .repair-list li { color: rgba(255,255,255,0.75) !important; }
+.btn-repair-enquire {
+  width: 100% !important; height: 40px !important; min-height: 40px !important;
+  background: #f5c842 !important; color: #1a1a2e !important;
+  font-weight: 600 !important; border: none !important; border-radius: 6px !important;
+  display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important;
+  cursor: pointer !important;
+}
+.btn-repair-enquire:hover { background: #d4a900 !important; transform: none !important; }
+
+/* ── FIX 14-15: OUR SERVICES ── */
+.service-icon-wrap { display: flex !important; align-items: center !important; justify-content: center !important; margin-bottom: 16px !important; }
+.service-icon {
+  width: 64px !important; height: 64px !important;
+  border-radius: 50% !important;
+  background: #fef9e7 !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+}
+.service-icon i { font-size: 24px !important; color: #1a1a2e !important; }
+.service-icon--repair i { color: #f5c842 !important; }
+.service-link {
+  display: inline-flex !important; align-items: center !important; gap: 5px !important;
+  color: #f5c842 !important; font-weight: 600 !important; font-size: 0.88rem !important;
+  margin-top: 10px !important; text-decoration: none !important; transition: gap 0.2s ease !important;
+}
+.service-link:hover { gap: 10px !important; }
+
+/* ── FIX 16-18: GALLERY ── */
+.gallery-grid { gap: 12px !important; }
+@media (max-width: 768px) {
+  .gallery-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(to top, rgba(26,26,46,0.88) 0%, rgba(26,26,46,0.25) 60%, transparent 100%) !important;
+  }
+}
+.gallery-view-all { text-align: center; margin-top: 32px; }
+.btn-view-all {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #f5c842; color: #1a1a2e; font-weight: 700; font-size: 0.95rem;
+  padding: 12px 32px; border-radius: 8px; min-height: 44px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-view-all:hover { background: #d4a900; transform: translateY(-2px); }
+
+/* ── FIX 19-21: TESTIMONIALS ── */
+.author-avatar {
+  width: 48px !important; height: 48px !important; border-radius: 50% !important;
+  background: #f5c842 !important; color: #1a1a2e !important;
+  font-weight: 700 !important; font-size: 16px !important;
+  display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;
+}
+/* FIX 20: override the previous yellow badge with exact navy spec */
+.review-aggregate-badge {
+  background: #1a1a2e !important; color: #f5c842 !important;
+  padding: 8px 20px !important; border-radius: 30px !important;
+  font-size: 14px !important; display: inline-block !important;
+  margin-bottom: 24px !important; font-weight: 600 !important;
+  box-shadow: none !important;
+}
+.review-aggregate-badge i { color: #f5c842 !important; }
+/* FIX 21: 3-line clamp on all testimonial quotes */
+.testimonial-text {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.testimonial-card:first-child .testimonial-text { -webkit-line-clamp: 5 !important; }
+
+/* ── FIX 22-24: CONTACT SECTION ── */
+.contact-detail { display: flex !important; align-items: flex-start !important; gap: 12px !important; padding: 8px 0 !important; }
+.map-wrapper iframe, #mapWrapper iframe { min-height: 300px !important; height: 300px !important; }
+.form-success {
+  display: flex !important; align-items: center !important; gap: 12px !important;
+  background: #fef9e7 !important; border: 2px solid #f5c842 !important;
+  border-radius: 10px !important; padding: 20px 24px !important;
+  color: #1a1a2e !important; font-weight: 600 !important; font-size: 1rem !important;
+}
+.form-success i { color: #f5c842 !important; font-size: 1.6rem !important; flex-shrink: 0 !important; }
+
+/* ── FIX 25-28: FOOTER ── */
+.footer-grid { grid-template-columns: 2fr 1fr 1fr !important; }
+.footer-links li, .footer-links li a,
+.footer-contact li, .footer-contact li a { font-size: 13px !important; color: #cccccc !important; }
+.footer-links li a:hover, .footer-contact li a:hover { color: #f5c842 !important; }
+/* FIX 27: Social icon buttons in bottom bar */
+.footer-bottom-socials { display: flex; align-items: center; gap: 10px; }
+.footer-social-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 6px;
+  border: 1.5px solid #f5c842; color: #f5c842; font-size: 14px;
+  text-decoration: none; transition: background 0.2s ease, color 0.2s ease;
+}
+.footer-social-btn:hover { background: #f5c842; color: #1a1a2e; }
+/* FIX 28: 24px padding on copyright bar */
+.footer-bottom-inner {
+  display: flex !important; align-items: center !important;
+  justify-content: space-between !important; flex-wrap: wrap !important;
+  gap: 12px !important; padding-left: 24px !important; padding-right: 24px !important;
+}
+
+/* ── GLOBAL ACCESSIBLITY RULES ── */
+body { font-size: 14px; }
+button:not(.hamburger):not(.modal-close) { min-height: 40px; }
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+  a#heroShopNow, a#heroGetQuote,
+  .hero-buttons .btn-primary, .hero-buttons .btn-outline {
+    width: 100%; max-width: 320px; justify-content: center;
+  }
+}
+@media (max-width: 375px) {
+  .hero-title { font-size: 1.8rem !important; }
+  .hero-tagline { font-size: 15px !important; }
+  .products-grid { grid-template-columns: 1fr !important; }
+}
+
+

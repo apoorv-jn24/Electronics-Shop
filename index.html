@@ -158,21 +158,25 @@
       <!-- Animated stat counters (kept from original) -->
       <div class="hero-stats">
         <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-box-open"></i></span>
           <span class="stat-number" data-target="20">20</span><span>+</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-users"></i></span>
           <span class="stat-number" data-target="5000">5,000</span><span>+</span>
           <span class="stat-label">Happy Customers</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-boxes"></i></span>
           <span class="stat-number" data-target="500">500</span><span>+</span>
           <span class="stat-label">Products</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-tools"></i></span>
           <span class="stat-number" data-target="2000">2,000</span><span>+</span>
           <span class="stat-label">Repairs Done</span>
         </div>
@@ -364,6 +368,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
+                <span class="review-count">(42 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('LED Panel Lights')" id="enquireLED">Add to Basket</button>
             </div>
@@ -394,6 +399,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.0)</span>
+                <span class="review-count">(38 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('1.5 sq.mm Copper Wire')" id="enquireWires">Add to Basket</button>
             </div>
@@ -425,6 +431,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.0)</span>
+                <span class="review-count">(27 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('Modular Switch Plate')" id="enquireSwitches">Add to Basket</button>
             </div>
@@ -455,6 +462,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
+                <span class="review-count">(19 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('BLDC Ceiling Fan 1200mm')" id="enquireFans">Add to Basket</button>
             </div>
@@ -486,6 +494,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.8)</span>
+                <span class="review-count">(54 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('MCB 32A Single Pole')" id="enquireMCB">Add to Basket</button>
             </div>
@@ -516,6 +525,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.2)</span>
+                <span class="review-count">(16 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('8-Way Distribution Board')" id="enquireDB">Add to Basket</button>
             </div>
@@ -547,6 +557,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(4.9)</span>
+                <span class="review-count">(63 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('LED Bulb 9W Pack of 6')" id="enquireBulbs">Add to Basket</button>
             </div>
@@ -577,6 +588,7 @@
               <div class="product-rating">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.3)</span>
+                <span class="review-count">(31 reviews)</span>
               </div>
               <button class="btn-enquire" onclick="openEnquiry('6-Socket Extension Board')" id="enquireExtBoards">Add to Basket</button>
             </div>
@@ -898,9 +910,15 @@
             </div>
           </div>
         </div>
+        </div>
+      </div>
+      <!-- FIX 18: View All Projects button -->
+      <div class="gallery-view-all">
+        <a href="#contact" class="btn-view-all">View All Projects &rarr;</a>
       </div>
     </div>
   </section>
+
 
   <!-- ========== TESTIMONIALS SECTION (FIX 5) ========== -->
   <section id="testimonials" class="testimonials-section section-padding">
@@ -1139,7 +1157,7 @@
 
             <div class="form-success" id="formSuccess" role="alert" aria-live="polite" style="display:none;">
               <i class="fas fa-check-circle"></i>
-              <p>Thank you! Your message has been sent. We'll contact you shortly.</p>
+              <p>Thank you! We'll get back to you within 24 hours.</p>
             </div>
             <div class="form-error-banner" id="formErrorBanner" role="alert" style="display:none;">
               <i class="fas fa-exclamation-circle"></i>
@@ -1251,7 +1269,18 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="footerYear"></span> Everest Electricals. All rights reserved.</p>
-        <p>Designed with <i class="fas fa-heart"></i> for quality electrical solutions</p>
+        <!-- FIX 27: social icon buttons -->
+        <div class="footer-bottom-socials">
+          <a href="#" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
       </div>
     </div>
   </footer>

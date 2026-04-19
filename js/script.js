@@ -636,3 +636,31 @@ if (newsletterForm) {
     }
   });
 }
+
+/* ========================================
+   FIX 24 – Contact form: hide form on submit, show success message
+   ======================================== */
+const contactFormFix24 = document.getElementById('contactForm');
+const formSuccessFix24 = document.getElementById('formSuccess');
+
+if (contactForm && formSuccess) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name    = document.getElementById('formName')    ? document.getElementById('formName').value.trim()    : '';
+    const phone   = document.getElementById('formPhone')   ? document.getElementById('formPhone').value.trim()   : '';
+    const message = document.getElementById('formMessage') ? document.getElementById('formMessage').value.trim() : '';
+    if (!name || !phone || !message) {
+      if (typeof showToast === 'function') showToast('⚠️ Please fill in Name, Phone and Message.');
+      return;
+    }
+    // Hide form, reveal success state
+    contactForm.style.display = 'none';
+    formSuccess.style.display = 'flex';
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+}
+
+/* FIX 3 – Apply .scrolled class on initial page load if already scrolled */
+if (navbar && window.scrollY > 60) {
+  navbar.classList.add('scrolled');
+}
