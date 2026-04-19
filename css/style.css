@@ -49,9 +49,19 @@
   --navy:       var(--primary);
   --navy-mid:   var(--primary-mid);
   --navy-light: var(--primary-light);
+
+  /* ── Required spec aliases (BUG #6 FIX) ── */
+  --dark:  #1a1a2e;   /* dark bg alias */
+  --text:  #333333;   /* body text alias */
+
+  /* ── Layout tokens ── */
+  --topbar-h:  38px;   /* topbar fixed height — update if topbar wraps */
+  --navbar-h:  68px;   /* nav-container height */
+  --header-h:  calc(var(--topbar-h) + var(--navbar-h)); /* total fixed header = 106px */
 }
 
 /* ---- Reset & Base ---- */
+/* BUG FIX 10 – global box-sizing, consistent reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -60,7 +70,10 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
+  /* Push ALL body content below both fixed bars (topbar + navbar) */
+  padding-top: var(--header-h);
 }
+/* BUG FIX 2 – all images max-width 100%, no overflow */
 img { max-width: 100%; height: auto; display: block; object-fit: cover; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -68,8 +81,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 input, textarea, select { font-family: inherit; }
 
 /* ---- Container ---- */
+/* BUG FIX 12 – consistent container & section spacing */
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section-padding { padding: 72px 0; }
+.section-padding { padding: 80px 0; }
 .accent { color: var(--accent); }
 
 /* ========================================
@@ -92,10 +106,12 @@ input, textarea, select { font-family: inherit; }
    NAVBAR
    ======================================== */
 #navbar {
-  position: fixed; top: 0; left: 0; width: 100%;
-  z-index: 1000; padding: 0;
-  transition: var(--transition);
-  background: rgba(255,255,255,0.85);
+  position: fixed;
+  top: var(--topbar-h);  /* sit BELOW the topbar, not at 0 */
+  left: 0; width: 100%;
+  z-index: 1001; padding: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, top 0.3s ease;
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
 }
@@ -166,8 +182,14 @@ input, textarea, select { font-family: inherit; }
   cursor: pointer; transition: var(--transition);
   border: 2px solid transparent;
 }
-.btn-primary { background: var(--accent); color: var(--white); border-color: var(--accent); }
-.btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,0,0.35); }
+/* BUG FIX 11 – globally consistent btn-primary */
+.btn-primary {
+  background: var(--accent); color: var(--white);
+  border-color: var(--accent);
+  padding: 12px 28px; border-radius: 8px;
+  font-weight: 700; font-size: 0.9rem;
+}
+.btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.35); }
 .btn-repair {
   background: var(--repair-red); color: #fff;
   border-color: var(--repair-red);
@@ -221,11 +243,15 @@ input, textarea, select { font-family: inherit; }
 /* ========================================
    HERO SECTION – Bright, clean
    ======================================== */
+/* BUG FIX — hero padding-top uses the CSS variable so it stays in sync */
 .hero-section {
   position: relative; min-height: 88vh;
   display: flex; align-items: center;
   background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 40%, #F1F5F9 100%);
-  overflow: hidden; padding-top: 68px;
+  overflow: hidden;
+  /* hero is FIRST section — body already has padding-top: var(--header-h);
+     so hero only needs small extra breathing room above its own content */
+  padding-top: 32px;
 }
 .hero-section::before {
   content: ''; position: absolute; inset: 0;
@@ -305,21 +331,23 @@ input, textarea, select { font-family: inherit; }
   display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
   margin-bottom: 48px; animation: fade-up 0.9s ease 0.4s both;
 }
+/* BUG FIX 6 – stats bar no-wrap, compact on small viewports */
 .hero-stats {
-  display: flex; align-items: center; justify-content: center;
-  flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: space-around;
+  flex-wrap: nowrap;
   background: var(--white);
   border: 1px solid var(--gray-100);
-  border-radius: var(--radius-lg); padding: 20px 28px;
-  max-width: 580px; margin: 0 auto;
+  border-radius: var(--radius-lg); padding: 16px 20px;
+  max-width: 600px; margin: 0 auto;
   box-shadow: 0 4px 24px rgba(15,23,42,0.06);
   animation: fade-up 0.9s ease 0.5s both;
+  overflow: hidden;
 }
-.stat-item { text-align: center; padding: 8px 20px; }
-.stat-item span:first-child { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; color: var(--accent); }
-.stat-item > span:nth-child(2) { color: var(--accent); font-size: 1.3rem; font-weight: 900; }
-.stat-label { display: block; font-size: 0.72rem; color: var(--text-light); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-.stat-divider { width: 1px; height: 40px; background: var(--gray-100); }
+.stat-item { text-align: center; padding: 6px 12px; flex-shrink: 0; }
+.stat-item span:first-child { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; color: var(--accent); }
+.stat-item > span:nth-child(2) { color: var(--accent); font-size: 1.2rem; font-weight: 900; }
+.stat-label { display: block; font-size: 0.68rem; color: var(--text-light); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+.stat-divider { width: 1px; height: 36px; background: var(--gray-100); flex-shrink: 0; }
 .hero-scroll-down {
   position: absolute; bottom: 24px; left: 50%;
   transform: translateX(-50%); color: var(--text-light);
@@ -338,6 +366,7 @@ input, textarea, select { font-family: inherit; }
    ABOUT SECTION
    ======================================== */
 .about-section { background: var(--white); }
+/* BUG FIX 7 – about section image & text vertically centred */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .about-img-wrapper { position: relative; height: 400px; }
 .about-img-card {
@@ -381,7 +410,8 @@ input, textarea, select { font-family: inherit; }
 /* ========================================
    WHY CHOOSE US SECTION
    ======================================== */
-.why-section { background: var(--primary); padding: 72px 0; }
+/* BUG #3 FIX – why-section padding consistent with global 80px standard */
+.why-section { background: var(--primary); padding: 80px 0; }
 .why-section .section-tag { background: rgba(245,158,11,0.15); color: var(--accent-light); border-color: rgba(245,158,11,0.3); }
 .why-section .section-title { color: var(--white); }
 .why-section .section-subtitle { color: rgba(255,255,255,0.6); }
@@ -437,20 +467,31 @@ input, textarea, select { font-family: inherit; }
   border: 1.5px solid var(--gray-100); transition: var(--transition); cursor: pointer;
 }
 .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--white); border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,107,0,0.25); }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+/* BUG FIX 1 – uniform product grid, equal card heights */
+/* BUG FIX 2 – image height fixed, object-fit cover, no overflow */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
 .product-card {
   background: var(--white); border: 1px solid var(--gray-100);
   border-radius: var(--radius-lg); overflow: hidden;
   transition: var(--transition); position: relative;
+  display: flex; flex-direction: column;
 }
-.product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(255,107,0,0.2); }
+.product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(245,158,11,0.2); }
 .product-card.hidden { display: none; }
-.product-img-wrap { position: relative; height: 180px; overflow: hidden; }
+.product-img-wrap { position: relative; height: 200px; overflow: hidden; flex-shrink: 0; }
 .product-img-wrap img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.5s ease;
+  width: 100%; height: 200px; object-fit: cover;
+  transition: transform 0.5s ease; display: block;
 }
 .product-card:hover .product-img-wrap img { transform: scale(1.08); }
+/* BUG FIX 3 – card body fills remaining height */
+.product-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
 /* Legacy icon fallback (hidden when images are present) */
 .product-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem; transition: var(--transition); }
 .product-card:hover .product-img { transform: scale(1.1); }
@@ -469,11 +510,11 @@ input, textarea, select { font-family: inherit; }
   border-radius: 50px; letter-spacing: 0.5px; text-transform: uppercase;
   z-index: 2;
 }
-.product-body { padding: 18px; }
+/* BUG #9 FIX – removed duplicate legacy product-body rule; flex version below is authoritative */
 .product-category { font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; display: block; }
 .product-name { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
 .product-desc { font-size: 0.84rem; color: var(--text-mid); line-height: 1.55; margin-bottom: 14px; }
-.product-footer { display: flex; align-items: center; justify-content: space-between; }
+/* product-footer moved inside product-body block above */
 .product-rating { display: flex; align-items: center; gap: 3px; font-size: 0.7rem; color: #FBBF24; }
 .product-rating span { color: var(--text-light); margin-left: 2px; font-size: 0.72rem; }
 .btn-enquire {
@@ -487,10 +528,13 @@ input, textarea, select { font-family: inherit; }
 /* ========================================
    REPAIR SERVICES SECTION
    ======================================== */
+/* BUG FIX 4 – repair section proper padding, no overlap */
 .repair-section {
   position: relative;
   background: var(--primary);
   overflow: hidden;
+  padding: 80px 0;
+  z-index: 1;
 }
 .repair-bg-pattern {
   position: absolute; inset: 0; pointer-events: none;
@@ -578,13 +622,15 @@ input, textarea, select { font-family: inherit; }
 /* ========================================
    SERVICES SECTION – Compact strip
    ======================================== */
+/* BUG FIX 3 – service cards equal height via flex column */
 .services-section { background: var(--white); }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
 .service-card {
   background: var(--off-white); border-radius: var(--radius-lg);
   padding: 28px 24px; box-shadow: none;
   border: 1px solid var(--gray-100); transition: var(--transition);
   position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
 }
 .service-card::before {
   content: ''; position: absolute; top: 0; left: 0;
@@ -647,16 +693,19 @@ input, textarea, select { font-family: inherit; }
 .gallery-section .section-tag { background: rgba(255,107,0,0.12); color: var(--accent-light); border-color: rgba(255,107,0,0.25); }
 .gallery-section .section-title { color: var(--white); }
 .gallery-section .section-subtitle { color: rgba(255,255,255,0.6); }
+/* BUG FIX 5 – gallery uniform grid & consistent image heights */
 .gallery-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto; gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 16px;
 }
 .gallery-item { border-radius: var(--radius); overflow: hidden; cursor: zoom-in; }
 .gallery-item--large { grid-column: span 2; }
 .gallery-item--tall { grid-row: span 2; }
-.gallery-inner { position: relative; height: 220px; width: 100%; overflow: hidden; }
-.gallery-item--large .gallery-inner { height: 260px; }
-.gallery-item--tall .gallery-inner { height: 100%; min-height: 380px; }
+.gallery-inner { position: relative; height: 100%; width: 100%; overflow: hidden; }
+.gallery-item--large .gallery-inner { height: 100%; }
+.gallery-item--tall .gallery-inner { height: 100%; }
 .gallery-inner img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
 .gallery-item:hover .gallery-inner img { transform: scale(1.08); }
 .gallery-overlay {
@@ -767,7 +816,8 @@ input, textarea, select { font-family: inherit; }
    ======================================== */
 .footer { background: #0F172A; color: rgba(255,255,255,0.7); }
 .footer-top { padding: 64px 0 48px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
+/* BUG FIX 9 – footer 4-column layout, evenly spaced */
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 30px; }
 .footer-logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 14px; }
 .footer-logo i { color: var(--accent); }
 .footer-logo span { color: var(--accent); }
@@ -866,6 +916,19 @@ input, textarea, select { font-family: inherit; }
 /* ========================================
    RESPONSIVE – TABLET (1024px)
    ======================================== */
+/* BUG #6 FIX – add missing 992px breakpoint */
+@media (max-width: 992px) {
+  .why-grid     { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .repair-grid  { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid  { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+/* BUG FIX 10 – tablet breakpoint */
+@media (max-width: 1200px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 1024px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-img-wrapper { max-width: 460px; margin: 0 auto; height: 260px; }
@@ -878,7 +941,6 @@ input, textarea, select { font-family: inherit; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-item--large { grid-column: span 1; }
   .gallery-item--tall { grid-row: span 1; }
-  .gallery-item--tall .gallery-inner { min-height: 220px; height: 220px; }
   .testimonials-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
   .form-row { grid-template-columns: 1fr; }
 }
@@ -886,14 +948,24 @@ input, textarea, select { font-family: inherit; }
 /* ========================================
    RESPONSIVE – MOBILE (768px)
    ======================================== */
+/* BUG FIX 6, 8, 10 – mobile breakpoint fixes */
 @media (max-width: 768px) {
-  .section-padding { padding: 56px 0; }
+  .section-padding { padding: 60px 0; }
+
+  /* BUG #4 FIX – hide search bar on mobile to prevent header overflow */
+  .nav-search { display: none; }
+  /* On mobile the topbar may wrap to 2 lines ~56px; update the token */
+  /* (JS dynamically recalculates this — see script.js adjustNavbarTop) */
+  :root { --topbar-h: 56px; }
+  .hero-section { padding-top: 24px; } /* body padding-top already offsets header */
 
   /* Navbar */
   .hamburger { display: flex; }
   .nav-call-btn { display: none; }
   .nav-menu {
-    position: fixed; top: 68px; left: 0; right: 0;
+    position: fixed;
+    top: var(--header-h); /* below topbar + navbar */
+    left: 0; right: 0;
     background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
     flex-direction: column; padding: 16px;
     gap: 4px; max-height: 0; overflow: hidden;
@@ -903,56 +975,85 @@ input, textarea, select { font-family: inherit; }
   .nav-menu.open { max-height: 500px; opacity: 1; }
   .nav-link { padding: 12px 16px; border-radius: 8px; width: 100%; text-align: center; color: var(--text-dark); }
 
-  /* Hero */
-  .hero-stats { flex-direction: column; padding: 16px; }
+  /* BUG #5 FIX – why-grid goes 2-col on mobile */
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  /* BUG FIX 6 – hero stats vertical on mobile */
+  .hero-stats { flex-direction: column; flex-wrap: nowrap; padding: 16px; }
   .stat-divider { width: 80%; height: 1px; }
   .hero-buttons { flex-direction: column; align-items: center; }
-  .hero-buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
+  .hero-buttons .btn { width: 100%; max-width: 300px; justify-content: center; min-height: 48px; }
   .hero-trust-strip { flex-direction: column; gap: 10px; }
 
-  /* Products */
-  .products-grid { grid-template-columns: 1fr 1fr; }
+  /* BUG FIX 1 – product grid 2 cols on mobile */
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Repair */
+  /* BUG FIX 4 – repair grid, CTA banner */
+  .repair-section { padding: 60px 0; }
   .repair-grid { grid-template-columns: 1fr; }
   .repair-cta-banner { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
   .btn-repair-cta { width: 100%; justify-content: center; }
 
-  /* Services */
+  /* BUG FIX 3 – services 1 col on mobile */
   .services-grid { grid-template-columns: 1fr; }
 
-  /* Gallery */
-  .gallery-grid { grid-template-columns: 1fr; }
-  .gallery-inner { height: 200px !important; min-height: 200px !important; }
+  /* BUG FIX 5 – gallery 1 col on mobile */
+  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+
+  /* BUG FIX 11 – tap targets */
+  .btn { min-height: 48px; }
+  .btn-enquire { min-height: 40px; }
 
   /* Forms */
   .contact-form { padding: 24px 18px; }
   .contact-info-card { padding: 24px 18px; }
   .form-row { grid-template-columns: 1fr; }
 
-  /* Footer */
+  /* BUG FIX 9 – footer 1 col on mobile */
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom-inner { flex-direction: column; text-align: center; }
 
-  /* About */
+  /* BUG FIX 7 – about 1 col on mobile */
   .about-img-wrapper { height: 220px; }
   .main-img { width: 78%; height: 200px; }
   .side-img { width: 52%; height: 140px; }
 }
 
 /* ========================================
-   RESPONSIVE – SMALL MOBILE (480px)
+   RESPONSIVE – SMALL MOBILE (576px) — BUG #6 FIX
    ======================================== */
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .products-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
   .container { padding: 0 16px; }
-  .hero-title { font-size: 2.4rem; }
-  .section-title { font-size: 1.6rem; }
+  .section-title { font-size: 1.5rem; }
+  .hero-title { font-size: 2.2rem; }
   .product-filters { gap: 6px; }
   .filter-btn { padding: 8px 14px; font-size: 0.78rem; }
   .modal-actions { flex-direction: column; align-items: center; }
   .modal-actions .btn { width: 100%; justify-content: center; }
   .hero-badges { flex-direction: column; align-items: center; }
+  .newsletter-inner { flex-direction: column; gap: 24px; }
+  .newsletter-form { flex-direction: column; }
+  /* BUG FIX 6 – stat numbers smaller on small phones */
+  .stat-item span:first-child { font-size: 1.3rem; }
+  .stat-item > span:nth-child(2) { font-size: 1rem; }
+  .stat-label { font-size: 0.6rem; }
+}
+
+/* ========================================
+   RESPONSIVE – TINY MOBILE (375px) — BUG #6 FIX
+   ======================================== */
+@media (max-width: 375px) {
+  .hero-title { font-size: 1.8rem; }
+  .section-title { font-size: 1.3rem; }
+  .hero-stats { padding: 12px 8px; }
+  .stat-item { padding: 4px 6px; }
+  .stat-item span:first-child { font-size: 1.1rem; }
+  .btn { padding: 11px 18px; font-size: 0.82rem; }
+  .nav-quote-btn { display: none; } /* avoid overflow on tiny screens */
+  .topbar-item:nth-child(3), .topbar-divider:last-child { display: none; } /* show only essentials */
+  .compare-panel { min-width: unset; width: 100%; border-radius: 12px 12px 0 0; padding: 12px 14px; }
 }
 
 /* ========================================
@@ -962,13 +1063,18 @@ input, textarea, select { font-family: inherit; }
   width: 100%;
   background: var(--primary);
   color: rgba(255,255,255,0.85);
-  font-size: var(--fs-caption);
+  font-size: 0.8rem;
+  line-height: 1.4;
   font-weight: 500;
   padding: 9px 0;
   text-align: center;
   letter-spacing: 0.2px;
-  position: relative;
-  z-index: 1001;
+  /* FIXED: sits at absolute top, navbar goes below it */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1002;  /* above navbar (1001) */
 }
 .topbar a {
   color: var(--accent);
@@ -987,9 +1093,7 @@ input, textarea, select { font-family: inherit; }
 .topbar-item i { color: var(--accent); font-size: 0.75rem; }
 .topbar-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
 
-/* Adjust navbar offset to account for topbar */
-#navbar { top: 0; }
-body { padding-top: 0; }
+/* FIXED: navbar top is set dynamically in JS; hero accounts for both bars */
 
 /* ========================================
    NAV SEARCH BAR (FIX 3)
@@ -1497,3 +1601,299 @@ body { padding-top: 0; }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-mid); }
 ::selection { background: var(--accent); color: var(--white); }
+
+/* ========================================
+   BUG #7 FIX — Footer Accreditation Badges
+   ======================================== */
+.footer-accred {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.accred-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,158,11,0.25);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+}
+.accred-badge i { color: var(--accent); font-size: 0.68rem; }
+.accred-badge:hover {
+  background: rgba(245,158,11,0.12);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+/* ========================================
+   BUG #8 FIX — Newsletter success default hidden
+   ======================================== */
+.newsletter-success {
+  display: none;  /* hidden until JS shows it */
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 12px;
+  animation: fade-up 0.4s ease both;
+}
+.newsletter-success i { font-size: 1.2rem; }
+
+/* ========================================
+   BUG #12 FIX — About section column helpers
+   ======================================== */
+.about-image-col {
+  flex-shrink: 0;
+  width: 45%;
+  min-width: 280px;
+}
+.about-content-col {
+  flex: 1;
+}
+/* On tablet/mobile, stack them */
+@media (max-width: 1024px) {
+  .about-image-col { width: 100%; min-width: unset; }
+  .about-content-col { width: 100%; }
+}
+
+/* ============================================================
+   COMPREHENSIVE 13-POINT AUDIT — FINAL FIX BLOCK
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   1. TOPBAR — Fix small text & mobile overflow
+   ────────────────────────────────────────────── */
+.topbar {
+  font-size: 0.8rem;        /* enforce readable min-size */
+  line-height: 1.4;
+}
+@media (max-width: 576px) {
+  .topbar-inner { flex-direction: column; gap: 4px; padding: 4px 0; }
+  .topbar-divider { display: none; }
+  .topbar { padding: 6px 0; }
+}
+
+/* ──────────────────────────────────────────────
+   2. HERO — CTA button consistency & spacing
+   ────────────────────────────────────────────── */
+.hero-buttons .btn {
+  min-width: 160px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+/* Hero title overflow guard on very small screens */
+.hero-title { overflow-wrap: break-word; word-break: break-word; hyphens: auto; }
+
+/* ──────────────────────────────────────────────
+   3. STATS / TRUST BAR — Equal columns, centred
+   ────────────────────────────────────────────── */
+.hero-stats { gap: 0; }
+.stat-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.stat-label { white-space: nowrap; }
+
+/* ──────────────────────────────────────────────
+   4. ABOUT — Verify alignment & bullet spacing
+   ────────────────────────────────────────────── */
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.feature-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-features > .feature-item + .feature-item { margin-top: 16px; }
+#aboutContactBtn { margin-top: 28px; display: inline-flex; }
+
+/* ──────────────────────────────────────────────
+   5. PRODUCTS — Filter active state, star align
+   ────────────────────────────────────────────── */
+/* Active filter button */
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(245,158,11,0.28);
+}
+/* Star rating row alignment */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: nowrap;
+}
+.product-rating span {
+  margin-left: 3px;
+  font-size: 0.72rem;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+/* "Add to Basket" pinned to bottom of card */
+.product-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ──────────────────────────────────────────────
+   6. REPAIR SECTION — CTA bar full-width
+   ────────────────────────────────────────────── */
+.repair-cta-banner {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Dark card text contrast */
+.repair-card p { color: rgba(255,255,255,0.75); }
+.repair-card h3 { color: var(--white); }
+
+/* ──────────────────────────────────────────────
+   7. SERVICES — Verified 3/2/1 grid (already set)
+      Ensure icon & heading vertical spacing
+   ────────────────────────────────────────────── */
+.service-icon-wrap { margin-bottom: 18px; }
+.service-card h3 { margin-bottom: 10px; line-height: 1.3; }
+.service-card p  { line-height: 1.65; }
+
+/* ──────────────────────────────────────────────
+   8. BRANDS — Grayscale default, colour on hover
+   ────────────────────────────────────────────── */
+.brand-pill {
+  filter: grayscale(60%) opacity(0.85);
+  transition: filter 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.brand-pill:hover {
+  filter: grayscale(0%) opacity(1);
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(245,158,11,0.18);
+  transform: translateY(-2px);
+}
+
+/* ──────────────────────────────────────────────
+   9. GALLERY — Uniform row heights, object-fit
+   ────────────────────────────────────────────── */
+.gallery-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Ensure gallery items never shrink below their row height */
+.gallery-item { overflow: hidden; }
+
+/* ──────────────────────────────────────────────
+   10. TESTIMONIALS — Equal card heights
+   ────────────────────────────────────────────── */
+.testimonials-grid {
+  align-items: stretch;
+}
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.testimonial-text { flex: 1; }
+/* Consistent open-quote across all cards */
+.testimonial-text::before {
+  display: inline-block;
+  vertical-align: -0.5em;
+  font-size: 2rem;
+  line-height: 1;
+  margin-right: 3px;
+}
+
+/* ──────────────────────────────────────────────
+   11. CONTACT FORM — Fields 100% width, mobile submit
+   ────────────────────────────────────────────── */
+.input-wrap input,
+.input-wrap select,
+.input-wrap textarea {
+  width: 100%;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .btn-submit { width: 100%; justify-content: center; }
+  .map-wrapper iframe { height: 200px; }
+}
+
+/* ──────────────────────────────────────────────
+   12. FOOTER — Social icon sizing, link hovers
+   ────────────────────────────────────────────── */
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-links a:hover {
+  color: var(--accent);
+  padding-left: 6px;
+  transition: all 0.2s ease;
+}
+.footer-bottom p { font-size: 0.82rem; }
+
+/* ──────────────────────────────────────────────
+   13. GLOBAL — Consistent section labels,
+       color palette enforcement
+   ────────────────────────────────────────────── */
+/* "WHO WE ARE", "OUR PRODUCTS" etc — uniform section-tag */
+.section-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+/* Section heading consistency */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+/* Enforce global color variables —
+   These match the design language: navy / amber / white / red */
+:root {
+  --color-navy:  #1a2332;  /* matches --dark alias */
+  --color-gold:  #f5a623;  /* close to --accent #F59E0B */
+  --color-white: #ffffff;
+  --color-red:   #e63946;  /* matches --repair-red */
+}
+
+/* Prevent any section from creating horizontal scroll */
+section, header, footer, nav { max-width: 100vw; overflow-x: clip; }
+
+/* Images below the fold — declarative hint */
+img:not([loading]) { loading: lazy; }

@@ -40,6 +40,27 @@ navLinks.forEach(link => {
   });
 });
 
+/* ========================================
+   TOPBAR / NAVBAR DYNAMIC OFFSET FIX
+   Measures topbar actual height and keeps
+   navbar perfectly below it at all times.
+   ======================================== */
+const topbarEl = document.getElementById('topbar');
+
+function adjustNavbarTop() {
+  const topbarH = topbarEl ? topbarEl.offsetHeight : 38;
+  // Update CSS variable so all calc() references stay in sync
+  document.documentElement.style.setProperty('--topbar-h', topbarH + 'px');
+  document.documentElement.style.setProperty('--header-h', (topbarH + (navbar ? navbar.offsetHeight : 68)) + 'px');
+  // Also set inline style on navbar for immediate effect
+  if (navbar) navbar.style.top = topbarH + 'px';
+}
+
+adjustNavbarTop();
+window.addEventListener('resize', adjustNavbarTop);
+document.addEventListener('DOMContentLoaded', adjustNavbarTop);
+
+
 function updateActiveNavLink() {
   const sections = document.querySelectorAll('section[id]');
   const scrollY  = window.scrollY;
