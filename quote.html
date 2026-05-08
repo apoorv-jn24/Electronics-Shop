@@ -108,9 +108,18 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+          <!-- Honeypot anti-spam field (F3) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;" id="quoteSubmitBtn">
             <i class="fas fa-paper-plane"></i> Submit Quote Request
           </button>
+
+          <!-- Inline error banner -->
+          <div id="quoteErrorBanner" style="display:none; margin-top:14px; padding:14px 18px; background:#fef2f2; border:1px solid #e63946; border-radius:10px; color:#991b1b; font-size:0.9rem; font-weight:600;">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="quoteErrorMsg">Please fill in all required fields.</span>
+          </div>
         </form>
 
         <!-- Simulated Success State -->
@@ -136,22 +145,67 @@
 
   <script>
     document.getElementById('currentYearQuote').textContent = new Date().getFullYear();
-    
-    // Form Simulation
-    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+
+    // B4: Real Formspree submission (replace endpoint with your own from formspree.io)
+    // TODO: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID
+    const FORMSPREE_QUOTE_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
+
+    const quoteForm = document.getElementById('quoteForm');
+    const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
+    const quoteErrorBanner = document.getElementById('quoteErrorBanner');
+    const quoteErrorMsg = document.getElementById('quoteErrorMsg');
+
+    quoteForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const name = document.getElementById('quoteName').value;
-      const phone = document.getElementById('quotePhone').value;
-      const msg = document.getElementById('quoteMessage').value;
-      
-      if(!name || !phone || !msg) {
-        alert("Please fill in all required fields (Name, Phone, Product Details).");
+      quoteErrorBanner.style.display = 'none';
+
+      const name  = document.getElementById('quoteName').value.trim();
+      const phone = document.getElementById('quotePhone').value.trim();
+      const msg   = document.getElementById('quoteMessage').value.trim();
+      const honeypot = quoteForm.querySelector('[name="_gotcha"]').value;
+
+      // F3: Honeypot check — if filled, it's a bot, silently abort
+      if (honeypot) return;
+
+      if (!name || !phone || !msg) {
+        quoteErrorMsg.textContent = 'Please fill in all required fields (Name, Phone, Product Details).';
+        quoteErrorBanner.style.display = 'block';
         return;
       }
-      
-      this.style.display = 'none';
-      document.querySelector('.quote-header').style.display = 'none';
-      document.getElementById('quoteSuccessState').style.display = 'block';
+
+      // Validate Indian phone number
+      const cleanPhone = phone.replace(/\s|-/g, '');
+      if (!/^(\+91)?[6-9]\d{9}$/.test(cleanPhone)) {
+        quoteErrorMsg.textContent = 'Please enter a valid 10-digit Indian mobile number.';
+        quoteErrorBanner.style.display = 'block';
+        return;
+      }
+
+      quoteSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      quoteSubmitBtn.disabled = true;
+
+      try {
+        const response = await fetch(FORMSPREE_QUOTE_URL, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(quoteForm)
+        });
+
+        if (response.ok) {
+          // Success
+          quoteForm.style.display = 'none';
+          document.querySelector('.quote-header').style.display = 'none';
+          document.getElementById('quoteSuccessState').style.display = 'block';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        // Fallback: open mailto
+        quoteSubmitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Quote Request';
+        quoteSubmitBtn.disabled = false;
+        quoteErrorMsg.textContent = 'Submission failed. Please call us or send a WhatsApp message instead.';
+        quoteErrorBanner.style.display = 'block';
+      }
     });
   </script>
 </body>

@@ -19,17 +19,28 @@ const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
 const navLinks  = document.querySelectorAll('.nav-link');
 
+let rafPending = false;
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
-  updateActiveNavLink();
   toggleScrollTop();
-  triggerRevealAnimations();
+  // P1: Throttle the active-link scan with requestAnimationFrame
+  if (!rafPending) {
+    rafPending = true;
+    requestAnimationFrame(() => {
+      updateActiveNavLink();
+      rafPending = false;
+    });
+  }
 });
 
 hamburger.addEventListener('click', () => {
   const isOpen = navMenu.classList.toggle('open');
   hamburger.classList.toggle('open');
   hamburger.setAttribute('aria-expanded', isOpen);
+  // M1: Set exact height so menu is never clipped
+  if (isOpen) {
+    navMenu.style.setProperty('--menu-h', navMenu.scrollHeight + 'px');
+  }
 });
 
 navLinks.forEach(link => {
@@ -140,17 +151,19 @@ function animateCounter(el) {
   }, 16);
 }
 
-function checkCounters() {
-  if (countersStarted) return;
-  const heroStats = document.querySelector('.hero-stats');
-  if (!heroStats) return;
-  if (heroStats.getBoundingClientRect().top < window.innerHeight - 100) {
-    countersStarted = true;
-    statNumbers.forEach(el => animateCounter(el));
-  }
+// P1: IntersectionObserver for animated counters — fires once when stats enter view
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats && statNumbers.length) {
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        statNumbers.forEach(el => animateCounter(el));
+        counterObs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  counterObs.observe(heroStats);
 }
-window.addEventListener('scroll', checkCounters);
-setTimeout(checkCounters, 1400);
 
 /* ========================================
    PRODUCT FILTER TABS
@@ -221,19 +234,21 @@ function initRevealElements() {
   document.querySelectorAll('.gallery-item').forEach((el, i)  => { el.style.transitionDelay = `${i * 0.07}s`; });
   document.querySelectorAll('.why-card').forEach((el, i)      => { el.style.transitionDelay = `${(i % 3) * 0.1}s`; });
   document.querySelectorAll('.testimonial-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
-}
+  // P1: Single IntersectionObserver replaces per-scroll getBoundingClientRect loop
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target); // fire once only — no redundant checks
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-function triggerRevealAnimations() {
-  const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  const wh = window.innerHeight;
-  elements.forEach(el => {
-    if (el.getBoundingClientRect().top < wh - 80) el.classList.add('visible');
-  });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initRevealElements();
-  triggerRevealAnimations();
 });
 
 /* ========================================
@@ -261,7 +276,7 @@ function openEnquiry(productName) {
   modalProductName.textContent = productName;
   modalProductName.className   = 'modal-product-name';
   modalIconWrap.className      = 'modal-icon modal-icon--product';
-  modalIconWrap.innerHTML      = '<i class="fas fa-shopping-cart"></i>';
+  modalIconWrap.innerHTML      = '<i class="fas fa-comment-dots"></i>';
   modalDesc.textContent        = 'Interested in this product? Contact us directly:';
 
   const msg = encodeURIComponent(`Hello! I'm interested in *${productName}* from Everest Electricals. Please share details and pricing.`);
@@ -366,52 +381,26 @@ contactForm.addEventListener('submit', e => {
   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
   submitBtn.disabled  = true;
 
-  // Build mailto fallback body
-  const product  = document.getElementById('formProduct').value;
-  const urgency  = document.getElementById('formUrgency').value;
-  const body = `Name: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AProduct/Service: ${product}%0AUrgency: ${urgency}%0AMessage: ${msg}`;
+  // B5: Remove dead EmailJS placeholders — use WhatsApp + mailto fallback instead
+  const product  = document.getElementById('formProduct') ? document.getElementById('formProduct').value : '';
+  const msgBody  = `Name: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AProduct/Service: ${product}%0AMessage: ${msg}`;
   if (mailtoLink) {
-    mailtoLink.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
+    mailtoLink.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${msgBody}`;
   }
 
-  // Try EmailJS if available, else fall back to mailto redirect
-  const EMAILJS_SERVICE  = 'YOUR_SERVICE_ID';   // replace with your EmailJS service ID
-  const EMAILJS_TEMPLATE = 'YOUR_TEMPLATE_ID';  // replace with your EmailJS template ID
-  const EMAILJS_KEY      = 'YOUR_PUBLIC_KEY';   // replace with your EmailJS public key
+  // Open pre-filled WhatsApp enquiry
+  const waMsg = encodeURIComponent(
+    `Hello! This is ${name}. I'd like to enquire about: ${product || 'electrical products/services'}.\n\nMessage: ${msg}\n\nPhone: ${phone}`
+  );
+  window.open(`https://wa.me/[REAL_PHONE_DIGITS]?text=${waMsg}`, '_blank');
 
-  function handleSuccess() {
-    contactForm.reset();
-    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-    submitBtn.disabled  = false;
-    if (errorBanner) errorBanner.style.display = 'none';
-    formSuccess.style.display = 'flex';
-    setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
-  }
-
-  function handleError() {
-    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-    submitBtn.disabled  = false;
-    if (errorBanner) errorBanner.style.display = 'flex';
-    // Auto-open mailto as fallback
-    window.location.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
-  }
-
-  if (typeof emailjs !== 'undefined' && EMAILJS_SERVICE !== 'YOUR_SERVICE_ID') {
-    emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
-      from_name: name,
-      from_phone: phone,
-      from_email: email,
-      product: product,
-      urgency: urgency,
-      message: msg,
-    }, EMAILJS_KEY)
-      .then(handleSuccess)
-      .catch(handleError);
-  } else {
-    // EmailJS not configured – open mailto directly
-    window.location.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
-    handleSuccess();
-  }
+  // Show success state
+  contactForm.reset();
+  submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+  submitBtn.disabled  = false;
+  if (errorBanner) errorBanner.style.display = 'none';
+  formSuccess.style.display = 'flex';
+  setTimeout(() => { formSuccess.style.display = 'none'; }, 8000);
 });
 
 /* ========================================
@@ -554,109 +543,109 @@ window.prefillForm = function (value, urgency) {
 console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#F59E0B;font-size:16px;font-weight:bold;background:#0C2340;padding:8px 16px;border-radius:6px;');
 
 /* ========================================
-   COMPARE PANEL (FIX 4)
-   ======================================== */
-const comparePanel     = document.getElementById('comparePanel');
-const comparePanelCount = document.getElementById('comparePanelCount');
-const btnCompareNow    = document.getElementById('btnCompareNow');
-const btnCompareClear  = document.getElementById('btnCompareClear');
-const compareSlots     = [
-  document.getElementById('compareSlot1'),
-  document.getElementById('compareSlot2'),
-  document.getElementById('compareSlot3'),
-];
-let compareSelected = []; // array of product name strings
-
-function updateComparePanel() {
-  const count = compareSelected.length;
-  if (comparePanelCount) comparePanelCount.textContent = `${count} / 3 selected`;
-  compareSlots.forEach((slot, i) => {
-    if (!slot) return;
-    if (compareSelected[i]) {
-      slot.textContent = compareSelected[i];
-      slot.classList.add('filled');
-    } else {
-      slot.textContent = '— empty —';
-      slot.classList.remove('filled');
-    }
-  });
-  if (comparePanel) comparePanel.classList.toggle('visible', count > 0);
-  if (btnCompareNow) btnCompareNow.disabled = count < 2;
-}
-
-document.querySelectorAll('.compare-check').forEach(checkbox => {
-  checkbox.addEventListener('change', function () {
-    const product = this.getAttribute('data-product');
-    if (this.checked) {
-      if (compareSelected.length >= 3) {
-        this.checked = false;
-        showToast('⚠️ Maximum 3 products can be compared at once.');
-        return;
-      }
-      compareSelected.push(product);
-    } else {
-      compareSelected = compareSelected.filter(p => p !== product);
-    }
-    updateComparePanel();
-  });
-});
-
-if (btnCompareNow) {
-  btnCompareNow.addEventListener('click', () => {
-    showToast(`🔍 Comparing: ${compareSelected.join(' vs ')}`);
-  });
-}
-
-if (btnCompareClear) {
-  btnCompareClear.addEventListener('click', () => {
-    compareSelected = [];
-    document.querySelectorAll('.compare-check').forEach(cb => { cb.checked = false; });
-    updateComparePanel();
-  });
-}
-
-/* ========================================
-   NEWSLETTER FORM (FIX 8 – simulated success)
+   NEWSLETTER FORM — B3: Real Formspree submission
    ======================================== */
 const newsletterForm    = document.getElementById('newsletterForm');
 const newsletterSuccess = document.getElementById('newsletterSuccess');
 
+// TODO: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID
+const FORMSPREE_NEWSLETTER_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
+
 if (newsletterForm) {
-  newsletterForm.addEventListener('submit', function (e) {
+  newsletterForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     const email = document.getElementById('newsletterEmail').value.trim();
+    const submitEl = newsletterForm.querySelector('[type="submit"]');
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showToast('⚠️ Please enter a valid email address.');
       return;
     }
-    // Simulated success – no backend
-    newsletterForm.style.display = 'none';
-    if (newsletterSuccess) {
-      newsletterSuccess.style.display = 'flex';
+    if (submitEl) { submitEl.disabled = true; submitEl.textContent = 'Subscribing...'; }
+    try {
+      const res = await fetch(FORMSPREE_NEWSLETTER_URL, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(newsletterForm)
+      });
+      if (res.ok) {
+        newsletterForm.style.display = 'none';
+        if (newsletterSuccess) newsletterSuccess.style.display = 'flex';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      if (submitEl) { submitEl.disabled = false; submitEl.textContent = 'Get Trade Deals'; }
+      showToast('⚠️ Could not subscribe. Please try again.');
     }
   });
 }
 
 /* ========================================
-   FIX 24 – Contact form: hide form on submit, show success message
+   B6: Social "coming soon" click handler
    ======================================== */
-const contactFormFix24 = document.getElementById('contactForm');
-const formSuccessFix24 = document.getElementById('formSuccess');
-
-if (contactForm && formSuccess) {
-  contactForm.addEventListener('submit', function (e) {
+document.querySelectorAll('.social-coming-soon').forEach(link => {
+  link.addEventListener('click', function(e) {
     e.preventDefault();
-    const name    = document.getElementById('formName')    ? document.getElementById('formName').value.trim()    : '';
-    const phone   = document.getElementById('formPhone')   ? document.getElementById('formPhone').value.trim()   : '';
-    const message = document.getElementById('formMessage') ? document.getElementById('formMessage').value.trim() : '';
-    if (!name || !phone || !message) {
-      if (typeof showToast === 'function') showToast('⚠️ Please fill in Name, Phone and Message.');
-      return;
+    const platform = this.dataset.social || 'Social media';
+    showToast(`👋 ${platform} page coming soon! Follow us on WhatsApp for now.`);
+  });
+});
+
+/* ========================================
+   B1: Navigation Product Search
+   ======================================== */
+const navSearchInput = document.getElementById('navSearchInput');
+const navSearchBtn   = document.getElementById('navSearchBtn');
+
+function runProductSearch() {
+  const query = navSearchInput ? navSearchInput.value.trim().toLowerCase() : '';
+  if (!query) return;
+
+  // Scroll to products section first
+  const productsSection = document.getElementById('products');
+  if (productsSection) {
+    const navH = navbar ? navbar.offsetHeight : 72;
+    window.scrollTo({ top: productsSection.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
+  }
+
+  // Activate 'All Products' filter
+  const allFilter = document.querySelector('.filter-btn[data-filter="all"]');
+  if (allFilter) {
+    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    allFilter.classList.add('active'); allFilter.setAttribute('aria-selected','true');
+  }
+
+  let matches = 0;
+  document.querySelectorAll('.product-card').forEach(card => {
+    const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
+    const desc = card.querySelector('.product-desc')?.textContent.toLowerCase() || '';
+    const brand = card.querySelector('.product-brand')?.textContent.toLowerCase() || '';
+    const hit  = name.includes(query) || desc.includes(query) || brand.includes(query);
+    card.classList.toggle('hidden', !hit);
+    if (hit) matches++;
+  });
+
+  if (matches === 0) {
+    showToast(`🔍 No products found for “${navSearchInput.value.trim()}”`);
+    // Reset to show all after 3 seconds
+    setTimeout(() => {
+      document.querySelectorAll('.product-card').forEach(c => c.classList.remove('hidden'));
+    }, 3000);
+  } else {
+    showToast(`✅ ${matches} product${matches > 1 ? 's' : ''} found for “${navSearchInput.value.trim()}”`);
+  }
+}
+
+if (navSearchBtn) navSearchBtn.addEventListener('click', runProductSearch);
+if (navSearchInput) {
+  navSearchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') runProductSearch();
+  });
+  // Reset product list when search is cleared
+  navSearchInput.addEventListener('input', () => {
+    if (navSearchInput.value.trim() === '') {
+      document.querySelectorAll('.product-card').forEach(c => c.classList.remove('hidden'));
     }
-    // Hide form, reveal success state
-    contactForm.style.display = 'none';
-    formSuccess.style.display = 'flex';
-    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 }
 
@@ -664,3 +653,4 @@ if (contactForm && formSuccess) {
 if (navbar && window.scrollY > 60) {
   navbar.classList.add('scrolled');
 }
+

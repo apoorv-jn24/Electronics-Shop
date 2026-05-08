@@ -20,11 +20,16 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&amp;q=80" />
   <meta property="og:locale" content="en_IN" />
 
-  <!-- Fonts -->
+  <!-- Fonts: only the weights we actually use (P2 – performance) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome loaded non-blocking (P3 – performance) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -40,17 +45,18 @@
   <!-- ========== TOP BAR (FIX 3) ========== -->
   <div class="topbar" id="topbar">
     <div class="topbar-inner container">
-      <span class="topbar-item">
+      <!-- Hide truck & clock on mobile (M2) so only phone shows on tiny screens -->
+      <span class="topbar-item topbar-hide-mobile">
         <i class="fas fa-truck"></i>
         Free delivery on bulk orders above ₹2,000
       </span>
-      <span class="topbar-divider"></span>
+      <span class="topbar-divider topbar-hide-mobile"></span>
       <span class="topbar-item">
         <i class="fas fa-phone"></i>
         Call us: <a href="tel:[REAL_PHONE]">[REAL_PHONE]</a>
       </span>
-      <span class="topbar-divider"></span>
-      <span class="topbar-item">
+      <span class="topbar-divider topbar-hide-mobile"></span>
+      <span class="topbar-item topbar-hide-mobile">
         <i class="fas fa-clock"></i>
         Mon–Sat: 9 AM – 8 PM
       </span>
@@ -124,11 +130,11 @@
 
       <!-- Main headline -->
       <h1 class="hero-title">
-        Quality Electrical Supplies,<br>
+        Quality Electrical Supplies,<br class="hide-mobile">
         <span class="hero-accent">Delivered to Your Door</span>
       </h1>
       <p class="hero-tagline">
-        Trusted by contractors, builders &amp; homeowners across North India.<br>
+        Trusted by contractors, builders &amp; homeowners across North India.<br class="hide-mobile">
         ISI-certified products · Expert repair team · Same-day service.
       </p>
 
@@ -370,10 +376,7 @@
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
                 <span class="review-count">(42 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('LED Panel Lights')" id="enquireLED">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="LED Panel Lights" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('LED Panel Lights')" id="enquireLED">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -401,10 +404,7 @@
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.0)</span>
                 <span class="review-count">(38 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('1.5 sq.mm Copper Wire')" id="enquireWires">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="1.5 sq.mm Copper Wire" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('1.5 sq.mm Copper Wire')" id="enquireWires">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -433,10 +433,7 @@
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.0)</span>
                 <span class="review-count">(27 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('Modular Switch Plate')" id="enquireSwitches">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="Modular Switch Plate" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('Modular Switch Plate')" id="enquireSwitches">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -464,10 +461,7 @@
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
                 <span class="review-count">(19 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('BLDC Ceiling Fan 1200mm')" id="enquireFans">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="BLDC Ceiling Fan 1200mm" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('BLDC Ceiling Fan 1200mm')" id="enquireFans">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -496,10 +490,7 @@
                 <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.8)</span>
                 <span class="review-count">(54 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('MCB 32A Single Pole')" id="enquireMCB">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="MCB 32A Single Pole" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('MCB 32A Single Pole')" id="enquireMCB">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -527,10 +518,7 @@
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.2)</span>
                 <span class="review-count">(16 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('8-Way Distribution Board')" id="enquireDB">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="8-Way Distribution Board" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('8-Way Distribution Board')" id="enquireDB">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -559,10 +547,7 @@
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(4.9)</span>
                 <span class="review-count">(63 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('LED Bulb 9W Pack of 6')" id="enquireBulbs">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="LED Bulb 9W Pack of 6" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('LED Bulb 9W Pack of 6')" id="enquireBulbs">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -590,10 +575,7 @@
                 <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.3)</span>
                 <span class="review-count">(31 reviews)</span>
               </div>
-              <button class="btn-enquire" onclick="openEnquiry('6-Socket Extension Board')" id="enquireExtBoards">Add to Basket</button>
-            </div>
-            <div class="compare-wrap">
-              <label><input type="checkbox" class="compare-check" data-product="6-Socket Extension Board" /> Compare</label>
+              <button class="btn-enquire" onclick="openEnquiry('6-Socket Extension Board')" id="enquireExtBoards">Enquire / WhatsApp</button>
             </div>
           </div>
         </div>
@@ -602,19 +584,7 @@
     </div>
   </section>
 
-  <!-- ========== COMPARE PANEL (FIX 4) ========== -->
-  <div class="compare-panel" id="comparePanel" aria-live="polite">
-    <div class="compare-panel-items" id="comparePanelItems">
-      <span class="compare-panel-count" id="comparePanelCount">0 / 3 selected</span>
-      <div class="compare-slot" id="compareSlot1">— empty —</div>
-      <div class="compare-slot" id="compareSlot2">— empty —</div>
-      <div class="compare-slot" id="compareSlot3">— empty —</div>
-    </div>
-    <div class="compare-panel-actions">
-      <button class="btn-compare-now" id="btnCompareNow" disabled>Compare Now</button>
-      <button class="btn-compare-clear" id="btnCompareClear" title="Clear all">✕ Clear</button>
-    </div>
-  </div>
+
 
   <!-- ========== REPAIR SERVICES SECTION ========== -->
   <section id="repairs" class="repair-section section-padding">
@@ -912,9 +882,9 @@
         </div>
         </div>
       </div>
-      <!-- FIX 18: View All Projects button -->
+      <!-- FIX 18: View All Projects button (B2 fix: was incorrectly pointing to #contact) -->
       <div class="gallery-view-all">
-        <a href="#contact" class="btn-view-all">View All Projects &rarr;</a>
+        <a href="#gallery" class="btn-view-all">View All Projects &rarr;</a>
       </div>
     </div>
   </section>
@@ -929,66 +899,43 @@
         <p class="section-subtitle">Real feedback from homes, offices and contractors we've served</p>
       </div>
 
-      <!-- Review aggregate badge -->
-      <div style="text-align:center">
-        <div class="review-aggregate-badge">
+
+      <!-- Review aggregate badge (updated by JS when API loads) -->
+      <div style="text-align:center; margin-bottom: 32px;">
+        <div class="review-aggregate-badge" id="reviewAggregateBadge">
           <i class="fas fa-star"></i>
-          4.9 / 5 from 200+ verified reviews
+          <span id="reviewBadgeText">Loading Google Reviews...</span>
         </div>
       </div>
 
-        <!-- Featured large blockquote -->
-        <div class="testimonials-grid">
-          <div class="testimonial-card" id="testimonial1">
-            <div class="testimonial-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-text">"Best electrical shop in Western UP! All major brands in stock. Their team helped me choose the right MCB and distribution board for my factory expansion. Genuine products, honest pricing."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">VS</div>
-              <div>
-                <strong>Vikas Sharma</strong>
-                <span>Factory Owner, Baghpat</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Google Reviews Grid (populated by Places API) -->
+      <div class="reviews-grid" id="googleReviewsGrid">
+        <!-- Loading skeleton cards -->
+        <div class="review-skeleton"><div class="sk-line sk-stars"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text sk-short"></div><div class="sk-line sk-author"></div></div>
+        <div class="review-skeleton"><div class="sk-line sk-stars"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text sk-short"></div><div class="sk-line sk-author"></div></div>
+        <div class="review-skeleton"><div class="sk-line sk-stars"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text sk-short"></div><div class="sk-line sk-author"></div></div>
+      </div>
 
-        <!-- Two smaller side-by-side cards -->
-        <div class="testimonials-small-row">
-          <div class="testimonial-card testimonial-card--small" id="testimonial2">
-            <div class="testimonial-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-text">"Got my ceiling fan repaired in just 2 hours. The technician was professional and the price was very fair. Everest Electricals is my go-to shop for everything electrical in Baraut!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">RK</div>
-              <div>
-                <strong>Rajesh Kumar</strong>
-                <span>Homeowner, Baraut</span>
-              </div>
-            </div>
-          </div>
+      <!-- Always-visible Google CTA -->
+      <div style="text-align:center; margin-top: 36px;">
+        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-view-google-reviews" id="viewAllReviewsBtn">
+          <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+               alt="Google" width="54" height="18" style="vertical-align:middle; margin-right:6px;">
+          See All Reviews on Google
+          <i class="fas fa-external-link-alt" style="margin-left:6px; font-size:0.8em;"></i>
+        </a>
+        <p id="reviewsApiNote" style="font-size:0.78rem; color:var(--text-light); margin-top:10px; display:none;">
+          Powered by Google Places API &nbsp;·&nbsp; Reviews shown as-is from Google
+        </p>
+      </div>
 
-          <div class="testimonial-card testimonial-card--small" id="testimonial3">
-            <div class="testimonial-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-            </div>
-            <p class="testimonial-text">"I had a short circuit at home late evening. Everest Electricals sent a technician the same day, fixed it safely and even checked the whole wiring. Couldn't be happier. Highly recommended!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">SM</div>
-              <div>
-                <strong>Sunita Malik</strong>
-                <span>Homeowner, Saroorpur Kalan</span>
-              </div>
-            </div>
-          </div>
-        </div>
     </div>
   </section>
+
+
+
 
   <!-- ========== CONTACT SECTION ========== -->
   <section id="contact" class="contact-section section-padding">
@@ -1042,23 +989,26 @@
               <a href="https://wa.me/[REAL_PHONE_DIGITS]" class="social-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
               </a>
-              <a href="#" class="social-btn instagram" target="_blank" rel="noopener" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="social-btn facebook" target="_blank" rel="noopener" aria-label="Facebook">
-                <i class="fab fa-facebook-f"></i>
-              </a>
+
             </div>
           </div>
 
-          <!-- Map -->
+          <!-- Map — Live Google Maps embed (no API key required) -->
           <div class="map-wrapper" id="mapWrapper">
             <iframe
-              src="https://maps.google.com/maps?q=26HJ%2BVM7%2C+Saroorpur+Kalan%2C+Sarurpur%2C+Uttar+Pradesh+250619&t=&z=16&ie=UTF8&iwloc=&output=embed"
-              width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" title="Everest Electricals Location Map – Saroorpur Kalan, UP">
+              id="shopMapEmbed"
+              src="https://maps.google.com/maps?q=Everest+Electricals,+Saroorpur+Kalan,+Uttar+Pradesh+250619&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Everest Electricals Location – Saroorpur Kalan, UP">
             </iframe>
+            <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8"
+               target="_blank" rel="noopener"
+               class="map-open-link" aria-label="Open in Google Maps">
+              <i class="fas fa-directions"></i> Get Directions
+            </a>
           </div>
+
         </div>
 
         <!-- Form -->
@@ -1142,7 +1092,10 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <!-- Honeypot anti-spam field (F3) — hidden from users, bots fill it -->
+        <input type="text" name="_gotcha" id="formHoneypot" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-group">
               <label for="formMessage">Message <span class="required">*</span></label>
               <div class="input-wrap textarea-wrap">
                 <i class="fas fa-comment-dots"></i>
@@ -1202,18 +1155,13 @@
             <i class="fas fa-bolt"></i> Everest <span>Electricals</span>
           </a>
           <p>Your trusted partner for quality electrical products and expert repair services. Serving homes and businesses with reliability since 2005.</p>
-          <div class="footer-social">
-            <a href="https://wa.me/[REAL_PHONE_DIGITS]" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
+
           <!-- Accreditation badges (FIX 5) -->
           <div class="footer-accred">
             <span class="accred-badge"><i class="fas fa-certificate"></i> ISI Marked</span>
             <span class="accred-badge"><i class="fas fa-shield-alt"></i> BIS Approved</span>
             <span class="accred-badge"><i class="fas fa-award"></i> ISO 9001</span>
           </div>
-        </div>
         </div>
 
         <div class="footer-col">
@@ -1269,18 +1217,7 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="footerYear"></span> Everest Electricals. All rights reserved.</p>
-        <!-- FIX 27: social icon buttons -->
-        <div class="footer-bottom-socials">
-          <a href="#" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="#" class="footer-social-btn" target="_blank" rel="noopener" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </div>
+
       </div>
     </div>
   </footer>
@@ -1314,7 +1251,7 @@
   <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box">
       <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-      <div class="modal-icon" id="modalIconWrap"><i class="fas fa-shopping-cart"></i></div>
+      <div class="modal-icon" id="modalIconWrap"><i class="fas fa-comment-dots"></i></div>
       <h3 id="modalTitle">Product Enquiry</h3>
       <p id="modalProductName" class="modal-product-name">LED Lights</p>
       <p id="modalDesc">Interested in this product? Contact us directly:</p>
@@ -1398,8 +1335,144 @@
   }
   </script>
 
-  <!-- EmailJS SDK (optional – wire up Service/Template/Key in script.js to enable) -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="js/script.js"></script>
+  <!-- P3: script deferred so it never blocks rendering -->
+  <script src="js/script.js" defer></script>
+
+  <!-- ============================================================
+       GOOGLE REVIEWS LOADER
+       Steps to activate real Google reviews:
+       1. Go to https://console.cloud.google.com
+       2. Enable "Places API" and "Maps Embed API"
+       3. Create an API key (restrict to your domain for security)
+       4. Replace YOUR_MAPS_API_KEY below with the key
+       5. Find your Place ID at: https://developers.google.com/maps/documentation/places/web-service/place-id
+       6. Replace YOUR_PLACE_ID with the actual Place ID
+       Google Maps short link is already set: https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8
+       ============================================================ -->
+  <script>
+    (function() {
+      // ─── CONFIGURE THESE TWO VALUES ───────────────────────────────
+      var MAPS_API_KEY = 'AIzaSyBpQihD2SZG7QAFouvwgPQd5xz3smAJf24';
+      var PLACE_ID     = 'ChIJN3x2cVdNDDkRepIFXERsB0Q';        // Google Place ID for Everest Electricals
+      // ──────────────────────────────────────────────────────────────
+
+      var grid  = document.getElementById('googleReviewsGrid');
+      var badge = document.getElementById('reviewBadgeText');
+      var note  = document.getElementById('reviewsApiNote');
+
+      // If not configured, point the CTA to the real Maps link and show fallback
+      if (MAPS_API_KEY === 'YOUR_MAPS_API_KEY') {
+        var btn = document.getElementById('viewAllReviewsBtn');
+        if (btn) btn.href = 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8';
+        showFallback('See what our customers say on Google');
+        return;
+      }
+
+      // Inject the Maps JavaScript API + Places library
+      var script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + MAPS_API_KEY + '&libraries=places&callback=initGoogleReviews';
+      script.async = true;
+      script.defer = true;
+      script.onerror = function() { showFallback('Could not load reviews. See us on Google.'); };
+      document.head.appendChild(script);
+
+      // Callback fired by the Google API when it finishes loading
+      window.initGoogleReviews = function() {
+        var service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.getDetails({
+          placeId: PLACE_ID,
+          fields: ['name', 'rating', 'user_ratings_total', 'reviews', 'url']
+        }, function(place, status) {
+          if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
+            showFallback('Reviews temporarily unavailable. View on Google.');
+            return;
+          }
+
+          // Update aggregate badge with real data
+          if (badge) {
+            badge.textContent = (place.rating || '5.0') + ' / 5 · ' +
+              (place.user_ratings_total || '–') + ' Google reviews';
+          }
+
+          // Update "See All" link with the real Maps URL
+          var viewAllBtn = document.getElementById('viewAllReviewsBtn');
+          if (viewAllBtn && place.url) {
+            viewAllBtn.href = place.url;
+          }
+
+          // Render review cards
+          var reviews = place.reviews || [];
+          renderReviews(reviews);
+
+          // Show attribution note (Google ToS requirement)
+          if (note) note.style.display = 'block';
+        });
+      };
+
+      function renderReviews(reviews) {
+        if (!grid) return;
+        if (!reviews.length) {
+          showFallback('Be the first to review us on Google!');
+          return;
+        }
+        grid.innerHTML = '';
+        reviews.forEach(function(r) {
+          var stars = buildStars(r.rating || 5);
+          var initials = (r.author_name || '?').split(' ').map(function(w){ return w[0]; }).join('').slice(0,2).toUpperCase();
+          var relTime = r.relative_time_description || '';
+          var card = document.createElement('div');
+          card.className = 'google-review-card reveal';
+          card.innerHTML =
+            '<div class="gr-header">' +
+              '<div class="gr-avatar" aria-hidden="true">' + initials + '</div>' +
+              '<div class="gr-meta">' +
+                '<a href="' + (r.author_url || '#') + '" target="_blank" rel="noopener" class="gr-author">' + escHtml(r.author_name || 'Google User') + '</a>' +
+                '<span class="gr-time">' + escHtml(relTime) + '</span>' +
+              '</div>' +
+              '<img src="https://www.gstatic.com/images/branding/googleg/1x/googleg_standard_color_28dp.png" width="20" height="20" alt="Google" class="gr-google-icon" />' +
+            '</div>' +
+            '<div class="gr-stars" aria-label="' + (r.rating || 5) + ' out of 5 stars">' + stars + '</div>' +
+            '<p class="gr-text">' + escHtml(r.text || '') + '</p>';
+          grid.appendChild(card);
+        });
+
+        // Trigger reveal for newly added cards
+        if (window.IntersectionObserver) {
+          var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+              if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+            });
+          }, { threshold: 0.1 });
+          grid.querySelectorAll('.google-review-card').forEach(function(el) { obs.observe(el); });
+        }
+      }
+
+      function buildStars(rating) {
+        var s = '';
+        for (var i = 1; i <= 5; i++) {
+          if (i <= rating) s += '<i class="fas fa-star"></i>';
+          else if (i - 0.5 <= rating) s += '<i class="fas fa-star-half-alt"></i>';
+          else s += '<i class="far fa-star"></i>';
+        }
+        return s;
+      }
+
+      function escHtml(str) {
+        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      function showFallback(msg) {
+        if (badge) badge.textContent = msg;
+        if (!grid) return;
+        grid.innerHTML =
+          '<div class="gr-fallback">' +
+            '<i class="fas fa-star gr-fallback-icon"></i>' +
+            '<p>Our customers love us on Google.</p>' +
+            '<p>Click the button below to read real reviews →</p>' +
+          '</div>';
+      }
+    })();
+  </script>
 </body>
 </html>
+
