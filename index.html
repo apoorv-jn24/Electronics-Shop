@@ -985,28 +985,11 @@
               </div>
             </div>
 
-            <div class="contact-social">
-              <a href="https://wa.me/[REAL_PHONE_DIGITS]" class="social-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
+            <div class="contact-social" style="margin-top: 15px;">
+              <a href="https://wa.me/[REAL_PHONE_DIGITS]" class="btn btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" style="width: 100%; justify-content: center; font-size: 1rem;">
+                <i class="fab fa-whatsapp"></i> Chat with us on WhatsApp
               </a>
-
             </div>
-          </div>
-
-          <!-- Map — Live Google Maps embed (no API key required) -->
-          <div class="map-wrapper" id="mapWrapper">
-            <iframe
-              id="shopMapEmbed"
-              src="https://maps.google.com/maps?q=Everest+Electricals,+Saroorpur+Kalan,+Uttar+Pradesh+250619&t=&z=17&ie=UTF8&iwloc=&output=embed"
-              width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Everest Electricals Location – Saroorpur Kalan, UP">
-            </iframe>
-            <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8"
-               target="_blank" rel="noopener"
-               class="map-open-link" aria-label="Open in Google Maps">
-              <i class="fas fa-directions"></i> Get Directions
-            </a>
           </div>
 
         </div>
@@ -1119,6 +1102,22 @@
           </form>
         </div>
       </div>
+
+      <!-- Map — Live Google Maps embed (Full Width) -->
+      <div class="map-wrapper" id="mapWrapper" style="margin-top: 40px;">
+        <iframe
+          id="shopMapEmbed"
+          src="https://maps.google.com/maps?q=Everest+Electricals,+Saroorpur+Kalan,+Uttar+Pradesh+250619&t=&z=17&ie=UTF8&iwloc=&output=embed"
+          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Everest Electricals Location – Saroorpur Kalan, UP">
+        </iframe>
+        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8"
+           target="_blank" rel="noopener"
+           class="map-open-link" aria-label="Open in Google Maps">
+          <i class="fas fa-directions"></i> Get Directions
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1137,7 +1136,7 @@
               <i class="fas fa-paper-plane"></i> Get Trade Deals
             </button>
           </form>
-          <div class="newsletter-success" id="newsletterSuccess">
+          <div class="newsletter-success" id="newsletterSuccess" style="display:none;">
             <i class="fas fa-check-circle"></i> You're subscribed! Watch your inbox for deals.
           </div>
         </div>
