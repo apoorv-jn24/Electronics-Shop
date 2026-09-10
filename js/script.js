@@ -269,7 +269,6 @@ const modalProductName = document.getElementById('modalProductName');
 const modalIconWrap   = document.getElementById('modalIconWrap');
 const modalTitle      = document.getElementById('modalTitle');
 const modalDesc       = document.getElementById('modalDesc');
-const whatsappLink    = document.getElementById('modalWhatsapp');
 
 function openEnquiry(productName) {
   modalTitle.textContent     = 'Product Enquiry';
@@ -279,8 +278,12 @@ function openEnquiry(productName) {
   modalIconWrap.innerHTML      = '<i class="fas fa-comment-dots"></i>';
   modalDesc.textContent        = 'Interested in this product? Contact us directly:';
 
-  const msg = encodeURIComponent(`Hello! I'm interested in *${productName}* from Everest Electricals. Please share details and pricing.`);
-  whatsappLink.href = `https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${msg}`;
+  const emailLink = document.getElementById('modalEmail');
+  if (emailLink) {
+    const subject = encodeURIComponent(`Enquiry: ${productName} – Everest Electricals`);
+    const body    = encodeURIComponent(`Hello,\n\nI am interested in: ${productName}\n\nPlease share details and pricing.\n\nThank you.`);
+    emailLink.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
+  }
 
   enquiryModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -294,8 +297,12 @@ function openRepairEnquiry(serviceName) {
   modalIconWrap.innerHTML      = '<i class="fas fa-tools"></i>';
   modalDesc.textContent        = 'Need this repair service? Reach out to us:';
 
-  const msg = encodeURIComponent(`Hello! I need *${serviceName}* from Everest Electricals. Please contact me at your earliest.`);
-  whatsappLink.href = `https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${msg}`;
+  const emailLink = document.getElementById('modalEmail');
+  if (emailLink) {
+    const subject = encodeURIComponent(`Repair Enquiry: ${serviceName} – Everest Electricals`);
+    const body    = encodeURIComponent(`Hello,\n\nI need: ${serviceName}\n\nPlease contact me at your earliest.\n\nThank you.`);
+    emailLink.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
+  }
 
   enquiryModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -381,18 +388,15 @@ contactForm.addEventListener('submit', e => {
   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
   submitBtn.disabled  = true;
 
-  // B5: Remove dead EmailJS placeholders — use WhatsApp + mailto fallback instead
+  // Build pre-filled mailto link and open user's email client
   const product  = document.getElementById('formProduct') ? document.getElementById('formProduct').value : '';
-  const msgBody  = `Name: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AProduct/Service: ${product}%0AMessage: ${msg}`;
-  if (mailtoLink) {
-    mailtoLink.href = `mailto:apoorvjainji@gmail.com?subject=Enquiry from ${encodeURIComponent(name)}&body=${msgBody}`;
-  }
-
-  // Open pre-filled WhatsApp enquiry
-  const waMsg = encodeURIComponent(
-    `Hello! This is ${name}. I'd like to enquire about: ${product || 'electrical products/services'}.\n\nMessage: ${msg}\n\nPhone: ${phone}`
+  const urgency  = document.getElementById('formUrgency') ? document.getElementById('formUrgency').value : '';
+  const subject  = encodeURIComponent(`Enquiry from ${name} – Everest Electricals`);
+  const mailBody = encodeURIComponent(
+    `Name: ${name}\nPhone: ${phone}\nEmail: ${email || 'Not provided'}\nProduct/Service: ${product || 'General Enquiry'}\nUrgency: ${urgency || 'Not specified'}\n\nMessage:\n${msg}`
   );
-  window.open(`https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${waMsg}`, '_blank');
+
+  window.location.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${mailBody}`;
 
   // Show success state
   contactForm.reset();
@@ -532,40 +536,25 @@ window.prefillForm = function (value, urgency) {
 console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#F59E0B;font-size:16px;font-weight:bold;background:#0C2340;padding:8px 16px;border-radius:6px;');
 
 /* ========================================
-   NEWSLETTER FORM — B3: Real Formspree submission
+   NEWSLETTER FORM — mailto fallback (no backend configured)
    ======================================== */
 const newsletterForm    = document.getElementById('newsletterForm');
 const newsletterSuccess = document.getElementById('newsletterSuccess');
 
-// TODO: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID
-const FORMSPREE_NEWSLETTER_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
-
 if (newsletterForm) {
-  newsletterForm.addEventListener('submit', async function (e) {
+  newsletterForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const email = document.getElementById('newsletterEmail').value.trim();
-    const submitEl = newsletterForm.querySelector('[type="submit"]');
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showToast('⚠️ Please enter a valid email address.');
       return;
     }
-    if (submitEl) { submitEl.disabled = true; submitEl.textContent = 'Subscribing...'; }
-    try {
-      const res = await fetch(FORMSPREE_NEWSLETTER_URL, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(newsletterForm)
-      });
-      if (res.ok) {
-        newsletterForm.style.display = 'none';
-        if (newsletterSuccess) newsletterSuccess.style.display = 'flex';
-      } else {
-        throw new Error();
-      }
-    } catch {
-      if (submitEl) { submitEl.disabled = false; submitEl.textContent = 'Get Trade Deals'; }
-      showToast('⚠️ Could not subscribe. Please try again.');
-    }
+    // Open pre-filled email to subscribe
+    const subject = encodeURIComponent('Trade Deals Subscription – Everest Electricals');
+    const body    = encodeURIComponent(`Please add me to your trade deals mailing list.\n\nEmail: ${email}`);
+    window.location.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
+    newsletterForm.style.display = 'none';
+    if (newsletterSuccess) newsletterSuccess.style.display = 'flex';
   });
 }
 

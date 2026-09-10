@@ -1,0 +1,38 @@
+[
+  {
+    "name": "NID",
+    "category": "analytics",
+    "purpose": "Google Maps personalization and user preference tracking. Set by Google when the embedded map loads.",
+    "duration": "6 months",
+    "domain": ".google.com",
+    "source": "Google Maps Embed",
+    "required": false
+  },
+  {
+    "name": "CONSENT",
+    "category": "necessary",
+    "purpose": "Records Google's own consent state for their services. Set when any Google-hosted resource is loaded.",
+    "duration": "2 years",
+    "domain": ".google.com",
+    "source": "Google Maps Embed / Google Places API",
+    "required": false
+  },
+  {
+    "name": "SOCS",
+    "category": "necessary",
+    "purpose": "Google security and anti-abuse token.",
+    "duration": "13 months",
+    "domain": ".google.com",
+    "source": "Google Maps Embed",
+    "required": false
+  },
+  {
+    "name": "ee_cookie_consent",
+    "category": "necessary",
+    "purpose": "Stores the visitor's own cookie consent preference ('accepted' or 'rejected') so the banner is not shown on every page visit.",
+    "duration": "Persistent (localStorage — not a cookie, not sent to server)",
+    "domain": "everest-electricals.vercel.app",
+    "source": "This website (cookies.js)",
+    "required": true
+  }
+]
