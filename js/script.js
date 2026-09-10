@@ -8,7 +8,7 @@
    ======================================== */
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-  setTimeout(() => preloader.classList.add('hidden'), 1200);
+  if (preloader) setTimeout(() => preloader.classList.add('hidden'), 1200);
 });
 
 /* ========================================
@@ -59,7 +59,7 @@ navLinks.forEach(link => {
 const topbarEl = document.getElementById('topbar');
 
 function adjustNavbarTop() {
-  const topbarH = topbarEl ? topbarEl.offsetHeight : 38;
+  const topbarH = topbarEl ? topbarEl.offsetHeight : (window.innerWidth <= 768 ? 56 : 38);
   // Update CSS variable so all calc() references stay in sync
   document.documentElement.style.setProperty('--topbar-h', topbarH + 'px');
   document.documentElement.style.setProperty('--header-h', (topbarH + (navbar ? navbar.offsetHeight : 68)) + 'px');
@@ -280,7 +280,7 @@ function openEnquiry(productName) {
   modalDesc.textContent        = 'Interested in this product? Contact us directly:';
 
   const msg = encodeURIComponent(`Hello! I'm interested in *${productName}* from Everest Electricals. Please share details and pricing.`);
-  whatsappLink.href = `https://wa.me/[REAL_PHONE_DIGITS]?text=${msg}`;
+  whatsappLink.href = `https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${msg}`;
 
   enquiryModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -295,7 +295,7 @@ function openRepairEnquiry(serviceName) {
   modalDesc.textContent        = 'Need this repair service? Reach out to us:';
 
   const msg = encodeURIComponent(`Hello! I need *${serviceName}* from Everest Electricals. Please contact me at your earliest.`);
-  whatsappLink.href = `https://wa.me/[REAL_PHONE_DIGITS]?text=${msg}`;
+  whatsappLink.href = `https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${msg}`;
 
   enquiryModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -392,7 +392,7 @@ contactForm.addEventListener('submit', e => {
   const waMsg = encodeURIComponent(
     `Hello! This is ${name}. I'd like to enquire about: ${product || 'electrical products/services'}.\n\nMessage: ${msg}\n\nPhone: ${phone}`
   );
-  window.open(`https://wa.me/[REAL_PHONE_DIGITS]?text=${waMsg}`, '_blank');
+  window.open(`https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${waMsg}`, '_blank');
 
   // Show success state
   contactForm.reset();
@@ -434,9 +434,7 @@ function showToast(message) {
     border:1px solid rgba(255,215,0,0.25);
     animation:slide-up-toast 0.3s ease;
   `;
-  const style = document.createElement('style');
-  style.textContent = `@keyframes slide-up-toast{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}`;
-  document.head.appendChild(style);
+
   document.body.appendChild(toast);
   setTimeout(() => {
     toast.style.opacity = '0';
@@ -454,16 +452,7 @@ if (waFloat) {
   setTimeout(() => { waFloat.style.opacity = '1'; waFloat.style.transform = 'scale(1)'; }, 3000);
 }
 
-/* ========================================
-   ENQUIRE NOW – WhatsApp pre-fill (direct buttons outside modal)
-   ======================================== */
-document.querySelectorAll('[data-wa-product]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const product = btn.getAttribute('data-wa-product');
-    const msg = encodeURIComponent(`Hi, I'm interested in *${product}* from Everest Electricals. Please share details and pricing.`);
-    window.open(`https://wa.me/[REAL_PHONE_DIGITS]?text=${msg}`, '_blank');
-  });
-});
+/* [data-wa-product] listener removed — no elements use this attribute in HTML */
 
 /* ========================================
    SERVICE CARD RIPPLE
@@ -487,9 +476,7 @@ document.querySelectorAll('.service-card, .why-card').forEach(card => {
   });
 });
 
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `@keyframes ripple-grow{to{transform:scale(40);opacity:0}}`;
-document.head.appendChild(rippleStyle);
+
 
 /* ========================================
    FAN ICON – Spin on hover
@@ -522,6 +509,8 @@ if (featureRepairCard) {
 /* ========================================
    AUTO-SELECT REPAIR IN FORM (from modal)
    ======================================== */
+/* Auto-fill contact form — called when user wants to pre-fill a service/product.
+   Usage: prefillForm('Fan Repair & Servicing', true) */
 window.prefillForm = function (value, urgency) {
   const sel = document.getElementById('formProduct');
   if (sel) {
@@ -580,16 +569,7 @@ if (newsletterForm) {
   });
 }
 
-/* ========================================
-   B6: Social "coming soon" click handler
-   ======================================== */
-document.querySelectorAll('.social-coming-soon').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const platform = this.dataset.social || 'Social media';
-    showToast(`👋 ${platform} page coming soon! Follow us on WhatsApp for now.`);
-  });
-});
+
 
 /* ========================================
    B1: Navigation Product Search

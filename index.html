@@ -53,7 +53,7 @@
       <span class="topbar-divider topbar-hide-mobile"></span>
       <span class="topbar-item">
         <i class="fas fa-phone"></i>
-        Call us: <a href="tel:[REAL_PHONE]">[REAL_PHONE]</a>
+        Call us: <a href="tel:[YOUR-PHONE-NUMBER]">[YOUR-PHONE-NUMBER]</a>
       </span>
       <span class="topbar-divider topbar-hide-mobile"></span>
       <span class="topbar-item topbar-hide-mobile">
@@ -71,7 +71,7 @@
         <span class="logo-text">Everest <span class="accent">Electricals</span></span>
       </a>
 
-      <ul class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
+      <ul class="nav-menu" id="navMenu" role="list" aria-label="Main navigation">
         <li><a href="#home"     class="nav-link active" id="nav-home">Home</a></li>
         <li><a href="#about"    class="nav-link" id="nav-about">About</a></li>
         <li><a href="#products" class="nav-link" id="nav-products">Products</a></li>
@@ -93,7 +93,7 @@
         <a href="quote.html" class="nav-quote-btn" id="navQuoteBtn">
           <i class="fas fa-file-alt"></i> Get a Quote
         </a>
-        <a href="tel:[REAL_PHONE]" class="nav-call-btn" aria-label="Call us now">
+        <a href="tel:[YOUR-PHONE-NUMBER]" class="nav-call-btn" aria-label="Call us now">
           <i class="fas fa-phone"></i> Call Now
         </a>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -335,12 +335,12 @@
 
       <!-- Filter Tabs -->
       <div class="product-filters" role="tablist" aria-label="Product categories">
-        <button class="filter-btn active" data-filter="all"        role="tab" aria-selected="true"  id="filterAll">All Products</button>
-        <button class="filter-btn"         data-filter="lighting"  role="tab" aria-selected="false" id="filterLighting">Lighting</button>
-        <button class="filter-btn"         data-filter="wiring"    role="tab" aria-selected="false" id="filterWiring">Wiring</button>
-        <button class="filter-btn"         data-filter="switches"  role="tab" aria-selected="false" id="filterSwitches">Switches</button>
-        <button class="filter-btn"         data-filter="fans"      role="tab" aria-selected="false" id="filterFans">Fans</button>
-        <button class="filter-btn"         data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories">Accessories</button>
+        <button class="filter-btn active" data-filter="all"        role="tab" aria-selected="true"  id="filterAll"          aria-controls="productsGrid">All Products</button>
+        <button class="filter-btn"         data-filter="lighting"  role="tab" aria-selected="false" id="filterLighting"      aria-controls="productsGrid">Lighting</button>
+        <button class="filter-btn"         data-filter="wiring"    role="tab" aria-selected="false" id="filterWiring"        aria-controls="productsGrid">Wiring</button>
+        <button class="filter-btn"         data-filter="switches"  role="tab" aria-selected="false" id="filterSwitches"      aria-controls="productsGrid">Switches</button>
+        <button class="filter-btn"         data-filter="fans"      role="tab" aria-selected="false" id="filterFans"          aria-controls="productsGrid">Fans</button>
+        <button class="filter-btn"         data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories" aria-controls="productsGrid">Accessories</button>
       </div><!-- /product-filters -->
 
       <!-- Breadcrumb (FIX 3) -->
@@ -350,7 +350,7 @@
         <span>Products</span>
       </nav>
 
-      <div class="products-grid" id="productsGrid">
+      <div class="products-grid" id="productsGrid" role="tabpanel" aria-label="Product listings">
 
         <!-- CARD 1: LED Lights -->
         <div class="product-card" data-category="lighting" data-sku="EE-LED-001" id="productLED">
@@ -603,7 +603,7 @@
           <h3>Need Emergency Electrical Repair?</h3>
           <p>Call us immediately for same-day service. Our technicians are ready to help.</p>
         </div>
-        <a href="tel:[REAL_PHONE]" class="btn btn-repair-cta" id="repairCallBtn">
+        <a href="tel:[YOUR-PHONE-NUMBER]" class="btn btn-repair-cta" id="repairCallBtn">
           <i class="fas fa-phone"></i> Call Now
         </a>
       </div>
@@ -880,7 +880,6 @@
             </div>
           </div>
         </div>
-        </div>
       </div>
       <!-- FIX 18: View All Projects button (B2 fix: was incorrectly pointing to #contact) -->
       <div class="gallery-view-all">
@@ -964,7 +963,7 @@
               <div class="contact-icon"><i class="fas fa-phone"></i></div>
               <div>
                 <strong>Phone</strong>
-                <p><a href="tel:[REAL_PHONE]">[REAL_PHONE]</a></p>
+                <p><a href="tel:[YOUR-PHONE-NUMBER]">[YOUR-PHONE-NUMBER]</a></p>
               </div>
             </div>
 
@@ -986,7 +985,7 @@
             </div>
 
             <div class="contact-social" style="margin-top: 15px;">
-              <a href="https://wa.me/[REAL_PHONE_DIGITS]" class="btn btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" style="width: 100%; justify-content: center; font-size: 1rem;">
+              <a href="https://wa.me/[YOUR-WHATSAPP-DIGITS]" class="btn btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" style="width: 100%; justify-content: center; font-size: 1rem;">
                 <i class="fab fa-whatsapp"></i> Chat with us on WhatsApp
               </a>
             </div>
@@ -1197,7 +1196,7 @@
             </li>
             <li>
               <i class="fas fa-phone"></i>
-              <a href="tel:[REAL_PHONE]">[REAL_PHONE]</a>
+              <a href="tel:[YOUR-PHONE-NUMBER]">[YOUR-PHONE-NUMBER]</a>
             </li>
             <li>
               <i class="fas fa-envelope"></i>
@@ -1222,7 +1221,7 @@
   </footer>
 
   <!-- ========== FLOATING WHATSAPP BUTTON ========== -->
-  <a href="https://wa.me/[REAL_PHONE_DIGITS]" class="whatsapp-float" target="_blank" rel="noopener"
+  <a href="https://wa.me/[YOUR-WHATSAPP-DIGITS]" class="whatsapp-float" target="_blank" rel="noopener"
      aria-label="Chat on WhatsApp" id="whatsappFloat">
     <i class="fab fa-whatsapp"></i>
     <span class="wa-tooltip">Chat with us!</span>
@@ -1240,7 +1239,7 @@
         <strong>📞 Need help?</strong>
         We're open Mon–Sat 9 AM – 8 PM
       </div>
-      <a href="tel:[REAL_PHONE]" class="btn-mobile-call" id="mobileCallBtn">
+      <a href="tel:[YOUR-PHONE-NUMBER]" class="btn-mobile-call" id="mobileCallBtn">
         <i class="fas fa-phone"></i> Call Us
       </a>
     </div>
@@ -1255,10 +1254,10 @@
       <p id="modalProductName" class="modal-product-name">LED Lights</p>
       <p id="modalDesc">Interested in this product? Contact us directly:</p>
       <div class="modal-actions">
-        <a href="https://wa.me/[REAL_PHONE_DIGITS]" class="btn btn-whatsapp" target="_blank" id="modalWhatsapp">
+        <a href="https://wa.me/[YOUR-WHATSAPP-DIGITS]" class="btn btn-whatsapp" target="_blank" id="modalWhatsapp">
           <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
-        <a href="tel:[REAL_PHONE]" class="btn btn-call" id="modalCall">
+        <a href="tel:[YOUR-PHONE-NUMBER]" class="btn btn-call" id="modalCall">
           <i class="fas fa-phone"></i> Call Us
         </a>
       </div>
@@ -1276,7 +1275,7 @@
         "name": "Everest Electricals",
         "description": "ISI-certified electrical shop offering quality products and expert repair services in Saroorpur Kalan, UP since 2005.",
         "url": "https://everest-electricals.vercel.app/",
-        "telephone": "[REAL_PHONE]",
+        "telephone": "[YOUR-PHONE-NUMBER]",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "26HJ+VM7, Saroorpur Kalan",
@@ -1351,6 +1350,9 @@
   <script>
     (function() {
       // ─── CONFIGURE THESE TWO VALUES ───────────────────────────────
+      // ⚠️  SECURITY: Restrict this API key to your domain only at:
+      //     https://console.cloud.google.com → APIs & Services → Credentials
+      //     Add HTTP referrer restriction: everest-electricals.vercel.app/*
       var MAPS_API_KEY = 'AIzaSyBpQihD2SZG7QAFouvwgPQd5xz3smAJf24';
       var PLACE_ID     = 'ChIJN3x2cVdNDDkRepIFXERsB0Q';        // Google Place ID for Everest Electricals
       // ──────────────────────────────────────────────────────────────

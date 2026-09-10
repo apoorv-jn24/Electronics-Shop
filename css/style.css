@@ -771,8 +771,6 @@ input, textarea, select { font-family: inherit; }
 .contact-social { display: flex; gap: 10px; margin-top: 24px; }
 .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: var(--transition); color: var(--white); }
 .social-btn.whatsapp { background: #25D366; }
-.social-btn.instagram { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-.social-btn.facebook  { background: #1877F2; }
 .social-btn:hover { transform: translateY(-3px) scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 .map-wrapper { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); border: 2px solid var(--gray-100); }
 .map-wrapper iframe { display: block; }
@@ -861,7 +859,7 @@ input, textarea, select { font-family: inherit; }
    SCROLL TO TOP
    ======================================== */
 .scroll-top {
-  position: fixed; bottom: 24px; right: 24px;
+  position: fixed; bottom: 88px; right: 24px;
   width: 42px; height: 42px; background: var(--white);
   border: 2px solid var(--accent); color: var(--accent);
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -939,7 +937,6 @@ input, textarea, select { font-family: inherit; }
   .testimonials-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
   .form-row { grid-template-columns: 1fr; }
   .nav-search { max-width: 160px; }
-  .compare-panel { min-width: 320px; }
 }
 
 /* ========================================
@@ -1016,9 +1013,6 @@ input, textarea, select { font-family: inherit; }
   .newsletter-form { flex-direction: column; max-width: 100%; }
   .newsletter-form input, .btn-newsletter { width: 100%; justify-content: center; }
 
-  /* Compare panel */
-  .compare-panel { min-width: 90vw; padding: 14px 16px; flex-wrap: wrap; }
-  .compare-panel-items { flex-wrap: wrap; }
 
   /* Topbar */
   .topbar-inner { gap: 8px; }
@@ -1062,9 +1056,7 @@ input, textarea, select { font-family: inherit; }
   .map-wrapper iframe { height: 240px !important; min-height: 240px !important; }
 }
 
-@media (max-width: 640px) {
-  .products-grid { grid-template-columns: 1fr 1fr; }
-}
+
 
 /* ========================================
    RESPONSIVE – TINY DEVICES (576px)
@@ -1113,7 +1105,6 @@ input, textarea, select { font-family: inherit; }
     min-width: 44px;
   }
   .footer-links a { padding: 6px 0; }
-  .compare-panel { min-width: unset; width: 100%; border-radius: 12px 12px 0 0; padding: 12px 14px; }
 }
 
 /* ========================================
@@ -1124,6 +1115,9 @@ input, textarea, select { font-family: inherit; }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-mid); }
 ::selection { background: var(--accent); color: var(--white); }
+
+/* Mobile help bar — hidden by default, shown on mobile */
+.mobile-help-bar { display: none; }
 
 /* ========================================
    BUG #7 FIX — Footer Accreditation Badges
@@ -1419,8 +1413,6 @@ input, textarea, select { font-family: inherit; }
 /* Prevent any section from creating horizontal scroll */
 section, header, footer, nav { max-width: 100vw; overflow-x: clip; }
 
-/* Images below the fold — declarative hint */
-img:not([loading]) { loading: lazy; }
 
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -1563,7 +1555,6 @@ a#heroGetQuote:hover, .hero-buttons .btn-outline:hover {
 .stat-item > span:nth-child(2) { font-size: 1.4rem; font-weight: 800; color: var(--gold-brand); line-height: 1; }
 .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.8px; white-space: nowrap; }
 .stat-divider { width: 1px; height: 48px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
-.hero-trust-strip { display: none; }
 
 
 /* ─────────────────────────────────────────
@@ -1594,7 +1585,7 @@ a#heroGetQuote:hover, .hero-buttons .btn-outline:hover {
 }
 .product-card {
   background: var(--white); border-radius: var(--card-radius);
-  border: 1.5px solid var(--gray-100); box-shadow: var(--card-shadow);
+  border: 2px solid var(--gray-100); box-shadow: var(--card-shadow);
   display: flex; flex-direction: column; overflow: hidden;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
@@ -1686,7 +1677,6 @@ a#heroGetQuote:hover, .hero-buttons .btn-outline:hover {
    GALLERY — 3-col uniform grid + hover caption
    ───────────────────────────────────────── */
 .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-.gallery-item--large, .gallery-item--tall { grid-column: unset !important; grid-row: unset !important; }
 .gallery-item { position: relative; border-radius: var(--card-radius); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--card-shadow); }
 .gallery-inner { width: 100%; height: 100%; }
 .gallery-inner img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
@@ -1758,8 +1748,6 @@ a#heroGetQuote:hover, .hero-buttons .btn-outline:hover {
 /* ─────────────────────────────────────────
    CONTACT — 4-field form + side-by-side layout
    ───────────────────────────────────────── */
-.form-group:has(#formEmail),
-.form-group:has(#formUrgency) { display: none !important; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 36px; align-items: start; }
 .btn-submit { width: 100%; justify-content: center; background: var(--gold-brand); color: var(--navy-brand); font-weight: 800; border: none; border-radius: 10px; padding: 14px 28px; font-size: 1rem; cursor: pointer; transition: all 0.25s ease; display: flex; align-items: center; gap: 9px; }
 .btn-submit:hover { background: var(--gold-dark-b); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,200,66,0.4); }
@@ -2144,3 +2132,76 @@ button:not(.hamburger):not(.modal-close) { min-height: 40px; }
   color: var(--white);
   transform: translateX(-50%) translateY(-2px);
 }
+
+/* ========================================
+   MISSING PRODUCT CARD CLASSES (Audit Fix)
+   ======================================== */
+.product-brand {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  display: block;
+}
+.product-sku {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  display: block;
+  font-family: monospace;
+}
+.product-urgency {
+  font-size: 0.75rem;
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.product-urgency i { font-size: 0.7rem; }
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.product-price-vat {
+  font-size: 0.73rem;
+  color: var(--text-light);
+  font-weight: 400;
+}
+.stock-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+.stock-in  { background: #dcfce7; color: #166534; }
+.stock-low { background: #fef9c3; color: #854d0e; }
+.stock-out { background: #fee2e2; color: #991b1b; }
+
+/* ========================================
+   MISSING FORM-GRID CLASS (Audit Fix)
+   ======================================== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   TOAST & RIPPLE ANIMATIONS (moved from JS)
+   ======================================== */
+@keyframes slide-up-toast {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes ripple-grow { to { transform: scale(40); opacity: 0; } }

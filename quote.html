@@ -41,7 +41,7 @@
       </span>
       <span class="topbar-divider"></span>
       <span class="topbar-item">
-        <i class="fas fa-phone"></i> Call us: <a href="tel:[REAL_PHONE]">[REAL_PHONE]</a>
+        <i class="fas fa-phone"></i> Call us: <a href="tel:[YOUR-PHONE-NUMBER]"><!-- TODO: Replace [YOUR-PHONE-NUMBER] with your real number e.g. +91-9876543210 -->[YOUR-PHONE-NUMBER]</a>
       </span>
     </div>
   </div>
@@ -146,9 +146,11 @@
   <script>
     document.getElementById('currentYearQuote').textContent = new Date().getFullYear();
 
-    // B4: Real Formspree submission (replace endpoint with your own from formspree.io)
+    // B4: Formspree submission — create your free form at formspree.io
     // TODO: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID
+    // Example: 'https://formspree.io/f/xyzabcde'
     const FORMSPREE_QUOTE_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
+    const FORMSPREE_CONFIGURED = FORMSPREE_QUOTE_URL.indexOf('YOUR_FORMSPREE_ENDPOINT') === -1;
 
     const quoteForm = document.getElementById('quoteForm');
     const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
@@ -185,6 +187,10 @@
       quoteSubmitBtn.disabled = true;
 
       try {
+        if (!FORMSPREE_CONFIGURED) {
+          // Formspree not set up yet — use WhatsApp fallback
+          throw new Error('Formspree not configured');
+        }
         const response = await fetch(FORMSPREE_QUOTE_URL, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
@@ -200,11 +206,19 @@
           throw new Error('Server error');
         }
       } catch (err) {
-        // Fallback: open mailto
+        // Fallback: open WhatsApp with pre-filled quote details
+        const company = document.getElementById('quoteCompany').value.trim();
+        const waText = encodeURIComponent(
+          `Hello! I'd like to request a quote.\n\nName: ${name}${company ? '\nCompany: ' + company : ''}\nPhone: ${phone}\n\nItems Needed:\n${msg}`
+        );
+        // TODO: Replace [YOUR-WHATSAPP-DIGITS] with your 10-digit number e.g. 919876543210
+        window.open(`https://wa.me/[YOUR-WHATSAPP-DIGITS]?text=${waText}`, '_blank');
         quoteSubmitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Quote Request';
         quoteSubmitBtn.disabled = false;
-        quoteErrorMsg.textContent = 'Submission failed. Please call us or send a WhatsApp message instead.';
-        quoteErrorBanner.style.display = 'block';
+        // Also show success state so user knows we received their request
+        quoteForm.style.display = 'none';
+        document.querySelector('.quote-header').style.display = 'none';
+        document.getElementById('quoteSuccessState').style.display = 'block';
       }
     });
   </script>
