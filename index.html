@@ -1510,24 +1510,15 @@
 
   <!-- ============================================================
        GOOGLE REVIEWS LOADER
-       Steps to activate real Google reviews:
-       1. Go to https://console.cloud.google.com
-       2. Enable "Places API" and "Maps Embed API"
-       3. Create an API key (restrict to your domain for security)
-       4. Replace YOUR_MAPS_API_KEY below with the key
-       5. Find your Place ID at: https://developers.google.com/maps/documentation/places/web-service/place-id
-       6. Replace YOUR_PLACE_ID with the actual Place ID
-       Google Maps short link is already set: https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8
+       API key is stored securely in Vercel Environment Variables
+       (GOOGLE_MAPS_API_KEY) and accessed via /api/reviews serverless
+       function. No secret is ever exposed in this public repository.
        ============================================================ -->
   <script>
     /* ── Google Reviews: fires ONLY after cookie consent ─────────────── */
+    /* API key is stored in Vercel env var GOOGLE_MAPS_API_KEY.           */
+    /* The frontend calls /api/reviews — no secret in this file.          */
     (function () {
-      var PLACE_ID = 'ChIJN3x2cVdNDDkRepIFXERsB0Q';
-      /* API key is stored server-side in production; for the public repo
-         the key below is domain-restricted to everest-electricals.vercel.app
-         in Google Cloud Console → Credentials.
-         NEVER remove the HTTP referrer restriction.                       */
-      var MAPS_API_KEY = 'AIzaSyAXMhOqxCHlZZJeoUslQ-Qm1yAUH6TQhLU';
 
       var grid = document.getElementById('googleReviewsGrid');
       var badge = document.getElementById('reviewBadgeText');
@@ -1537,16 +1528,27 @@
       function loadReviews() {
         if (loaded) return;
         loaded = true;
-        window.gm_authFailure = function () {
-          showFallback('Google Reviews temporarily unavailable. View on Google.');
-        };
-        var script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + MAPS_API_KEY +
-          '&libraries=places&loading=async&callback=initGoogleReviews';
-        script.async = true;
-        script.defer = true;
-        script.onerror = function () { showFallback('Could not load reviews. See us on Google.'); };
-        document.head.appendChild(script);
+        fetch('/api/reviews')
+          .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
+          .then(function (data) {
+            var rating      = data.rating          ? String(data.rating)          : '4.8';
+            var totalCount  = data.userRatingCount  ? String(data.userRatingCount)  : '11';
+            var placeUrl    = data.placeUrl         || 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8';
+
+            if (badge) badge.textContent = rating + ' / 5 ★ · ' + totalCount + ' Google reviews';
+            var viewAllBtn = document.getElementById('viewAllReviewsBtn');
+            if (viewAllBtn) viewAllBtn.href = placeUrl;
+
+            renderReviews(data.reviews && data.reviews.length ? data.reviews : getFallbackReviews());
+            if (note) note.style.display = 'block';
+          })
+          .catch(function (err) {
+            // API unavailable (localhost dev, or server error) — show static reviews
+            console.info('Reviews API unavailable, showing verified reviews:', err);
+            if (badge) badge.textContent = '4.8 / 5 ★ · 11 Google reviews';
+            renderReviews(getFallbackReviews());
+            if (note) note.style.display = 'block';
+          });
       }
 
       /* Listen for consent granted by cookies.js */
@@ -1592,56 +1594,6 @@
           }
         ];
       }
-
-      window.initGoogleReviews = async function () {
-        var rating = '4.8';
-        var totalReviews = '11';
-        var liveReviews = [];
-        var placeUrl = 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8';
-
-        try {
-          if (google.maps.places && google.maps.places.Place) {
-            var place = new google.maps.places.Place({ id: PLACE_ID });
-            await place.fetchFields({
-              fields: ['displayName', 'rating', 'userRatingCount', 'reviews', 'googleMapsURI']
-            });
-
-            if (place.rating) rating = String(place.rating);
-            if (place.userRatingCount) totalReviews = String(place.userRatingCount);
-            if (place.googleMapsURI) placeUrl = place.googleMapsURI;
-
-            if (place.reviews && place.reviews.length > 0) {
-              liveReviews = place.reviews.map(function (r) {
-                return {
-                  author_name: r.authorAttribution ? r.authorAttribution.displayName : 'Google User',
-                  author_url: r.authorAttribution ? r.authorAttribution.uri : placeUrl,
-                  rating: r.rating || 5,
-                  text: r.text || '',
-                  relative_time_description: r.relativePublishTimeDescription || ''
-                };
-              });
-            }
-          }
-        } catch (err) {
-          console.warn('Places API (New) notice:', err);
-        }
-
-        // Update live rating and count on badge
-        if (badge) {
-          badge.textContent = rating + ' / 5 ★ · ' + totalReviews + ' Google reviews';
-        }
-        var viewAllBtn = document.getElementById('viewAllReviewsBtn');
-        if (viewAllBtn) viewAllBtn.href = placeUrl;
-
-        // If Google Places API provided live text reviews, display them; otherwise display verified customer reviews
-        if (liveReviews.length > 0) {
-          renderReviews(liveReviews);
-        } else {
-          renderReviews(getFallbackReviews());
-        }
-
-        if (note) note.style.display = 'block';
-      };
 
       function renderReviews(reviews) {
         if (!grid) return;
