@@ -1,625 +1,531 @@
-/* ========================================
-   EVEREST ELECTRICALS – JavaScript
-   ======================================== */
-'use strict';
+/* ==========================================================================
+   EVEREST ELECTRICALS - CORE STORE & ENGINEERING ENGINE (js/main.js)
+   ========================================================================== */
 
-/* ========================================
-   PRELOADER
-   ======================================== */
-window.addEventListener('load', () => {
-  const preloader = document.getElementById('preloader');
-  if (preloader) setTimeout(() => preloader.classList.add('hidden'), 1200);
-});
+const CART_STORAGE_KEY = 'ee_estimate_cart';
+let estimateCart = [];
+let currentLang = 'en';
 
-/* ========================================
-   NAVBAR – Sticky & Active Link
-   ======================================== */
-const navbar    = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
-const navMenu   = document.getElementById('navMenu');
-const navLinks  = document.querySelectorAll('.nav-link');
-
-let rafPending = false;
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-  toggleScrollTop();
-  // P1: Throttle the active-link scan with requestAnimationFrame
-  if (!rafPending) {
-    rafPending = true;
-    requestAnimationFrame(() => {
-      updateActiveNavLink();
-      rafPending = false;
-    });
+const i18nStrings = {
+  en: {
+    heroTitle: 'Wholesale ISI Electrical Supplies & Copper Winding Workshop',
+    heroSubtitle: 'Direct counter for house-wiring FR copper coils, modular switch plates, MCB distribution boxes, and 5-star BLDC fans in <strong>Saroorpur Kalan, Baraut & Baghpat</strong>. Bring your electrician’s slip for instant wholesale billing.'
+  },
+  hi: {
+    heroTitle: 'थोक ISI बिजली का सामान और कॉपर मोटर/पंखा वाइंडिंग वर्कशॉप',
+    heroSubtitle: '1980 से <strong>सरूरपुर कलां, बड़ौत और बागपत</strong> का भरोसेमंद काउंटर। फिनोलेक्स, हैवेल्स, एंकर और लेग्रैंड के ओरिजिनल तार, एमसीबी और पंखे। अपने मिस्त्री की पर्ची अपलोड करें और तुरंत थोक रेट पाएं।'
   }
-});
+};
 
-hamburger.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('open');
-  hamburger.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', isOpen);
-  // M1: Set exact height so menu is never clipped
-  if (isOpen) {
-    navMenu.style.setProperty('--menu-h', navMenu.scrollHeight + 'px');
+/* Sample Repair Workshop Database */
+const repairJobsDB = {
+  'EE-101': {
+    status: 'Ready for Pickup',
+    badgeClass: 'bg-emerald-100 text-emerald-800',
+    item: 'Crompton High-Speed Ceiling Fan (Copper Winding + 6202 Bearing)',
+    note: 'Passed 240V insulation & speed test · Counter Bill: ₹480'
+  },
+  'EE-102': {
+    status: 'On Winding Bench',
+    badgeClass: 'bg-amber-100 text-amber-800',
+    item: 'Bajaj 25L Storage Water Geyser (Copper Element & Thermostat)',
+    note: 'Tank descaling completed. Ready today by 6:30 PM · Est: ₹780'
+  },
+  'EE-103': {
+    status: 'Technician Assigned',
+    badgeClass: 'bg-blue-100 text-blue-800',
+    item: 'Doorstep MCB Box Fault & Phase Check (Baraut Road)',
+    note: 'Visiting Electrician (Ramesh) scheduled for 4:00 PM today.'
   }
-});
+};
 
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
-});
-
-/* ========================================
-   TOPBAR / NAVBAR DYNAMIC OFFSET FIX
-   Measures topbar actual height and keeps
-   navbar perfectly below it at all times.
-   ======================================== */
-const topbarEl = document.getElementById('topbar');
-
-function adjustNavbarTop() {
-  const topbarH = topbarEl ? topbarEl.offsetHeight : (window.innerWidth <= 768 ? 56 : 38);
-  // Update CSS variable so all calc() references stay in sync
-  document.documentElement.style.setProperty('--topbar-h', topbarH + 'px');
-  document.documentElement.style.setProperty('--header-h', (topbarH + (navbar ? navbar.offsetHeight : 68)) + 'px');
-  // Also set inline style on navbar for immediate effect
-  if (navbar) navbar.style.top = topbarH + 'px';
-}
-
-adjustNavbarTop();
-window.addEventListener('resize', adjustNavbarTop);
-document.addEventListener('DOMContentLoaded', adjustNavbarTop);
-
-
-function updateActiveNavLink() {
-  const sections = document.querySelectorAll('section[id]');
-  const scrollY  = window.scrollY;
-  sections.forEach(section => {
-    const top    = section.offsetTop - 130;
-    const bottom = top + section.offsetHeight;
-    const id     = section.getAttribute('id');
-    const link   = document.querySelector(`.nav-link[href="#${id}"]`);
-    if (scrollY >= top && scrollY < bottom) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      if (link) link.classList.add('active');
-    }
-  });
-}
-
-/* ========================================
-   SMOOTH ANCHOR SCROLL (fixed navbar offset)
-   ======================================== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      const navH = navbar ? navbar.offsetHeight : 72;
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
-    }
-  });
-});
-
-/* ========================================
-   HERO PARTICLES
-   ======================================== */
-function createParticles() {
-  const container = document.getElementById('heroParticles');
-  if (!container) return;
-  const count = window.innerWidth < 600 ? 15 : 35;
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size     = Math.random() * 4 + 2;
-    const x        = Math.random() * 100;
-    const duration = Math.random() * 15 + 10;
-    const delay    = Math.random() * 12;
-    // Some particles are orange (accent)
-    const color = Math.random() > 0.7 ? '#FF6B00' : '#1B3A6B';
-    p.style.cssText = `
-      width:${size}px; height:${size}px;
-      left:${x}%; bottom:-10px;
-      background:${color};
-      animation-duration:${duration}s;
-      animation-delay:-${delay}s;
-    `;
-    container.appendChild(p);
+/* Appliance-to-Wire Gauge Engineering Database */
+const applianceSpecs = {
+  ac15: {
+    title: '1.5 Ton Split / Window AC (~1800W)',
+    shortGauge: '2.5 sq.mm FR Copper',
+    longGauge: '4.0 sq.mm FR Copper',
+    mcb: '20A / 25A C-Curve SP',
+    socket: '20A Modular AC Box',
+    note: 'Always pull a dedicated 2.5 sq.mm circuit directly from the MCB box with 1.5 sq.mm earthing.'
+  },
+  ac20: {
+    title: '2.0 Ton Heavy Duty AC (~2500W)',
+    shortGauge: '4.0 sq.mm FR Copper',
+    longGauge: '6.0 sq.mm FR Copper',
+    mcb: '32A C-Curve SP MCB',
+    socket: '25A/32A Heavy Starter Unit',
+    note: 'Do not loop 2.0 Ton AC load with room switchboards. Use Finolex/Havells 4.0 sq.mm.'
+  },
+  geyser: {
+    title: '25L Storage Water Geyser / Room Heater (~2000W)',
+    shortGauge: '2.5 sq.mm FR Copper',
+    longGauge: '4.0 sq.mm FR Copper',
+    mcb: '16A / 20A C-Curve MCB',
+    socket: '16A 3-Pin Shuttered Plug',
+    note: 'Ensure 30mA RCCB protection in bathroom circuits to prevent shock hazards.'
+  },
+  submersible: {
+    title: '1.5 HP – 2.0 HP Submersible Borewell Pump',
+    shortGauge: '2.5 sq.mm 3-Core Flat Cable',
+    longGauge: '4.0 sq.mm 3-Core Flat Cable',
+    mcb: '25A / 32A C-Curve + Starter',
+    socket: 'Oil/Air Motor Starter Panel',
+    note: 'Use Finolex/Polycab waterproof PVC flat submersible cable for borewell depth.'
+  },
+  inverter: {
+    title: 'Single Battery Home Inverter Line',
+    shortGauge: '1.0 sq.mm FR Copper',
+    longGauge: '1.5 sq.mm FR Copper',
+    mcb: '10A / 16A B-Curve MCB',
+    socket: 'Dedicated Inverter Phase Wire',
+    note: 'Use a distinct wire color (e.g., Yellow or White) for inverter phase throughout the house.'
+  },
+  mainline: {
+    title: 'Main Meter-to-DB Service Line (Up to 5 kW)',
+    shortGauge: '6.0 sq.mm FR Copper',
+    longGauge: '10.0 sq.mm Copper / Armoured',
+    mcb: '40A / 63A Double Pole Isolator + RCCB',
+    socket: 'Main Changeover / Busbar',
+    note: 'Prevents voltage drop across rooms when AC, pump, and geyser run simultaneously.'
   }
-}
-createParticles();
-
-/* ========================================
-   ANIMATED COUNTER
-   ======================================== */
-const statNumbers    = document.querySelectorAll('.stat-number');
-let   countersStarted = false;
-
-function animateCounter(el) {
-  const target   = parseInt(el.getAttribute('data-target'), 10);
-  const duration = 2000;
-  const step     = target / (duration / 16);
-  let current    = 0;
-  const timer    = setInterval(() => {
-    current += step;
-    if (current >= target) {
-      el.textContent = target.toLocaleString();
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(current).toLocaleString();
-    }
-  }, 16);
-}
-
-// P1: IntersectionObserver for animated counters — fires once when stats enter view
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats && statNumbers.length) {
-  const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        statNumbers.forEach(el => animateCounter(el));
-        counterObs.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  counterObs.observe(heroStats);
-}
-
-/* ========================================
-   PRODUCT FILTER TABS
-   ======================================== */
-const filterButtons = document.querySelectorAll('.filter-btn');
-const productCards  = document.querySelectorAll('.product-card');
-
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const filter = btn.getAttribute('data-filter');
-    filterButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-
-    let visibleIndex = 0;
-    productCards.forEach(card => {
-      const matches = filter === 'all' || card.getAttribute('data-category') === filter;
-      if (matches) {
-        card.classList.remove('hidden');
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        const delay = visibleIndex * 60;
-        visibleIndex++;
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, delay);
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  });
-});
-
-/* ========================================
-   SCROLL REVEAL ANIMATIONS
-   ======================================== */
-function initRevealElements() {
-  const map = [
-    { selector: '.about-image-col',      cls: 'reveal-left'  },
-    { selector: '.about-content-col',    cls: 'reveal-right' },
-    { selector: '.product-card',         cls: 'reveal'       },
-    { selector: '.repair-card',          cls: 'reveal'       },
-    { selector: '.why-card',             cls: 'reveal'       },
-    { selector: '.service-card',         cls: 'reveal'       },
-    { selector: '.gallery-item',         cls: 'reveal'       },
-    { selector: '.contact-info-col',     cls: 'reveal-left'  },
-    { selector: '.contact-form-col',     cls: 'reveal-right' },
-    { selector: '.section-header',       cls: 'reveal'       },
-    { selector: '.feature-item',         cls: 'reveal'       },
-    { selector: '.testimonial-card',     cls: 'reveal'       },
-    { selector: '.brand-pill',           cls: 'reveal'       },
-    { selector: '.repair-cta-banner',    cls: 'reveal'       },
-  ];
-  map.forEach(({ selector, cls }) => {
-    document.querySelectorAll(selector).forEach(el => {
-      if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
-        el.classList.add(cls);
-      }
-    });
-  });
-
-  // Stagger delays
-  document.querySelectorAll('.product-card').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 0.08}s`; });
-  document.querySelectorAll('.service-card').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 0.1}s`; });
-  document.querySelectorAll('.repair-card').forEach((el, i)  => { el.style.transitionDelay = `${(i % 3) * 0.1}s`; });
-  document.querySelectorAll('.gallery-item').forEach((el, i)  => { el.style.transitionDelay = `${i * 0.07}s`; });
-  document.querySelectorAll('.why-card').forEach((el, i)      => { el.style.transitionDelay = `${(i % 3) * 0.1}s`; });
-  document.querySelectorAll('.testimonial-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
-  // P1: Single IntersectionObserver replaces per-scroll getBoundingClientRect loop
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObs.unobserve(entry.target); // fire once only — no redundant checks
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-  initRevealElements();
-});
-
-/* ========================================
-   SCROLL TO TOP BUTTON
-   ======================================== */
-const scrollTopBtn = document.getElementById('scrollTop');
-function toggleScrollTop() {
-  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-}
-scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-/* ========================================
-   ENQUIRY MODAL (Products)
-   ======================================== */
-const enquiryModal    = document.getElementById('enquiryModal');
-const modalClose      = document.getElementById('modalClose');
-const modalProductName = document.getElementById('modalProductName');
-const modalIconWrap   = document.getElementById('modalIconWrap');
-const modalTitle      = document.getElementById('modalTitle');
-const modalDesc       = document.getElementById('modalDesc');
-
-function openEnquiry(productName) {
-  modalTitle.textContent     = 'Product Enquiry';
-  modalProductName.textContent = productName;
-  modalProductName.className   = 'modal-product-name';
-  modalIconWrap.className      = 'modal-icon modal-icon--product';
-  modalIconWrap.innerHTML      = '<i class="fas fa-comment-dots"></i>';
-  modalDesc.textContent        = 'Interested in this product? Contact us directly:';
-
-  const emailLink = document.getElementById('modalEmail');
-  if (emailLink) {
-    const subject = encodeURIComponent(`Enquiry: ${productName} – Everest Electricals`);
-    const body    = encodeURIComponent(`Hello,\n\nI am interested in: ${productName}\n\nPlease share details and pricing.\n\nThank you.`);
-    emailLink.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
+  /* 1. LIVE SHOP OPEN/CLOSED STATUS */
+  const statusEl = document.getElementById('liveShopStatus');
+  if (statusEl) {
+    const now = new Date();
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const openHour = now.getDay() === 0 ? 8 : 9;
+    const isOpen = hour >= openHour && hour < 20;
+    statusEl.innerHTML = `
+      <span class="w-2 h-2 rounded-full ${isOpen ? 'bg-emerald-400' : 'bg-rose-500'}"></span>
+      <span>${isOpen ? 'Open Now · Closes 8:00 PM' : 'Closed · Opens Tomorrow'}</span>
+    `;
   }
 
-  enquiryModal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  /* 2. BILINGUAL TOGGLE */
+  document.getElementById('langToggleBtn')?.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'hi' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (i18nStrings[currentLang][key]) el.innerHTML = i18nStrings[currentLang][key];
+    });
+  });
+
+  /* 3. MOBILE MENU */
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('flex');
+      navMenu.classList.toggle('flex-col');
+      navMenu.classList.toggle('gap-2');
+    });
+  }
+
+  /* 4. CATALOG FILTERING + VOICE SEARCH */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.product-card');
+  const activeCategoryLabel = document.getElementById('activeCategoryLabel');
+  const navSearchInput = document.getElementById('navSearchInput');
+  const brandPills = document.querySelectorAll('.brand-pill');
+
+  const filterCatalog = ({ category = 'all', brand = 'all', query = '' }) => {
+    const q = query.trim().toLowerCase();
+    productCards.forEach((card) => {
+      const cCat = card.getAttribute('data-category');
+      const cBrand = card.getAttribute('data-brand');
+      const text = card.textContent.toLowerCase();
+      const show =
+        (category === 'all' || cCat === category) &&
+        (brand === 'all' || cBrand === brand) &&
+        (!q || text.includes(q));
+      card.style.display = show ? 'flex' : 'none';
+    });
+  };
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        b.className = 'filter-btn px-3.5 py-2 rounded-lg text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-slate-900 transition';
+      });
+      btn.className = 'filter-btn active px-3.5 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white transition';
+      const category = btn.getAttribute('data-filter');
+      if (activeCategoryLabel) activeCategoryLabel.textContent = btn.textContent;
+      filterCatalog({ category });
+    });
+  });
+
+  brandPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      brandPills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      const brand = pill.getAttribute('data-brand');
+      if (activeCategoryLabel) activeCategoryLabel.textContent = `Brand: ${pill.textContent}`;
+      filterCatalog({ category: 'all', brand });
+      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  navSearchInput?.addEventListener('input', (e) => {
+    const q = e.target.value;
+    if (activeCategoryLabel) activeCategoryLabel.textContent = q ? `Search: "${q}"` : 'All Items';
+    filterCatalog({ category: 'all', query: q });
+  });
+
+  /* Voice Search Integration */
+  const voiceBtn = document.getElementById('voiceSearchBtn');
+  if (voiceBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+    voiceBtn.addEventListener('click', () => {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const rec = new SpeechRec();
+      rec.lang = 'en-IN';
+      voiceBtn.classList.add('text-brand-red', 'animate-pulse');
+      rec.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        if (navSearchInput) {
+          navSearchInput.value = transcript;
+          filterCatalog({ category: 'all', query: transcript });
+          document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+      rec.onend = () => voiceBtn.classList.remove('text-brand-red', 'animate-pulse');
+      rec.start();
+    });
+  }
+
+  /* 5. BHK HOUSE WIRING CALCULATOR */
+  const calcBhk = document.getElementById('calcBhk');
+  const calcBrand = document.getElementById('calcBrand');
+  const calcSummaryTitle = document.getElementById('calcSummaryTitle');
+  const calcTotalEstimate = document.getElementById('calcTotalEstimate');
+  const calcBreakdown = document.getElementById('calcBreakdown');
+
+  const bhkPresets = {
+    '1': { label: '1 BHK / Shop', lightCoils: 3, powerCoils: 1, modules: '25–30 Modules', db: '6-Way SPN DB', baseCost: 9800 },
+    '2': { label: '2 BHK Home', lightCoils: 5, powerCoils: 3, modules: '45–55 Modules', db: '8-Way Double Door DB', baseCost: 18500 },
+    '3': { label: '3 BHK House', lightCoils: 8, powerCoils: 5, modules: '75–90 Modules', db: '12-Way Double Door DB', baseCost: 29500 },
+    '4': { label: '4 BHK / Kothi', lightCoils: 12, powerCoils: 8, modules: '120+ Modules', db: '16-Way TPN DB + RCCB', baseCost: 46000 }
+  };
+
+  const brandMultipliers = {
+    economy: { name: 'Economy ISI (Polycab/Anchor)', mult: 0.9 },
+    standard: { name: 'Standard Pro (Finolex/Roma)', mult: 1.0 },
+    premium: { name: 'Heavy Duty (Havells/Legrand)', mult: 1.18 }
+  };
+
+  const updateBhkCalc = () => {
+    if (!calcBhk || !calcBrand) return;
+    const preset = bhkPresets[calcBhk.value];
+    const tier = brandMultipliers[calcBrand.value];
+    const low = Math.round((preset.baseCost * tier.mult) / 100) * 100;
+    const high = Math.round((low * 1.15) / 100) * 100;
+    calcSummaryTitle.textContent = `${preset.label} · ${tier.name}`;
+    calcTotalEstimate.textContent = `₹${low.toLocaleString('en-IN')} – ₹${high.toLocaleString('en-IN')}`;
+    calcBreakdown.innerHTML = `
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">1.0 / 1.5 sq.mm</span><strong class="text-slate-900">${preset.lightCoils} Coils (90m)</strong></div>
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">2.5 / 4.0 sq.mm</span><strong class="text-slate-900">${preset.powerCoils} Coils (90m)</strong></div>
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">Switchgear</span><strong class="text-slate-900">${preset.modules}</strong></div>
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">Distribution</span><strong class="text-slate-900">${preset.db}</strong></div>
+    `;
+  };
+
+  calcBhk?.addEventListener('change', updateBhkCalc);
+  calcBrand?.addEventListener('change', updateBhkCalc);
+
+  document.getElementById('sendCalcToQuoteBtn')?.addEventListener('click', () => {
+    const preset = bhkPresets[calcBhk.value];
+    const tier = brandMultipliers[calcBrand.value];
+    const price = Math.round((preset.baseCost * tier.mult) / 100) * 100;
+    addToQuoteCart(`KIT-${calcBhk.value}BHK`, `${preset.label} Wiring Kit (${tier.name})`, price);
+  });
+
+  /* 6. APPLIANCE WIRE GAUGE FINDER */
+  const appSelect = document.getElementById('applianceSelect');
+  const runLength = document.getElementById('wireRunLength');
+  const updateWireCalc = () => {
+    if (!appSelect || !runLength) return;
+    const spec = applianceSpecs[appSelect.value];
+    const isLong = runLength.value === 'long';
+    document.getElementById('wireRecTitle').textContent = spec.title;
+    document.getElementById('wireRecGauge').textContent = isLong ? spec.longGauge : spec.shortGauge;
+    document.getElementById('wireRecMcb').textContent = spec.mcb;
+    document.getElementById('wireRecSocket').textContent = spec.socket;
+    document.getElementById('wireRecNote').textContent = spec.note;
+  };
+  appSelect?.addEventListener('change', updateWireCalc);
+  runLength?.addEventListener('change', updateWireCalc);
+
+  /* 7. REPAIR TOKEN TRACKER */
+  const checkTokenBtn = document.getElementById('checkTokenBtn');
+  const tokenInput = document.getElementById('repairTokenInput');
+  const tokenResult = document.getElementById('repairTokenResult');
+  checkTokenBtn?.addEventListener('click', () => {
+    const code = (tokenInput.value || '').trim().toUpperCase().replace('#', '');
+    const job = repairJobsDB[code];
+    if (!job) {
+      tokenResult.innerHTML = `
+        <div class="text-brand-red font-bold">Token "${code || 'Empty'}" not found in active bench queue.</div>
+        <p class="text-slate-600">Try sample tokens <strong>EE-101</strong>, <strong>EE-102</strong>, or <strong>EE-103</strong>, or contact our counter with your receipt.</p>
+      `;
+      return;
+    }
+    tokenResult.innerHTML = `
+      <div class="flex items-center justify-between">
+        <strong class="text-slate-900 font-mono">Token: #${code}</strong>
+        <span class="${job.badgeClass} font-bold px-2 py-0.5 rounded text-[11px]">${job.status}</span>
+      </div>
+      <p class="text-slate-700"><strong>Item:</strong> ${job.item}</p>
+      <p class="text-slate-600"><strong>Update:</strong> ${job.note}</p>
+    `;
+  });
+
+  /* 8. PARCHI PHOTO PREVIEW & UPLOAD HANDLER */
+  const parchiFileInput = document.getElementById('parchiFileInput');
+  const parchiFileName = document.getElementById('parchiFileName');
+  const parchiPreviewWrap = document.getElementById('parchiPreviewWrap');
+  const parchiPreviewImg = document.getElementById('parchiPreviewImg');
+
+  parchiFileInput?.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    parchiFileName.textContent = `Selected: ${file.name}`;
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        parchiPreviewImg.src = ev.target.result;
+        parchiPreviewWrap.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  document.getElementById('parchiForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('parchiCustomerName').value.trim();
+    const phone = document.getElementById('parchiCustomerPhone').value.trim();
+    const brand = document.getElementById('parchiBrandPref').value.trim() || 'Standard ISI';
+    const fileName = parchiFileInput?.files[0]?.name || 'Handwritten Parchi';
+
+    closeParchiModal();
+    openEnquiry(`Handwritten Parchi Upload (${fileName}) - Brand Pref: ${brand}`);
+    document.getElementById('customerName').value = name;
+    document.getElementById('customerPhone').value = phone;
+  });
+
+  /* 9. LOCAL REVIEWS */
+  const reviewsGrid = document.getElementById('googleReviewsGrid');
+  if (reviewsGrid) {
+    const reviews = [
+      { author: 'Sandeep Tomar', loc: 'Saroorpur Kalan', text: 'Bought complete Finolex house wiring coils, Anchor Roma switches, and Legrand MCB box. 100% genuine stock at wholesale rate.' },
+      { author: 'Vikas Chaudhary', loc: 'Baraut', text: 'Fastest copper ceiling fan winding and geyser repair in our area. Same-day technician fixed our house earthing fault.' },
+      { author: 'Mohit Sharma (Contractor)', loc: 'Baghpat', text: 'Sourcing from Everest Electricals for 8 years. Transparent GST billing and unused switch boxes are exchanged easily.' }
+    ];
+    reviewsGrid.innerHTML = reviews.map(r => `
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <div class="text-amber-500 text-xs mb-1">★★★★★</div>
+        <p class="text-xs text-slate-700 leading-relaxed mb-2">"${r.text}"</p>
+        <strong class="text-xs font-bold text-slate-900 block">${r.author} <span class="text-slate-500 font-normal">· ${r.loc}</span></strong>
+      </div>
+    `).join('');
+  }
+
+  /* 10. ESTIMATE CART INITIALIZATION */
+  try {
+    estimateCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]');
+  } catch (e) {
+    estimateCart = [];
+  }
+  renderCart();
+
+  document.getElementById('openCartBtn')?.addEventListener('click', toggleCartDrawer);
+  document.getElementById('closeCartBtn')?.addEventListener('click', toggleCartDrawer);
+  document.getElementById('closeCartBackdrop')?.addEventListener('click', toggleCartDrawer);
+  document.getElementById('transferCartToFormBtn')?.addEventListener('click', () => {
+    toggleCartDrawer();
+    const summary = estimateCart.map(i => `${i.qty}x ${i.name} (₹${i.price * i.qty})`).join('\n- ');
+    openEnquiry(`Estimate List (${estimateCart.length} items)`);
+    document.getElementById('enquiryMessage').value = `Please share best bulk trade price for:\n- ${summary}`;
+  });
+});
+
+/* ==========================================================================
+   GLOBAL INTERACTIVE FUNCTIONS
+   ========================================================================== */
+
+function switchCalcTab(tab) {
+  const bhkDiv = document.getElementById('calcTabBhk');
+  const wireDiv = document.getElementById('calcTabWire');
+  const btnBhk = document.getElementById('tabBtnBhk');
+  const btnWire = document.getElementById('tabBtnWire');
+
+  if (tab === 'bhk') {
+    bhkDiv.classList.remove('hidden');
+    wireDiv.classList.add('hidden');
+    btnBhk.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white transition';
+    btnWire.className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 transition';
+  } else {
+    wireDiv.classList.remove('hidden');
+    bhkDiv.classList.add('hidden');
+    btnWire.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white transition';
+    btnBhk.className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 transition';
+  }
+}
+
+function openParchiModal() {
+  document.getElementById('parchiModal')?.classList.remove('hidden');
+}
+
+function closeParchiModal() {
+  document.getElementById('parchiModal')?.classList.add('hidden');
+}
+
+function toggleCartDrawer() {
+  document.getElementById('quoteCartDrawer')?.classList.toggle('hidden');
+}
+
+function addToQuoteCart(sku, name, price) {
+  const existing = estimateCart.find(i => i.sku === sku);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    estimateCart.push({ sku, name, price, qty: 1 });
+  }
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(estimateCart));
+  renderCart();
+  const drawer = document.getElementById('quoteCartDrawer');
+  if (drawer && drawer.classList.contains('hidden')) toggleCartDrawer();
+}
+
+function updateCartQty(sku, delta) {
+  const item = estimateCart.find(i => i.sku === sku);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) estimateCart = estimateCart.filter(i => i.sku !== sku);
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(estimateCart));
+  renderCart();
+}
+
+function renderCart() {
+  const badge = document.getElementById('cartCountBadge');
+  const container = document.getElementById('cartItemsContainer');
+  const subTotalEl = document.getElementById('cartSubTotalValue');
+  const totalEl = document.getElementById('cartTotalValue');
+
+  const totalCount = estimateCart.reduce((sum, i) => sum + i.qty, 0);
+  const totalPrice = estimateCart.reduce((sum, i) => sum + i.qty * i.price, 0);
+  const taxableValue = Math.round(totalPrice / 1.18);
+
+  if (badge) badge.textContent = totalCount;
+  if (subTotalEl) subTotalEl.textContent = `₹${taxableValue.toLocaleString('en-IN')}`;
+  if (totalEl) totalEl.textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
+
+  if (!container) return;
+  if (estimateCart.length === 0) {
+    container.innerHTML = `<div class="text-center py-10 text-slate-400">Your Estimate List is empty. Click "+ Add to List" on any product to build an instant bill of materials.</div>`;
+    return;
+  }
+
+  container.innerHTML = estimateCart.map(item => `
+    <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+      <div class="pr-2">
+        <div class="font-bold text-slate-900">${item.name}</div>
+        <div class="text-[11px] font-mono text-slate-500">${item.sku} · ₹${item.price} × ${item.qty} = ₹${item.price * item.qty}</div>
+      </div>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button onclick="updateCartQty('${item.sku}', -1)" class="w-6 h-6 rounded bg-slate-200 hover:bg-slate-300 font-bold">-</button>
+        <span class="font-mono font-bold w-4 text-center">${item.qty}</span>
+        <button onclick="updateCartQty('${item.sku}', 1)" class="w-6 h-6 rounded bg-slate-900 text-white font-bold">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* Generates a clean, printable Proforma GST Estimate Sheet in a new window */
+function printGstEstimate() {
+  if (estimateCart.length === 0) {
+    alert('Please add at least one product to your Estimate List before printing.');
+    return;
+  }
+  const total = estimateCart.reduce((sum, i) => sum + i.qty * i.price, 0);
+  const taxable = Math.round(total / 1.18);
+  const gst = total - taxable;
+
+  const rows = estimateCart.map((item, idx) => `
+    <tr>
+      <td style="padding:8px;border:1px solid #cbd5e1;">${idx + 1}</td>
+      <td style="padding:8px;border:1px solid #cbd5e1;"><strong>${item.name}</strong><br><small>SKU: ${item.sku}</small></td>
+      <td style="padding:8px;border:1px solid #cbd5e1;text-align:center;">${item.qty}</td>
+      <td style="padding:8px;border:1px solid #cbd5e1;text-align:right;">₹${item.price.toLocaleString('en-IN')}</td>
+      <td style="padding:8px;border:1px solid #cbd5e1;text-align:right;"><strong>₹${(item.price * item.qty).toLocaleString('en-IN')}</strong></td>
+    </tr>
+  `).join('');
+
+  const win = window.open('', '_blank', 'width=800,height=700');
+  win.document.write(`
+    <html>
+    <head>
+      <title>Proforma Estimate - Everest Electricals</title>
+      <style>
+        body { font-family: Arial, sans-serif; padding: 30px; color: #0f172a; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 13px; }
+      </style>
+    </head>
+    <body>
+      <div style="display:flex;justify-content:space-between;border-bottom:2px solid #0f172a;padding-bottom:12px;">
+        <div>
+          <h2 style="margin:0;">EVEREST ELECTRICALS</h2>
+          <p style="margin:4px 0;font-size:12px;">Main Market, Saroorpur Kalan, Baghpat (UP) – 250611<br>Authorized ISI Electrical Retail & Wholesale Counter (Est. 1980)</p>
+        </div>
+        <div style="text-align:right;font-size:12px;">
+          <strong>PROFORMA ESTIMATE</strong><br>
+          Date: ${new Date().toLocaleDateString('en-IN')}
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr style="background:#f1f5f9;">
+            <th style="padding:8px;border:1px solid #cbd5e1;text-align:left;">#</th>
+            <th style="padding:8px;border:1px solid #cbd5e1;text-align:left;">Item Description</th>
+            <th style="padding:8px;border:1px solid #cbd5e1;">Qty</th>
+            <th style="padding:8px;border:1px solid #cbd5e1;text-align:right;">Unit Rate (Inc. GST)</th>
+            <th style="padding:8px;border:1px solid #cbd5e1;text-align:right;">Line Total</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div style="margin-top:16px;text-align:right;font-size:13px;">
+        <p style="margin:4px 0;">Taxable Amount: ₹${taxable.toLocaleString('en-IN')}</p>
+        <p style="margin:4px 0;">Included GST (18%): ₹${gst.toLocaleString('en-IN')}</p>
+        <h3 style="margin:8px 0;">Grand Estimate Total: ₹${total.toLocaleString('en-IN')}</h3>
+        <p style="font-size:11px;color:#64748b;">Bring this sheet to Everest Electricals counter for special bulk contractor discount.</p>
+      </div>
+      <script>window.print();<\/script>
+    </body>
+    </html>
+  `);
+  win.document.close();
+}
+
+function openEnquiry(productName) {
+  const typeSelect = document.getElementById('enquiryType');
+  const subjectInput = document.getElementById('enquirySubject');
+  const messageInput = document.getElementById('enquiryMessage');
+  if (typeSelect) typeSelect.value = 'Product Enquiry';
+  if (subjectInput) subjectInput.value = productName;
+  if (messageInput) messageInput.value = `Hi Everest Electricals, please share the best counter/wholesale price for: ${productName}.`;
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 }
 
 function openRepairEnquiry(serviceName) {
-  modalTitle.textContent       = 'Repair Service Enquiry';
-  modalProductName.textContent = serviceName;
-  modalProductName.className   = 'modal-product-name repair-name';
-  modalIconWrap.className      = 'modal-icon modal-icon--repair';
-  modalIconWrap.innerHTML      = '<i class="fas fa-tools"></i>';
-  modalDesc.textContent        = 'Need this repair service? Reach out to us:';
-
-  const emailLink = document.getElementById('modalEmail');
-  if (emailLink) {
-    const subject = encodeURIComponent(`Repair Enquiry: ${serviceName} – Everest Electricals`);
-    const body    = encodeURIComponent(`Hello,\n\nI need: ${serviceName}\n\nPlease contact me at your earliest.\n\nThank you.`);
-    emailLink.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
-  }
-
-  enquiryModal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  enquiryModal.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-modalClose.addEventListener('click', closeModal);
-enquiryModal.addEventListener('click', e => { if (e.target === enquiryModal) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-/* ========================================
-   CONTACT FORM VALIDATION
-   ======================================== */
-const contactForm  = document.getElementById('contactForm');
-const formSuccess  = document.getElementById('formSuccess');
-
-function showError(inputId, errorId, msg) {
-  const inp = document.getElementById(inputId);
-  const err = document.getElementById(errorId);
-  if (inp) inp.classList.add('error');
-  if (err) err.textContent = msg;
-}
-function clearErrors() {
-  ['formName','formPhone','formEmail','formMessage'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.remove('error');
-  });
-  ['nameError','phoneError','emailError','messageError'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = '';
-  });
-}
-
-// Real-time clear on input
-['formName','formPhone','formEmail','formMessage'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('input', () => {
-    el.classList.remove('error');
-    const errId = id.replace('form','').toLowerCase() + 'Error';
-    const errEl = document.getElementById(errId);
-    if (errEl) errEl.textContent = '';
-  });
-});
-
-contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  clearErrors();
-  let valid = true;
-
-  const name  = document.getElementById('formName').value.trim();
-  const phone = document.getElementById('formPhone').value.trim().replace(/\s/g,'');
-  const email = document.getElementById('formEmail').value.trim();
-  const msg   = document.getElementById('formMessage').value.trim();
-
-  if (!name || name.length < 2) {
-    showError('formName', 'nameError', 'Please enter your full name (min 2 characters).');
-    valid = false;
-  }
-  if (!phone) {
-    showError('formPhone', 'phoneError', 'Please enter your phone number.');
-    valid = false;
-  } else if (!/^[6-9]\d{9}$/.test(phone)) {
-    showError('formPhone', 'phoneError', 'Enter a valid 10-digit Indian mobile number.');
-    valid = false;
-  }
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showError('formEmail', 'emailError', 'Please enter a valid email address.');
-    valid = false;
-  }
-  if (!msg || msg.length < 10) {
-    showError('formMessage', 'messageError', 'Please write a message (min 10 characters).');
-    valid = false;
-  }
-  if (!valid) return;
-
-  const submitBtn    = document.getElementById('submitFormBtn');
-  const errorBanner  = document.getElementById('formErrorBanner');
-  const mailtoLink   = document.getElementById('mailtoFallback');
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  submitBtn.disabled  = true;
-
-  // Build pre-filled mailto link and open user's email client
-  const product  = document.getElementById('formProduct') ? document.getElementById('formProduct').value : '';
-  const urgency  = document.getElementById('formUrgency') ? document.getElementById('formUrgency').value : '';
-  const subject  = encodeURIComponent(`Enquiry from ${name} – Everest Electricals`);
-  const mailBody = encodeURIComponent(
-    `Name: ${name}\nPhone: ${phone}\nEmail: ${email || 'Not provided'}\nProduct/Service: ${product || 'General Enquiry'}\nUrgency: ${urgency || 'Not specified'}\n\nMessage:\n${msg}`
-  );
-
-  window.location.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${mailBody}`;
-
-  // Show success state
-  contactForm.reset();
-  submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-  submitBtn.disabled  = false;
-  if (errorBanner) errorBanner.style.display = 'none';
-  formSuccess.style.display = 'flex';
-  setTimeout(() => { formSuccess.style.display = 'none'; }, 8000);
-});
-
-/* ========================================
-   FOOTER YEAR
-   ======================================== */
-const footerYear = document.getElementById('footerYear');
-if (footerYear) footerYear.textContent = new Date().getFullYear();
-
-/* ========================================
-   GALLERY ITEM CLICK → TOAST
-   ======================================== */
-document.querySelectorAll('.gallery-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const label = item.querySelector('.gallery-overlay span')?.textContent || 'Photo';
-    showToast(`📸 ${label}`);
-  });
-});
-
-function showToast(message) {
-  document.querySelector('.toast')?.remove();
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.textContent = message;
-  toast.style.cssText = `
-    position:fixed; bottom:100px; left:50%; transform:translateX(-50%);
-    background:rgba(10,31,68,0.95); color:#fff;
-    padding:12px 24px; border-radius:50px;
-    font-size:0.9rem; font-weight:600;
-    box-shadow:0 8px 24px rgba(0,0,0,0.3);
-    z-index:3000; white-space:nowrap;
-    border:1px solid rgba(255,215,0,0.25);
-    animation:slide-up-toast 0.3s ease;
-  `;
-
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transition = 'opacity 0.3s ease';
-    setTimeout(() => toast.remove(), 300);
-  }, 2500);
-}
-
-/* ========================================
-   WHATSAPP FLOAT – Delayed show
-   ======================================== */
-const waFloat = document.getElementById('whatsappFloat');
-if (waFloat) {
-  waFloat.style.cssText += 'opacity:0;transform:scale(0.5);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);';
-  setTimeout(() => { waFloat.style.opacity = '1'; waFloat.style.transform = 'scale(1)'; }, 3000);
-}
-
-/* [data-wa-product] listener removed — no elements use this attribute in HTML */
-
-/* ========================================
-   SERVICE CARD RIPPLE
-   ======================================== */
-document.querySelectorAll('.service-card, .why-card').forEach(card => {
-  card.addEventListener('click', function (e) {
-    const ripple = document.createElement('span');
-    const color  = this.classList.contains('service-card--repair') ? 'rgba(255,76,41,0.2)' : 'rgba(255,215,0,0.2)';
-    ripple.style.cssText = `
-      position:absolute; border-radius:50%;
-      width:10px; height:10px;
-      background:${color};
-      transform:scale(0);
-      animation:ripple-grow 0.6s linear;
-      left:${e.offsetX-5}px; top:${e.offsetY-5}px;
-      pointer-events:none;
-    `;
-    this.style.overflow = 'hidden';
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-  });
-});
-
-
-
-/* ========================================
-   FAN ICON – Spin on hover
-   ======================================== */
-const fanIcon = document.querySelector('.product-img--fan i');
-if (fanIcon) {
-  const fanStyle = document.createElement('style');
-  fanStyle.textContent = `@keyframes spin-fan{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`;
-  document.head.appendChild(fanStyle);
-  fanIcon.parentElement.addEventListener('mouseenter', () => { fanIcon.style.animation = 'spin-fan 1s linear infinite'; });
-  fanIcon.parentElement.addEventListener('mouseleave', () => { fanIcon.style.animation = ''; });
-}
-
-/* ========================================
-   REPAIR CARD PULSING GLOW (on featured)
-   ======================================== */
-const featureRepairCard = document.querySelector('.repair-card--featured');
-if (featureRepairCard) {
-  const glowStyle = document.createElement('style');
-  glowStyle.textContent = `
-    @keyframes repair-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255,76,41,0); }
-      50% { box-shadow: 0 0 0 8px rgba(255,76,41,0.08); }
-    }
-    .repair-card--featured { animation: repair-glow 3s ease infinite; }
-  `;
-  document.head.appendChild(glowStyle);
-}
-
-/* ========================================
-   AUTO-SELECT REPAIR IN FORM (from modal)
-   ======================================== */
-/* Auto-fill contact form — called when user wants to pre-fill a service/product.
-   Usage: prefillForm('Fan Repair & Servicing', true) */
-window.prefillForm = function (value, urgency) {
-  const sel = document.getElementById('formProduct');
-  if (sel) {
-    for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].value === value) { sel.selectedIndex = i; break; }
-    }
-  }
-  if (urgency) {
-    const urg = document.getElementById('formUrgency');
-    if (urg) {
-      for (let i = 0; i < urg.options.length; i++) {
-        if (urg.options[i].value.includes('Today')) { urg.selectedIndex = i; break; }
-      }
-    }
-  }
+  const typeSelect = document.getElementById('enquiryType');
+  const subjectInput = document.getElementById('enquirySubject');
+  const messageInput = document.getElementById('enquiryMessage');
+  if (typeSelect) typeSelect.value = 'Repair Booking';
+  if (subjectInput) subjectInput.value = serviceName;
+  if (messageInput) messageInput.value = `Hi Everest Electricals, I want to book a repair/technician for: ${serviceName}.`;
   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-};
-
-console.log('%c⚡ Everest Electricals – Website Loaded!', 'color:#F59E0B;font-size:16px;font-weight:bold;background:#0C2340;padding:8px 16px;border-radius:6px;');
-
-/* ========================================
-   NEWSLETTER FORM — mailto fallback (no backend configured)
-   ======================================== */
-const newsletterForm    = document.getElementById('newsletterForm');
-const newsletterSuccess = document.getElementById('newsletterSuccess');
-
-if (newsletterForm) {
-  newsletterForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const email = document.getElementById('newsletterEmail').value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showToast('⚠️ Please enter a valid email address.');
-      return;
-    }
-    // Open pre-filled email to subscribe
-    const subject = encodeURIComponent('Trade Deals Subscription – Everest Electricals');
-    const body    = encodeURIComponent(`Please add me to your trade deals mailing list.\n\nEmail: ${email}`);
-    window.location.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
-    newsletterForm.style.display = 'none';
-    if (newsletterSuccess) newsletterSuccess.style.display = 'flex';
-  });
 }
-
-
-
-/* ========================================
-   B1: Navigation Product Search
-   ======================================== */
-const navSearchInput = document.getElementById('navSearchInput');
-const navSearchBtn   = document.getElementById('navSearchBtn');
-
-function runProductSearch() {
-  const query = navSearchInput ? navSearchInput.value.trim().toLowerCase() : '';
-  if (!query) return;
-
-  // Scroll to products section first
-  const productsSection = document.getElementById('products');
-  if (productsSection) {
-    const navH = navbar ? navbar.offsetHeight : 72;
-    window.scrollTo({ top: productsSection.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
-  }
-
-  // Activate 'All Products' filter
-  const allFilter = document.querySelector('.filter-btn[data-filter="all"]');
-  if (allFilter) {
-    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-    allFilter.classList.add('active'); allFilter.setAttribute('aria-selected','true');
-  }
-
-  let matches = 0;
-  document.querySelectorAll('.product-card').forEach(card => {
-    const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
-    const desc = card.querySelector('.product-desc')?.textContent.toLowerCase() || '';
-    const brand = card.querySelector('.product-brand')?.textContent.toLowerCase() || '';
-    const hit  = name.includes(query) || desc.includes(query) || brand.includes(query);
-    card.classList.toggle('hidden', !hit);
-    if (hit) matches++;
-  });
-
-  if (matches === 0) {
-    showToast(`🔍 No products found for “${navSearchInput.value.trim()}”`);
-    // Reset to show all after 3 seconds
-    setTimeout(() => {
-      document.querySelectorAll('.product-card').forEach(c => c.classList.remove('hidden'));
-    }, 3000);
-  } else {
-    showToast(`✅ ${matches} product${matches > 1 ? 's' : ''} found for “${navSearchInput.value.trim()}”`);
-  }
-}
-
-if (navSearchBtn) navSearchBtn.addEventListener('click', runProductSearch);
-if (navSearchInput) {
-  navSearchInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') runProductSearch();
-  });
-  // Reset product list when search is cleared
-  navSearchInput.addEventListener('input', () => {
-    if (navSearchInput.value.trim() === '') {
-      document.querySelectorAll('.product-card').forEach(c => c.classList.remove('hidden'));
-    }
-  });
-}
-
-/* FIX 3 – Apply .scrolled class on initial page load if already scrolled */
-if (navbar && window.scrollY > 60) {
-  navbar.classList.add('scrolled');
-}
-

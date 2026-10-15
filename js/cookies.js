@@ -1,123 +1,72 @@
-/* ========================================
-   COOKIE CONSENT — Everest Electricals
-   Stores preference in localStorage (not a cookie itself).
-   Gates: Google Maps iframe, Google Places API.
-   ======================================== */
+/* ==========================================================================
+   EVEREST ELECTRICALS - COOKIE & PREFERENCE MANAGER (js/cookies.js)
+   Synced with cookies.json key: 'ee_cookie_consent'
+   ========================================================================== */
+
 (function () {
-  'use strict';
+  const CONSENT_STORAGE_KEY = 'ee_cookie_consent';
+  const CONSENT_EXPIRY_DAYS = 180;
 
-  var STORAGE_KEY = 'ee_cookie_consent'; // 'accepted' | 'rejected'
-  var banner;
+  function getStoredConsent() {
+    try {
+      const raw = localStorage.getItem(CONSENT_STORAGE_KEY);
+      if (!raw) return null;
 
-  /* ---- Public API ---- */
-  window.cookieConsent = {
-    accept: accept,
-    reject: reject,
-    hasConsent: hasConsent
-  };
+      const data = JSON.parse(raw);
+      if (!data || !data.timestamp) return null;
 
-  function hasConsent() {
-    return localStorage.getItem(STORAGE_KEY) === 'accepted';
-  }
-
-  function accept() {
-    localStorage.setItem(STORAGE_KEY, 'accepted');
-    hideBanner();
-    activateConsentedFeatures();
-  }
-
-  function reject() {
-    localStorage.setItem(STORAGE_KEY, 'rejected');
-    hideBanner();
-  }
-
-  function hideBanner() {
-    if (banner) {
-      banner.classList.remove('visible');
-      setTimeout(function () { if (banner) banner.remove(); }, 500);
-    }
-  }
-
-  /* ---- Activate features that need consent ---- */
-  function activateConsentedFeatures() {
-    loadConsentedMap();
-    loadGooglePlaces();
-  }
-
-  /* ---- Map loader (called from inline button too) ---- */
-  window.loadConsentedMap = function () {
-    var iframe = document.getElementById('shopMapEmbed');
-    var placeholder = document.getElementById('mapConsentPlaceholder');
-    if (iframe && !iframe.src) {
-      var dataSrc = iframe.getAttribute('data-src');
-      if (dataSrc) {
-        iframe.src = dataSrc;
-        iframe.style.display = 'block';
+      const expiryMs = CONSENT_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+      if (Date.now() - data.timestamp > expiryMs) {
+        localStorage.removeItem(CONSENT_STORAGE_KEY);
+        return null;
       }
+      return data.status;
+    } catch (err) {
+      return null;
     }
-    if (placeholder) placeholder.style.display = 'none';
-  };
-
-  /* ---- Google Places / Reviews loader ---- */
-  function loadGooglePlaces() {
-    // Check if Places API script already injected (it injects itself if key is set)
-    // The existing inline Google Reviews script checks for API key;
-    // we trigger it here post-consent by dispatching a custom event.
-    document.dispatchEvent(new Event('cookieConsented'));
   }
 
-  /* ---- Build and inject the banner DOM ---- */
-  function showBanner() {
-    banner = document.createElement('div');
-    banner.id = 'cookieBanner';
-    banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-label', 'Cookie consent');
-    banner.innerHTML =
-      '<div class="cookie-icon">🍪</div>' +
-      '<div class="cookie-text">' +
-        '<strong>We use cookies</strong>' +
-        '<p>We embed Google Maps to show our shop location. Google may set cookies ' +
-        '(<em>NID, CONSENT, SOCS</em>) when the map loads. No tracking cookies are set ' +
-        'by this website itself. ' +
-        '<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google\'s Privacy Policy</a>.' +
-        '</p>' +
-      '</div>' +
-      '<div class="cookie-actions">' +
-        '<button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept &amp; Show Map</button>' +
-        '<button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject</button>' +
-      '</div>';
+  function saveConsent(status) {
+    try {
+      localStorage.setItem(
+        CONSENT_STORAGE_KEY,
+        JSON.stringify({ status, timestamp: Date.now() })
+      );
+    } catch (err) {}
+  }
 
-    document.body.appendChild(banner);
+  function hideBanner(banner) {
+    if (!banner) return;
+    banner.classList.remove('cookie-banner--visible');
+    setTimeout(() => banner.setAttribute('hidden', ''), 360);
+  }
 
-    // Animate in after paint
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        banner.classList.add('visible');
-      });
+  function showBanner(banner) {
+    if (!banner) return;
+    banner.removeAttribute('hidden');
+    void banner.offsetWidth;
+    banner.classList.add('cookie-banner--visible');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const declineBtn = document.getElementById('declineCookies');
+
+    if (!banner) return;
+
+    if (!getStoredConsent()) {
+      setTimeout(() => showBanner(banner), 1200);
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+      saveConsent('accepted');
+      hideBanner(banner);
     });
 
-    document.getElementById('cookieAccept').addEventListener('click', accept);
-    document.getElementById('cookieReject').addEventListener('click', reject);
-  }
-
-  /* ---- Init ---- */
-  function init() {
-    var stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'accepted') {
-      // Already accepted — load everything silently
-      activateConsentedFeatures();
-    } else if (stored === 'rejected') {
-      // Already rejected — do nothing, map stays hidden
-    } else {
-      // First visit — show banner
-      showBanner();
-    }
-  }
-
-  // Run after DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+    declineBtn?.addEventListener('click', () => {
+      saveConsent('rejected');
+      hideBanner(banner);
+    });
+  });
 })();

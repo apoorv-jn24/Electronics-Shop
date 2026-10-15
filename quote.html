@@ -3,239 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request a Bulk Quote | Everest Electricals – Saroorpur Kalan, UP</title>
-  <meta name="description" content="Request a bulk order quote from Everest Electricals. We supply ISI-certified electrical goods across Saroorpur, Baraut, and Baghpat at competitive trade prices." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://everest-electricals.vercel.app/quote.html" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Request a Quote | Everest Electricals" />
-  <meta property="og:description" content="Get competitive trade pricing on bulk electrical supplies. ISI-certified products, fast delivery in Western UP." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://everest-electricals.vercel.app/quote.html" />
-  <meta property="og:image" content="https://everest-electricals.vercel.app/images/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_IN" />
-  <meta property="og:site_name" content="Everest Electricals" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Request a Quote | Everest Electricals" />
-  <meta name="twitter:description" content="Get competitive trade pricing on bulk electrical supplies. ISI-certified products, fast delivery in Western UP." />
-  <meta name="twitter:image" content="https://everest-electricals.vercel.app/images/og-image.jpg" />
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Request a Bulk Quote – Everest Electricals",
-    "url": "https://everest-electricals.vercel.app/quote.html",
-    "description": "Request competitive trade pricing on bulk electrical supplies from Everest Electricals, Saroorpur Kalan, UP.",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://everest-electricals.vercel.app/" },
-        { "@type": "ListItem", "position": 2, "name": "Request a Quote", "item": "https://everest-electricals.vercel.app/quote.html" }
-      ]
-    }
-  }
-  </script>
-
-  <!-- Fonts & Icons -->
+  <title>Contractor & House-Wiring Bulk Quote | Everest Electricals</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <!-- FontAwesome non-blocking -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
-
-  <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* Quote specific tweaks */
-    #navbar { background: var(--white); box-shadow: var(--shadow); position: relative; top: 0; }
-    .quote-page { padding: 80px 0; background: var(--off-white); min-height: calc(100vh - 200px); }
-    .quote-container { max-width: 700px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
-    .quote-header { text-align: center; margin-bottom: 32px; }
-    .quote-header h1 { font-family: var(--font-heading); color: var(--primary); font-size: var(--fs-h2); margin-bottom: 12px; }
-    .quote-header p { color: var(--text-mid); }
-    .quote-success { display: none; text-align: center; padding: 40px 20px; }
-    .quote-success i { font-size: 3rem; color: #10B981; margin-bottom: 16px; }
-    .quote-success h3 { font-size: var(--fs-h3); color: var(--text-dark); margin-bottom: 8px; }
-
-    @media (max-width: 640px) {
-      .quote-container { padding: 24px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-100 text-slate-900 font-['Plus_Jakarta_Sans'] antialiased">
 
-  <!-- ========== TOP BAR ========== -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-inner container">
-      <span class="topbar-item">
-        <i class="fas fa-truck"></i> Free delivery on bulk orders above ₹2,000
-      </span>
-      <span class="topbar-divider"></span>
-      <span class="topbar-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" target="_blank" rel="noopener noreferrer">Find us on Google Maps</a>
-      </span>
-    </div>
-  </div>
-
-  <!-- ========== NAVBAR ========== -->
-  <header id="navbar">
-    <nav class="nav-container container">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
-        <span class="logo-text">Everest <span class="accent">Electricals</span></span>
+  <header class="bg-[#090D16] text-white py-4 px-6 border-b border-white/10">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold"><i class="fas fa-bolt"></i></span>
+        <span class="font-['Space_Grotesk'] font-bold text-lg">EVEREST <span class="text-amber-400">ELECTRICALS</span></span>
       </a>
-      <!-- Simplified Nav for Quote page -->
-      <a href="index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">&larr; Back to Home</a>
-    </nav>
+      <a href="index.html" class="text-xs font-semibold text-amber-400 hover:underline">&larr; Back to Catalog</a>
+    </div>
   </header>
 
-  <!-- ========== QUOTE SECTION ========== -->
-  <section class="quote-page">
-    <div class="container">
-      <div class="quote-container" id="quoteBox">
-        
-        <div class="quote-header">
-          <h1>Request a Quote</h1>
-          <p>Fill out the details below. Our team will verify stock and get back to you with our best trade pricing within 24 hours.</p>
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-10">
+      <span class="text-xs font-mono uppercase tracking-widest text-amber-600 font-bold">Wholesale Trade Counter · Saroorpur Kalan</span>
+      <h1 class="font-['Space_Grotesk'] text-3xl font-bold mt-1 mb-2">Request Contractor / Bulk House-Wiring Quote</h1>
+      <p class="text-sm text-slate-600 mb-8">Build your itemized material list below or paste your electrician's slip for wholesale trade rates.</p>
+
+      <form id="quoteForm" class="space-y-6" novalidate>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Full Name *</label>
+            <input type="text" id="quoteName" required placeholder="e.g. Ramesh Singh" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-amber-500 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Contractor / Firm Name (Optional)</label>
+            <input type="text" id="quoteCompany" placeholder="e.g. RS Electrical Works" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-amber-500 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">10-Digit Mobile / WhatsApp Number *</label>
+            <input type="tel" id="quotePhone" required placeholder="9876543210" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-amber-500 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Delivery Village / Site Location *</label>
+            <input type="text" id="quoteLocation" required placeholder="e.g. Baraut / Saroorpur Kalan" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-amber-500 outline-none" />
+          </div>
         </div>
 
-        <form id="quoteForm" novalidate>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="quoteName">Full Name <span class="required">*</span></label>
-              <div class="input-wrap">
-                <i class="fas fa-user"></i>
-                <input type="text" id="quoteName" name="name" placeholder="e.g. Ramesh Singh" required autocomplete="name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="quoteCompany">Company / Firm Name (Optional)</label>
-              <div class="input-wrap">
-                <i class="fas fa-building"></i>
-                <input type="text" id="quoteCompany" name="company" placeholder="e.g. RS Construction" autocomplete="organization">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="quotePhone">Phone Number <span class="required">*</span></label>
-              <div class="input-wrap">
-                <i class="fas fa-phone"></i>
-                <input type="tel" id="quotePhone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="quoteEmail">Email Address</label>
-              <div class="input-wrap">
-                <i class="fas fa-envelope"></i>
-                <input type="email" id="quoteEmail" name="email" placeholder="your@email.com" autocomplete="email">
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group" style="margin-top: 20px;">
-            <label for="quoteMessage">Product Details &amp; Quantities <span class="required">*</span></label>
-            <div class="input-wrap textarea-wrap">
-              <i class="fas fa-list-ol"></i>
-              <textarea id="quoteMessage" name="message" rows="5" placeholder="List the items you need (e.g. 50x Finolex 1.5mm wire coils, 20x Anchor switches)..." required></textarea>
-            </div>
-          </div>
-
-          <!-- Honeypot anti-spam field -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;" id="quoteSubmitBtn">
-            <i class="fas fa-paper-plane"></i> Submit Quote Request
-          </button>
-
-          <!-- Inline error banner -->
-          <div id="quoteErrorBanner" style="display:none; margin-top:14px; padding:14px 18px; background:#fef2f2; border:1px solid #e63946; border-radius:10px; color:#991b1b; font-size:0.9rem; font-weight:600;">
-            <i class="fas fa-exclamation-circle"></i>
-            <span id="quoteErrorMsg">Please fill in all required fields.</span>
-          </div>
-        </form>
-
-        <!-- Simulated Success State -->
-        <div class="quote-success" id="quoteSuccessState">
-          <i class="fas fa-check-circle"></i>
-          <h3>Request Received Successfully!</h3>
-          <p style="color: var(--text-mid); margin-bottom: 24px;">Thank you. Our sales team will review your requirements and contact you shortly with a tailored quote.</p>
-          <a href="index.html" class="btn btn-outline" style="display: inline-flex;"><i class="fas fa-arrow-left"></i> Return Home</a>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Material List & Quantities *</label>
+          <textarea id="quoteMessage" rows="6" required placeholder="e.g.&#10;- 10 Coils Finolex 1.5 sq.mm FR Wire&#10;- 4 Coils Finolex 2.5 sq.mm FR Wire&#10;- 1x Polycab 8-Way Double Door DB&#10;- 60x Anchor Roma Modular Switches" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-mono focus:border-amber-500 outline-none"></textarea>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <div id="quoteErrorBanner" class="hidden p-3.5 rounded-xl bg-red-50 border border-red-300 text-red-700 text-xs font-bold"></div>
 
-  <!-- ========== FOOTER (Simplified) ========== -->
-  <footer class="footer">
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <p>&copy; <span id="currentYearQuote"></span> Everest Electricals. All Rights Reserved.</p>
-      </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-lg transition">
+          <i class="fas fa-paper-plane mr-2"></i> Generate Official Trade Quote Request
+        </button>
+      </form>
     </div>
-  </footer>
+  </main>
 
   <script>
-    document.getElementById('currentYearQuote').textContent = new Date().getFullYear();
+    // Pre-populate from Estimate Cart if items exist
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const savedCart = JSON.parse(localStorage.getItem('ee_estimate_cart') || '[]');
+        if (savedCart.length > 0) {
+          const lines = savedCart.map(i => `- ${i.qty}x ${i.name} (SKU: ${i.sku}) @ ₹${i.price}`);
+          document.getElementById('quoteMessage').value = lines.join('\n');
+        }
+      } catch (e) {}
+    });
 
-    const quoteForm       = document.getElementById('quoteForm');
-    const quoteSubmitBtn  = document.getElementById('quoteSubmitBtn');
-    const quoteErrorBanner = document.getElementById('quoteErrorBanner');
-    const quoteErrorMsg   = document.getElementById('quoteErrorMsg');
-
-    quoteForm.addEventListener('submit', function(e) {
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      quoteErrorBanner.style.display = 'none';
+      const err = document.getElementById('quoteErrorBanner');
+      err.classList.add('hidden');
 
-      const name     = document.getElementById('quoteName').value.trim();
-      const phone    = document.getElementById('quotePhone').value.trim();
-      const msg      = document.getElementById('quoteMessage').value.trim();
-      const honeypot = quoteForm.querySelector('[name="_gotcha"]').value;
+      const name = document.getElementById('quoteName').value.trim();
+      const phone = document.getElementById('quotePhone').value.trim().replace(/\s|-/g, '');
+      const loc = document.getElementById('quoteLocation').value.trim();
+      const msg = document.getElementById('quoteMessage').value.trim();
 
-      // Honeypot check — silently abort if filled (bot)
-      if (honeypot) return;
-
-      if (!name || !phone || !msg) {
-        quoteErrorMsg.textContent = 'Please fill in all required fields (Name, Phone, Product Details).';
-        quoteErrorBanner.style.display = 'block';
+      if (!name || !phone || !loc || !msg) {
+        err.textContent = 'Please complete all required fields.';
+        err.classList.remove('hidden');
+        return;
+      }
+      if (!/^(\+91)?[6-9]\d{9}$/.test(phone)) {
+        err.textContent = 'Please enter a valid 10-digit Indian mobile number.';
+        err.classList.remove('hidden');
         return;
       }
 
-      // Validate Indian phone number
-      const cleanPhone = phone.replace(/\s|-/g, '');
-      if (!/^(\+91)?[6-9]\d{9}$/.test(cleanPhone)) {
-        quoteErrorMsg.textContent = 'Please enter a valid 10-digit Indian mobile number.';
-        quoteErrorBanner.style.display = 'block';
-        return;
-      }
-
-      quoteSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      quoteSubmitBtn.disabled = true;
-
-      // Build and open pre-filled email
-      const company = document.getElementById('quoteCompany').value.trim();
-      const email   = document.getElementById('quoteEmail').value.trim();
-      const subject = encodeURIComponent(`Bulk Quote Request from ${name} – Everest Electricals`);
-      const body    = encodeURIComponent(
-        `Name: ${name}${company ? '\nCompany: ' + company : ''}\nPhone: ${phone}${email ? '\nEmail: ' + email : ''}\n\nItems Needed:\n${msg}`
-      );
+      const subject = encodeURIComponent(`Trade Quote Request: ${name} (${loc})`);
+      const body = encodeURIComponent(`Customer: ${name}\nPhone: ${phone}\nLocation: ${loc}\n\nMaterial List:\n${msg}`);
       window.location.href = `mailto:apoorvjainji@gmail.com?subject=${subject}&body=${body}`;
-
-      // Show success state
-      quoteForm.style.display = 'none';
-      document.querySelector('.quote-header').style.display = 'none';
-      document.getElementById('quoteSuccessState').style.display = 'block';
     });
   </script>
 </body>

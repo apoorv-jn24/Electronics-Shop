@@ -1,1660 +1,1058 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO Meta -->
-  <title>Everest Electricals | Quality Electrical Supplies &amp; Repair Services India</title>
+  <title>Everest Electricals | Authorized ISI Electrical Wholesale & Repair Workshop — Saroorpur Kalan</title>
   <meta name="description"
-    content="Everest Electricals – Your trusted electrical shop in Saroorpur Kalan, UP since 2005. ISI-certified LED lights, wires, switches, fans, MCBs &amp; expert repair services. Serving Saroorpur, Baraut, Baghpat &amp; nearby areas." />
-  <meta name="keywords"
-    content="electrical shop Saroorpur, LED lights, wires, switches, fans, electrical accessories, Everest Electricals, home wiring, appliance repair, electrician Baghpat, ISI certified" />
-  <meta name="author" content="Everest Electricals" />
-  <meta name="robots" content="index, follow" />
+    content="Everest Electricals (Est. 1980) – Authorized stockist of Havells, Finolex, Polycab, Anchor & Legrand in Saroorpur Kalan, Baghpat. Upload electrician parchi, calculate wire load, or track repairs." />
   <link rel="canonical" href="https://everest-electricals.vercel.app/" />
 
-  <!-- Favicon -->
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Everest Electricals | Electrical Shop &amp; Repair Services" />
-  <meta property="og:description"
-    content="ISI-certified electrical products and expert repair services for homes &amp; businesses in Western UP. 20+ years of trusted service since 2005." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://everest-electricals.vercel.app/" />
-  <meta property="og:image" content="https://everest-electricals.vercel.app/images/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt"
-    content="Everest Electricals – Quality Electrical Supplies &amp; Expert Repair Services" />
-  <meta property="og:locale" content="en_IN" />
-  <meta property="og:site_name" content="Everest Electricals" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Everest Electricals | Electrical Shop &amp; Repair Services" />
-  <meta name="twitter:description"
-    content="ISI-certified electrical products and expert repair services in Western UP. 20+ years of trusted service since 2005." />
-  <meta name="twitter:image" content="https://everest-electricals.vercel.app/images/og-image.jpg" />
-  <meta name="twitter:image:alt" content="Everest Electricals – Quality Electrical Supplies" />
-
-  <!-- Fonts: only the weights we actually use -->
+  <!-- Clean, Authoritative Industrial Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- FontAwesome loaded non-blocking -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print"
-    onload="this.media='all'" />
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  </noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0F172A',
+              slate: '#1E293B',
+              red: '#C81E1E',     /* Havells/Finolex style industrial crimson */
+              amber: '#D97706',   /* Warm hardware brass/amber */
+              amberLight: '#FEF3C7'
+            }
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/cookies.css" />
 </head>
 
-<body>
+<body class="bg-[#F4F6F8] text-slate-900 font-sans antialiased">
 
-  <!-- ========== PRELOADER ========== -->
-  <div id="preloader">
-    <div class="preloader-inner">
-      <div class="bolt-icon"><i class="fas fa-bolt"></i></div>
-      <p>Everest Electricals</p>
+  <!-- ========== 1. UTILITY TOP STRIP ========== -->
+  <div class="bg-slate-900 text-slate-300 text-xs border-b border-slate-800 py-2 px-4 print:hidden">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1.5 font-semibold text-amber-400">
+          <i class="fas fa-certificate"></i> 100% Genuine ISI / BIS Certified Counter
+        </span>
+        <span class="hidden md:inline text-slate-700">|</span>
+        <span class="hidden md:inline-flex items-center gap-1.5 text-slate-300">
+          <i class="fas fa-truck text-amber-400"></i> Free Local Delivery Above ₹2,000 (Saroorpur · Baraut · Baghpat)
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 ml-auto">
+        <div id="liveShopStatus" class="inline-flex items-center gap-1.5 bg-slate-800 px-2.5 py-0.5 rounded border border-slate-700 text-[11px]">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Mon–Sat: 9AM–8PM</span>
+        </div>
+        <button id="langToggleBtn" class="bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 px-2.5 py-0.5 rounded font-semibold text-[11px] transition whitespace-nowrap">
+          <i class="fas fa-language mr-1"></i><span id="langLabel">हिंदी / EN</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- ========== TOP BAR ========== -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-inner container">
-      <span class="topbar-item topbar-hide-mobile">
-        <i class="fas fa-truck"></i>
-        Free delivery on bulk orders above ₹2,000
-      </span>
-      <span class="topbar-divider topbar-hide-mobile"></span>
-      <span class="topbar-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" target="_blank" rel="noopener noreferrer">Find us on Google
-          Maps</a>
-      </span>
-      <span class="topbar-divider topbar-hide-mobile"></span>
-      <span class="topbar-item topbar-hide-mobile">
-        <i class="fas fa-clock"></i>
-        Mon–Sat: 9 AM – 8 PM
-      </span>
-    </div>
-  </div>
-
-  <!-- ========== NAVBAR ========== -->
-  <header id="navbar">
-    <nav class="nav-container container">
-      <a href="#home" class="nav-logo" aria-label="Everest Electricals Home">
-        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
-        <span class="logo-text">Everest <span class="accent">Electricals</span></span>
-      </a>
-
-      <ul class="nav-menu" id="navMenu" role="list" aria-label="Main navigation">
-        <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
-        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
-        <li><a href="#products" class="nav-link" id="nav-products">Products</a></li>
-        <li><a href="#repairs" class="nav-link nav-link--highlight" id="nav-repairs">⚡ Repairs</a></li>
-        <li><a href="#services" class="nav-link" id="nav-services">Services</a></li>
-        <li><a href="#gallery" class="nav-link" id="nav-gallery">Gallery</a></li>
-        <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
-      </ul>
-
-      <!-- Search bar (TODO: wire up search functionality) -->
-      <div class="nav-search" id="navSearch">
-        <input type="text" placeholder="Search products…" aria-label="Search products" id="navSearchInput" />
-        <button class="nav-search-btn" aria-label="Search" id="navSearchBtn">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-
-      <div class="nav-actions">
-        <a href="quote.html" class="nav-quote-btn" id="navQuoteBtn">
-          <i class="fas fa-file-alt"></i> Get a Quote
-        </a>
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" class="nav-call-btn" target="_blank"
-          rel="noopener noreferrer" aria-label="Find us on Google Maps">
-          <i class="fas fa-map-marker-alt"></i> Find Us
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-
-  <!-- ========== HERO SECTION (FIX 2) ========== -->
-  <section id="home" class="hero-section">
-    <div class="hero-bg-overlay"></div>
-    <div class="hero-particles" id="heroParticles"></div>
-
-    <div class="container hero-content">
-
-      <!-- Star rating (FIX 5) -->
-      <div class="hero-rating" id="heroRating">
-        <span class="hero-rating-stars">★★★★★</span>
-        <strong>4.8/5</strong>
-        <span>by 300+ customers</span>
-      </div>
-
-      <!-- Badges -->
-      <div class="hero-badges">
-        <div class="hero-badge">
-          <i class="fas fa-award"></i> Trusted Since 2005
-        </div>
-        <div class="hero-badge hero-badge--repair">
-          <i class="fas fa-tools"></i> Emergency Repairs Available
-        </div>
-      </div>
-
-      <!-- Main headline -->
-      <h1 class="hero-title">
-        Quality Electrical Supplies,<br class="hide-mobile">
-        <span class="hero-accent">Delivered to Your Door</span>
-      </h1>
-      <p class="hero-tagline">
-        Trusted by contractors, builders &amp; homeowners across North India.<br class="hide-mobile">
-        ISI-certified products · Expert repair team · Same-day service.
-      </p>
-
-      <!-- CTAs (FIX 2) -->
-      <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary" id="heroShopNow">
-          <i class="fas fa-bolt"></i> Shop Now
-        </a>
-        <a href="quote.html" class="btn btn-outline" id="heroGetQuote">
-          <i class="fas fa-file-alt"></i> Get a Quote
-        </a>
-      </div>
-
-      <!-- Trust bar — 3 key stats (FIX 2) -->
-      <div class="hero-trust-strip">
-        <div class="hero-trust-item">
-          <i class="fas fa-boxes"></i> <span>500+ Products</span>
-        </div>
-        <div class="hero-trust-item">
-          <i class="fas fa-shipping-fast"></i> <span>Same-Day Service</span>
-        </div>
-        <div class="hero-trust-item">
-          <i class="fas fa-headset"></i> <span>Expert Support</span>
-        </div>
-      </div>
-
-      <!-- Animated stat counters (kept from original) -->
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-icon"><i class="fas fa-box-open"></i></span>
-          <span class="stat-number" data-target="20">20</span><span>+</span>
-          <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-icon"><i class="fas fa-users"></i></span>
-          <span class="stat-number" data-target="5000">5,000</span><span>+</span>
-          <span class="stat-label">Happy Customers</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-icon"><i class="fas fa-boxes"></i></span>
-          <span class="stat-number" data-target="500">500</span><span>+</span>
-          <span class="stat-label">Products</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-icon"><i class="fas fa-tools"></i></span>
-          <span class="stat-number" data-target="2000">2,000</span><span>+</span>
-          <span class="stat-label">Repairs Done</span>
-        </div>
-      </div>
-    </div>
-
-    <a href="#why" class="hero-scroll-down" aria-label="Scroll down">
-      <i class="fas fa-chevron-down"></i>
-    </a>
-  </section>
-
-  <!-- ========== WHY CHOOSE US (FIX 5) ========== -->
-  <section id="why" class="why-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Why Customers Choose Us</span>
-        <h2 class="section-title">Built on Trust, <span style="color:var(--accent)">Delivered with Care</span></h2>
-        <p class="section-subtitle">Four reasons why thousands of homes and businesses rely on us</p>
-      </div>
-      <div class="why-grid">
-
-        <div class="why-card" id="whyAccredited">
-          <div class="why-card-icon">
-            <i class="fas fa-certificate"></i>
-          </div>
-          <h3>Accredited Supplier</h3>
-          <p>We stock only ISI-marked, BIS-approved products from India's most trusted brands. Every item is
-            quality-verified before it reaches you.</p>
-        </div>
-
-        <div class="why-card" id="whySameDay">
-          <div class="why-card-icon">
-            <i class="fas fa-shipping-fast"></i>
-          </div>
-          <h3>Same-Day Local Delivery</h3>
-          <p>Order before noon and get your electrical supplies delivered the same day within our service area. Bulk
-            orders dispatched within 24 hours.</p>
-        </div>
-
-        <div class="why-card" id="whyExpert">
-          <div class="why-card-icon">
-            <i class="fas fa-user-cog"></i>
-          </div>
-          <h3>Expert Repair Team</h3>
-          <p>Our trained technicians diagnose and fix electrical faults fast — fans, wiring, appliances, switches.
-            Same-day on-site repair service available.</p>
-        </div>
-
-        <div class="why-card" id="whyReturns">
-          <div class="why-card-icon">
-            <i class="fas fa-undo-alt"></i>
-          </div>
-          <h3>Hassle-Free Returns</h3>
-          <p>Not satisfied? We offer easy returns and exchanges on all products. Your satisfaction is our priority — no
-            questions asked within 7 days.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== ABOUT SECTION ========== -->
-  <section id="about" class="about-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Who We Are</span>
-        <h2 class="section-title">About <span class="accent">Everest Electricals</span></h2>
-        <p class="section-subtitle">Powering homes and businesses with quality products &amp; expert repairs since 2005
-        </p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-image-col">
-          <div class="about-img-wrapper">
-            <div class="about-img-card main-img">
-              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=80"
-                alt="Everest Electricals shop interior" loading="lazy" />
-            </div>
-            <div class="about-exp-badge">
-              <span class="exp-num">20+</span>
-              <span class="exp-text">Years of<br>Excellence</span>
-            </div>
-            <div class="about-img-card side-img">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
-                alt="Electrical products display" loading="lazy" />
-            </div>
-          </div>
-        </div>
-
-        <div class="about-content-col">
-          <h3 class="about-heading">Your Neighbourhood Electrical Expert</h3>
-          <p class="about-text">
-            Everest Electricals has been serving homes and businesses in Saroorpur Kalan
-            and the wider Baghpat district since 2005. We specialise in quality wiring materials,
-            LED lighting, switches, fans, MCBs, distribution boards, and professional electrical repairs.
-          </p>
-          <p class="about-text">
-            Whether you need a single MCB or materials for a complete home wiring project,
-            our experienced team will point you to the right product at the right price —
-            and fix any electrical fault quickly and safely.
-          </p>
-          <p class="about-text about-service-areas">
-            <i class="fas fa-map-marker-alt about-map-icon"></i>
-            <strong>Areas we serve:</strong> Saroorpur Kalan, Baraut, Baghpat, Chhaprauli, Pilana, Kirthali &amp;
-            surrounding villages in Western UP.
-          </p>
-
-          <div class="about-features">
-            <div class="feature-item">
-              <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-              <div>
-                <h4>Quality Assured Products</h4>
-                <p>Only ISI-marked and certified electrical products from trusted brands.</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon"><i class="fas fa-wrench"></i></div>
-              <div>
-                <h4>Expert Repair Services</h4>
-                <p>Trained technicians for home appliance, wiring, and electrical repairs.</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon"><i class="fas fa-users"></i></div>
-              <div>
-                <h4>Trusted by Locals</h4>
-                <p>Serving 5,000+ satisfied customers across homes, offices and shops.</p>
-              </div>
-            </div>
-          </div>
-
-          <a href="#contact" class="btn btn-primary" id="aboutContactBtn">
-            <i class="fas fa-phone"></i> Get In Touch
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- ========== PRODUCTS SECTION ========== -->
-  <section id="products" class="products-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Our Range</span>
-        <h2 class="section-title">Our <span class="accent">Products</span></h2>
-        <p class="section-subtitle">Explore our wide range of quality electrical products</p>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="product-filters" role="tablist" aria-label="Product categories">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" id="filterAll"
-          aria-controls="productsGrid">All Products</button>
-        <button class="filter-btn" data-filter="lighting" role="tab" aria-selected="false" id="filterLighting"
-          aria-controls="productsGrid">Lighting</button>
-        <button class="filter-btn" data-filter="wiring" role="tab" aria-selected="false" id="filterWiring"
-          aria-controls="productsGrid">Wiring</button>
-        <button class="filter-btn" data-filter="switches" role="tab" aria-selected="false" id="filterSwitches"
-          aria-controls="productsGrid">Switches</button>
-        <button class="filter-btn" data-filter="fans" role="tab" aria-selected="false" id="filterFans"
-          aria-controls="productsGrid">Fans</button>
-        <button class="filter-btn" data-filter="accessories" role="tab" aria-selected="false" id="filterAccessories"
-          aria-controls="productsGrid">Accessories</button>
-      </div><!-- /product-filters -->
-
-      <!-- Breadcrumb (FIX 3) -->
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="#home">Home</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>Products</span>
-      </nav>
-
-      <div class="products-grid" id="productsGrid" role="tabpanel" aria-label="Product listings">
-
-        <!-- CARD 1: LED Lights -->
-        <div class="product-card" data-category="lighting" data-sku="EE-LED-001" id="productLED">
-          <div class="product-img-wrap">
-            <img src="images/led_panel_light.png" alt="Havells LED Lights" loading="lazy" width="500" height="340" />
-            <div class="product-badge">Bestseller</div>
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Havells</span>
-            <span class="product-category">Lighting</span>
-            <h3 class="product-name">LED Panel Lights</h3>
-            <span class="product-sku">SKU: EE-LED-001</span>
-            <div class="product-price-row">
-              <span class="product-price">₹499</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-in">In Stock</span>
-            <p class="product-desc">Energy-efficient LED panel lights for every room. Warm &amp; cool white options,
-              ISI-marked.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
-                <span class="review-count">(42 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('LED Panel Lights')" id="enquireLED">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 2: Electrical Wires -->
-        <div class="product-card" data-category="wiring" data-sku="EE-WIR-010" id="productWires">
-          <div class="product-img-wrap">
-            <img src="images/copper_wire_coil.png" alt="Finolex Electrical Wires — 1.5 sq.mm copper cable coil"
-              loading="lazy" width="500" height="200" />
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Finolex</span>
-            <span class="product-category">Wiring</span>
-            <h3 class="product-name">1.5 sq.mm Copper Wire</h3>
-            <span class="product-sku">SKU: EE-WIR-010</span>
-            <div class="product-price-row">
-              <span class="product-price">₹1,150</span>
-              <span class="product-price-vat">per 90m coil · inc. GST</span>
-            </div>
-            <span class="stock-badge stock-in">In Stock</span>
-            <p class="product-desc">ISI-marked copper wires in various gauges. Suitable for domestic and commercial
-              wiring.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.0)</span>
-                <span class="review-count">(38 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('1.5 sq.mm Copper Wire')" id="enquireWires">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3: Switches & Sockets -->
-        <div class="product-card" data-category="switches" data-sku="EE-SWT-020" id="productSwitches">
-          <div class="product-img-wrap">
-            <img src="images/modular_switch_plate.png" alt="Anchor Switches &amp; Sockets" loading="lazy" width="500"
-              height="340" />
-            <div class="product-badge">New</div>
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Anchor</span>
-            <span class="product-category">Switches</span>
-            <h3 class="product-name">Modular Switch Plate</h3>
-            <span class="product-sku">SKU: EE-SWT-020</span>
-            <div class="product-price-row">
-              <span class="product-price">₹349</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-in">In Stock</span>
-            <p class="product-desc">Modular switches, sockets and plates from top brands. Stylish designs for modern
-              homes.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.0)</span>
-                <span class="review-count">(27 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('Modular Switch Plate')" id="enquireSwitches">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 4: Ceiling Fans -->
-        <div class="product-card" data-category="fans" data-sku="EE-FAN-030" id="productFans">
-          <div class="product-img-wrap">
-            <img src="images/ceiling_fan.png" alt="Orient BLDC Ceiling Fan 1200mm" loading="lazy" width="500"
-              height="200" />
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Orient</span>
-            <span class="product-category">Fans</span>
-            <h3 class="product-name">BLDC Ceiling Fan 1200mm</h3>
-            <span class="product-sku">SKU: EE-FAN-030</span>
-            <div class="product-price-row">
-              <span class="product-price">₹2,799</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-low">Low Stock</span>
-            <p class="product-desc">Energy-saving BLDC ceiling fan with remote control. Saves up to 60% electricity vs
-              standard fans.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5)</span>
-                <span class="review-count">(19 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('BLDC Ceiling Fan 1200mm')" id="enquireFans">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 5: MCB (seeded – FIX 4) -->
-        <div class="product-card" data-category="accessories" data-sku="EE-MCB-040" id="productMCB">
-          <div class="product-img-wrap">
-            <img src="images/mcb_breaker.png" alt="Legrand MCB 32A Single Pole circuit breaker" loading="lazy"
-              width="500" height="200" />
-            <div class="product-badge">Trade Pick</div>
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Legrand</span>
-            <span class="product-category">Accessories</span>
-            <h3 class="product-name">MCB 32A Single Pole</h3>
-            <span class="product-sku">SKU: EE-MCB-040</span>
-            <div class="product-price-row">
-              <span class="product-price">₹245</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-in">In Stock</span>
-            <p class="product-desc">ISI-certified 32A single-pole MCB for domestic distribution boards. BIS approved.
-            </p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.8)</span>
-                <span class="review-count">(54 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('MCB 32A Single Pole')" id="enquireMCB">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 6: Distribution Board (seeded – FIX 4) -->
-        <div class="product-card" data-category="accessories" data-sku="EE-DB-050" id="productDB">
-          <div class="product-img-wrap">
-            <img src="images/distribution_board.png" alt="Polycab 8-Way Distribution Board electrical panel"
-              loading="lazy" width="500" height="200" />
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Polycab</span>
-            <span class="product-category">Accessories</span>
-            <h3 class="product-name">8-Way Distribution Board</h3>
-            <span class="product-sku">SKU: EE-DB-050</span>
-            <div class="product-price-row">
-              <span class="product-price">₹1,890</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-in">In Stock</span>
-            <p class="product-desc">8-way consumer unit with main switch and MCB slots. Double-door for safety,
-              ISI-marked.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.2)</span>
-                <span class="review-count">(16 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('8-Way Distribution Board')" id="enquireDB">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 7: Bulbs & Lighting -->
-        <div class="product-card" data-category="lighting" data-sku="EE-BLB-060" id="productBulbs">
-          <div class="product-img-wrap">
-            <img src="images/led_bulb_pack.png" alt="Philips LED Bulbs" loading="lazy" width="500" height="340" />
-            <div class="product-badge">Popular</div>
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Philips</span>
-            <span class="product-category">Lighting</span>
-            <h3 class="product-name">LED Bulb 9W (Pack of 6)</h3>
-            <span class="product-sku">SKU: EE-BLB-060</span>
-            <div class="product-price-row">
-              <span class="product-price">₹389</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-in">In Stock</span>
-            <p class="product-desc">Philips 9W LED GLS bulbs (pack of 6). Warm white, E27 base, 2-year warranty.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Usually dispatched within 24 hours</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><span>(4.9)</span>
-                <span class="review-count">(63 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('LED Bulb 9W Pack of 6')" id="enquireBulbs">Enquire /
-                WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 8: Extension Board -->
-        <div class="product-card" data-category="accessories" data-sku="EE-EXT-070" id="productExtBoards">
-          <div class="product-img-wrap">
-            <img src="images/extension_board.png" alt="Bajaj 6-Socket Extension Board with surge protection"
-              loading="lazy" width="500" height="200" />
-          </div>
-          <div class="product-body">
-            <span class="product-brand">Bajaj</span>
-            <span class="product-category">Accessories</span>
-            <h3 class="product-name">6-Socket Extension Board</h3>
-            <span class="product-sku">SKU: EE-EXT-070</span>
-            <div class="product-price-row">
-              <span class="product-price">₹599</span>
-              <span class="product-price-vat">inc. GST</span>
-            </div>
-            <span class="stock-badge stock-out">Out of Stock</span>
-            <p class="product-desc">Heavy-duty 6-socket extension board with surge protection, master switch and 2m
-              cable.</p>
-            <div class="product-urgency"><i class="fas fa-clock"></i> Back in stock shortly — enquire to reserve</div>
-            <div class="product-footer">
-              <div class="product-rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="far fa-star"></i><span>(4.3)</span>
-                <span class="review-count">(31 reviews)</span>
-              </div>
-              <button class="btn-enquire" onclick="openEnquiry('6-Socket Extension Board')"
-                id="enquireExtBoards">Enquire / WhatsApp</button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /products-grid -->
-    </div>
-  </section>
-
-
-
-  <!-- ========== REPAIR SERVICES SECTION ========== -->
-  <section id="repairs" class="repair-section section-padding">
-    <div class="repair-bg-pattern"></div>
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag section-tag--repair"><i class="fas fa-clock"></i> 24/7 Available</span>
-        <h2 class="section-title repair-title">Professional <span class="accent">Repair Services</span></h2>
-        <p class="section-subtitle repair-subtitle">Fast, reliable, and affordable electrical repair services at your
-          doorstep</p>
-      </div>
-
-      <!-- Repair CTA Banner -->
-      <div class="repair-cta-banner" id="repairCtaBanner">
-        <div class="repair-cta-icon"><i class="fas fa-bolt"></i></div>
-        <div class="repair-cta-text">
-          <h3>Need Emergency Electrical Repair?</h3>
-          <p>Visit us or find our contact details on Google for same-day service. Our technicians are ready to help.</p>
-        </div>
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" class="btn btn-repair-cta" target="_blank"
-          rel="noopener noreferrer" id="repairCallBtn">
-          <i class="fas fa-map-marker-alt"></i> Find Us
-        </a>
-      </div>
-
-      <!-- Repair Cards Grid -->
-      <div class="repair-grid">
-
-        <div class="repair-card" id="repairAppliance">
-          <div class="repair-card-icon"><i class="fas fa-blender"></i></div>
-          <h3>Home Appliance Repair</h3>
-          <p>Repair of fans, coolers, geysers, and small household electrical appliances. Quick diagnosis and fix.</p>
-          <ul class="repair-list">
-            <li><i class="fas fa-check"></i> Ceiling &amp; Table Fans</li>
-            <li><i class="fas fa-check"></i> Water Heaters / Geysers</li>
-            <li><i class="fas fa-check"></i> Room Coolers</li>
-            <li><i class="fas fa-check"></i> Small Appliances</li>
-          </ul>
-          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Home Appliance Repair')" id="enquireAppliance">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </button>
-        </div>
-
-        <div class="repair-card repair-card--featured" id="repairWiring">
-          <div class="repair-card-badge">Most Requested</div>
-          <div class="repair-card-icon"><i class="fas fa-network-wired"></i></div>
-          <h3>Wiring &amp; Fault Repair</h3>
-          <p>Expert diagnosis and repair of faulty wiring, short circuits, earthing issues, and power faults.</p>
-          <ul class="repair-list">
-            <li><i class="fas fa-check"></i> Short Circuit Repair</li>
-            <li><i class="fas fa-check"></i> Earthing Solutions</li>
-            <li><i class="fas fa-check"></i> MCB / Fuse Replacement</li>
-            <li><i class="fas fa-check"></i> Cable Rewiring</li>
-          </ul>
-          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Wiring &amp; Fault Repair')"
-            id="enquireWiringRepair">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </button>
-        </div>
-
-        <div class="repair-card" id="repairSwitch">
-          <div class="repair-card-icon"><i class="fas fa-toggle-on"></i></div>
-          <h3>Switch &amp; Socket Repair</h3>
-          <p>Replace and repair faulty switches, sockets, junction boxes, and modular wiring accessories.</p>
-          <ul class="repair-list">
-            <li><i class="fas fa-check"></i> Switch Replacement</li>
-            <li><i class="fas fa-check"></i> Socket Repair / Install</li>
-            <li><i class="fas fa-check"></i> Junction Box Fixing</li>
-            <li><i class="fas fa-check"></i> Modular Panel Work</li>
-          </ul>
-          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Switch &amp; Socket Repair')"
-            id="enquireSwitchRepair">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </button>
-        </div>
-
-        <div class="repair-card" id="repairFan">
-          <div class="repair-card-icon"><i class="fas fa-fan"></i></div>
-          <h3>Fan Repair &amp; Servicing</h3>
-          <p>Ceiling fan speed issues, noise, motor winding, capacitor replacement, and complete fan overhaul.</p>
-          <ul class="repair-list">
-            <li><i class="fas fa-check"></i> Speed Regulation Fix</li>
-            <li><i class="fas fa-check"></i> Capacitor Replacement</li>
-            <li><i class="fas fa-check"></i> Motor Winding</li>
-            <li><i class="fas fa-check"></i> Blade &amp; Body Repair</li>
-          </ul>
-          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Fan Repair &amp; Servicing')"
-            id="enquireFanRepair">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </button>
-        </div>
-
-        <div class="repair-card" id="repairTroubleshoot">
-          <div class="repair-card-icon"><i class="fas fa-search"></i></div>
-          <h3>Electrical Troubleshooting</h3>
-          <p>Complete electrical inspection of your home or office to identify hidden faults and safety hazards.</p>
-          <ul class="repair-list">
-            <li><i class="fas fa-check"></i> Safety Audit</li>
-            <li><i class="fas fa-check"></i> Fault Identification</li>
-            <li><i class="fas fa-check"></i> Voltage Testing</li>
-            <li><i class="fas fa-check"></i> Load Balancing Check</li>
-          </ul>
-          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Electrical Troubleshooting')"
-            id="enquireTroubleshoot">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </button>
-        </div>
-
-        <div class="repair-card" id="repairLighting">
-          <div class="repair-card-icon"><i class="fas fa-lightbulb"></i></div>
-          <h3>Light Fitting &amp; Repair</h3>
-          <p>Install new lights, fix flickering lights, replace fittings, and set up complete indoor/outdoor lighting.
-          </p>
-          <ul class="repair-list">
-            <li><i class="fas fa-check"></i> Light Installation</li>
-            <li><i class="fas fa-check"></i> Flickering Light Fix</li>
-            <li><i class="fas fa-check"></i> Fitting Replacement</li>
-            <li><i class="fas fa-check"></i> Outdoor Lighting Setup</li>
-          </ul>
-          <button class="btn-repair-enquire" onclick="openRepairEnquiry('Light Fitting &amp; Repair')"
-            id="enquireLightRepair">
-            <i class="fas fa-calendar-check"></i> Book Now
-          </button>
-        </div>
-
-      </div><!-- /repair-grid -->
-    </div>
-  </section>
-
-  <!-- ========== SERVICES SECTION ========== -->
-  <section id="services" class="services-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">What We Offer</span>
-        <h2 class="section-title">Our <span class="accent">Services</span></h2>
-        <p class="section-subtitle">More than just a shop – your complete electrical solutions partner</p>
-      </div>
-
-      <div class="services-grid">
-
-        <div class="service-card" id="serviceSupply">
-          <div class="service-icon-wrap">
-            <div class="service-icon"><i class="fas fa-store"></i></div>
-          </div>
-          <h3>Quality Product Sales &amp; Supply</h3>
-          <p>We stock and supply a wide range of certified electrical products for all residential and commercial needs
-            at the best prices.</p>
-          <a href="#products" class="service-link">View Products <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card service-card--repair" id="serviceRepair">
-          <div class="service-icon-wrap">
-            <div class="service-icon service-icon--repair"><i class="fas fa-tools"></i></div>
-          </div>
-          <h3>Professional Repair Services</h3>
-          <p>Skilled technicians for home appliance repair, electrical fault diagnosis, wiring, and switch/socket repair
-            with service warranty.</p>
-          <a href="#repairs" class="service-link">Explore Repairs <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card" id="serviceWiring">
-          <div class="service-icon-wrap">
-            <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-          </div>
-          <h3>Home Wiring Materials</h3>
-          <p>Complete range of wiring materials including cables, conduits, MCBs, and distribution boards for home
-            wiring projects.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card" id="serviceLighting">
-          <div class="service-icon-wrap">
-            <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-          </div>
-          <h3>Lighting Solutions</h3>
-          <p>From simple bulbs to full interior and exterior lighting setups. We help you choose the right lighting for
-            your space.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card" id="serviceConsult">
-          <div class="service-icon-wrap">
-            <div class="service-icon"><i class="fas fa-comments"></i></div>
-          </div>
-          <h3>Free Product Consultation</h3>
-          <p>Not sure which product to buy? Our expert staff gives honest, free consultation to help you pick the right
-            electrical materials.</p>
-          <a href="#contact" class="service-link">Talk to Us <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card" id="serviceDelivery">
-          <div class="service-icon-wrap">
-            <div class="service-icon"><i class="fas fa-truck"></i></div>
-          </div>
-          <h3>Bulk Orders &amp; Delivery</h3>
-          <p>Special pricing for contractors and builders. Fast and reliable local delivery available on bulk orders
-            upon request.</p>
-          <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== BRANDS SECTION ========== -->
-  <section id="brands" class="brands-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Authorized Dealer</span>
-        <h2 class="section-title">Brands We <span class="accent">Stock</span></h2>
-        <p class="section-subtitle">We carry products from India's most trusted electrical brands</p>
-      </div>
-      <div class="brands-track-wrapper">
-        <div class="brands-track" id="brandsTrack">
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Havells</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Anchor</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Legrand</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Finolex</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Philips</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Bajaj</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Orient</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Crompton</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Polycab</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Syska</div>
-          <!-- Duplicate for infinite scroll -->
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Havells</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Anchor</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Legrand</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Finolex</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Philips</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Bajaj</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Orient</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Crompton</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Polycab</div>
-          <div class="brand-pill"><i class="fas fa-bolt"></i> Syska</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== GALLERY SECTION ========== -->
-  <section id="gallery" class="gallery-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Recent Work</span>
-        <h2 class="section-title">Our Recent <span class="accent">Work</span></h2>
-        <p class="section-subtitle">A glimpse into our installations, shop and premium product range</p>
-      </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-item gallery-item--large" id="galleryItem1">
-          <div class="gallery-inner">
-            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80"
-              alt="Electrical tools and equipment" loading="lazy" />
-            <div class="gallery-overlay">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Shop Interior &middot; Saroorpur Kalan</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" id="galleryItem2">
-          <div class="gallery-inner">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80"
-              alt="LED panel lights installation" loading="lazy" />
-            <div class="gallery-overlay">
-              <i class="fas fa-lightbulb"></i>
-              <span>LED Lighting &middot; Baghpat Project</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" id="galleryItem3">
-          <div class="gallery-inner">
-            <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?w=500&q=80"
-              alt="Modular switches and sockets" loading="lazy" />
-            <div class="gallery-overlay">
-              <i class="fas fa-plug"></i>
-              <span>Modular Switches &middot; Baraut Supply</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" id="galleryItem4">
-          <div class="gallery-inner">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80"
-              alt="Copper electrical wiring cables" loading="lazy" />
-            <div class="gallery-overlay">
-              <i class="fas fa-bolt"></i>
-              <span>Wiring Project &middot; Residential</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item gallery-item--tall" id="galleryItem5">
-          <div class="gallery-inner">
-            <img src="https://images.unsplash.com/photo-1609220136736-443140cfeaa8?w=500&q=80"
-              alt="Electrical products on display shelves" loading="lazy" />
-            <div class="gallery-overlay">
-              <i class="fas fa-store"></i>
-              <span>Product Display &middot; Showroom</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" id="galleryItem6">
-          <div class="gallery-inner">
-            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500&q=80"
-              alt="Ceiling fan installation" loading="lazy" />
-            <div class="gallery-overlay">
-              <i class="fas fa-fan"></i>
-              <span>Fan Installation &middot; Commercial</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-view-all">
-        <a href="#contact" class="btn-view-all">Enquire About Our Work &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========== TESTIMONIALS SECTION (FIX 5) ========== -->
-  <section id="testimonials" class="testimonials-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Customer Reviews</span>
-        <h2 class="section-title">What Customers <span class="accent">Say</span></h2>
-        <p class="section-subtitle">Real feedback from homes, offices and contractors we've served</p>
-      </div>
-
-
-      <!-- Review aggregate badge (updated by JS when API loads) -->
-      <div style="text-align:center; margin-bottom: 32px;">
-        <div class="review-aggregate-badge" id="reviewAggregateBadge">
-          <i class="fas fa-star"></i>
-          <span id="reviewBadgeText">Loading Google Reviews...</span>
-        </div>
-      </div>
-
-      <!-- Google Reviews Grid (populated by Places API) -->
-      <div class="reviews-grid" id="googleReviewsGrid">
-        <!-- Loading skeleton cards -->
-        <div class="review-skeleton">
-          <div class="sk-line sk-stars"></div>
-          <div class="sk-line sk-text"></div>
-          <div class="sk-line sk-text sk-short"></div>
-          <div class="sk-line sk-author"></div>
-        </div>
-        <div class="review-skeleton">
-          <div class="sk-line sk-stars"></div>
-          <div class="sk-line sk-text"></div>
-          <div class="sk-line sk-text sk-short"></div>
-          <div class="sk-line sk-author"></div>
-        </div>
-        <div class="review-skeleton">
-          <div class="sk-line sk-stars"></div>
-          <div class="sk-line sk-text"></div>
-          <div class="sk-line sk-text sk-short"></div>
-          <div class="sk-line sk-author"></div>
-        </div>
-      </div>
-
-      <!-- Always-visible Google CTA -->
-      <div style="text-align:center; margin-top: 36px;">
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" target="_blank" rel="noopener noreferrer"
-          class="btn-view-google-reviews" id="viewAllReviewsBtn">
-          <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google"
-            width="54" height="18" style="vertical-align:middle; margin-right:6px;">
-          See All Reviews on Google
-          <i class="fas fa-external-link-alt" style="margin-left:6px; font-size:0.8em;"></i>
-        </a>
-        <p id="reviewsApiNote" style="font-size:0.78rem; color:var(--text-light); margin-top:10px; display:none;">
-          Powered by Google Places API &nbsp;·&nbsp; Reviews shown as-is from Google
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
-
-
-  <!-- ========== CONTACT SECTION ========== -->
-  <section id="contact" class="contact-section section-padding">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Reach Us</span>
-        <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
-        <p class="section-subtitle">Visit us in-store, call us, or fill the form below</p>
-      </div>
-
-      <div class="contact-grid">
-        <!-- Info -->
-        <div class="contact-info-col">
-          <div class="contact-info-card" id="contactInfoCard">
-            <h3>Contact Information</h3>
-
-            <div class="contact-detail" id="contactAddress">
-              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <strong>Address</strong>
-                <p>26HJ+VM7, Saroorpur Kalan,<br>Sarurpur, Uttar Pradesh – 250619</p>
-              </div>
-            </div>
-
-            <div class="contact-detail" id="contactGoogleMaps">
-              <div class="contact-icon"><i class="fas fa-phone"></i></div>
-              <div>
-                <strong>Phone &amp; Directions</strong>
-                <p><a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" target="_blank" rel="noopener noreferrer">View
-                    our number on Google Maps</a></p>
-              </div>
-            </div>
-
-            <div class="contact-detail" id="contactEmail">
-              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-              <div>
-                <strong>Email</strong>
-                <p><a href="mailto:apoorvjainji@gmail.com">apoorvjainji@gmail.com</a></p>
-              </div>
-            </div>
-
-            <div class="contact-detail" id="contactHours">
-              <div class="contact-icon"><i class="fas fa-clock"></i></div>
-              <div>
-                <strong>Shop Hours</strong>
-                <p>Mon–Sat: 9:00 AM – 8:00 PM</p>
-                <p>Sunday: 8:00 AM – 8:00 PM</p>
-              </div>
-            </div>
-
-            <div class="contact-social" style="margin-top: 15px;">
-              <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" class="btn btn-whatsapp" target="_blank"
-                rel="noopener noreferrer"
-                style="width: 100%; justify-content: center; font-size: 1rem; background: #1B3A6B;">
-                <i class="fas fa-map-marker-alt"></i> Find Us on Google Maps
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Form -->
-        <div class="contact-form-col">
-          <form class="contact-form" id="contactForm" novalidate>
-            <h3>Send Us a Message</h3>
-            <p class="form-subtitle">We'll get back to you within a few hours.</p>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="formName">Full Name <span class="required">*</span></label>
-                <div class="input-wrap">
-                  <i class="fas fa-user"></i>
-                  <input type="text" id="formName" name="name" placeholder="Your full name" required
-                    autocomplete="name" />
-                </div>
-                <span class="form-error" id="nameError"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="formPhone">Phone Number <span class="required">*</span></label>
-                <div class="input-wrap">
-                  <i class="fas fa-phone"></i>
-                  <input type="tel" id="formPhone" name="phone" placeholder="10-digit mobile number" required
-                    autocomplete="tel" />
-                </div>
-                <span class="form-error" id="phoneError"></span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="formEmail">Email Address</label>
-              <div class="input-wrap">
-                <i class="fas fa-envelope"></i>
-                <input type="email" id="formEmail" name="email" placeholder="your@email.com" autocomplete="email" />
-              </div>
-              <span class="form-error" id="emailError"></span>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="formProduct">Product / Service</label>
-                <div class="input-wrap">
-                  <i class="fas fa-shopping-cart"></i>
-                  <select id="formProduct" name="product">
-                    <option value="">Select (optional)</option>
-                    <optgroup label="Products">
-                      <option value="LED Lights">LED Lights</option>
-                      <option value="Electrical Wires">Electrical Wires</option>
-                      <option value="Switches &amp; Sockets">Switches &amp; Sockets</option>
-                      <option value="Ceiling Fans">Ceiling Fans</option>
-                      <option value="Extension Boards">Extension Boards</option>
-                      <option value="Electrical Accessories">Electrical Accessories</option>
-                      <option value="Bulbs &amp; Lighting">Bulbs &amp; Lighting</option>
-                      <option value="Power Strips">Power Strips</option>
-                    </optgroup>
-                    <optgroup label="Repair Services">
-                      <option value="Repair Service">General Repair Service</option>
-                      <option value="Home Appliance Repair">Home Appliance Repair</option>
-                      <option value="Wiring &amp; Fault Repair">Wiring &amp; Fault Repair</option>
-                      <option value="Switch &amp; Socket Repair">Switch &amp; Socket Repair</option>
-                      <option value="Fan Repair &amp; Servicing">Fan Repair &amp; Servicing</option>
-                      <option value="Electrical Troubleshooting">Electrical Troubleshooting</option>
-                      <option value="Light Fitting &amp; Repair">Light Fitting &amp; Repair</option>
-                    </optgroup>
-                    <option value="Consultation">Consultation</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="formUrgency">When do you need service?</label>
-                <div class="input-wrap">
-                  <i class="fas fa-calendar-alt"></i>
-                  <select id="formUrgency" name="urgency">
-                    <option value="">Select urgency</option>
-                    <option value="Today – Emergency">🚨 Today – Emergency</option>
-                    <option value="This Week">📅 This Week</option>
-                    <option value="Not Urgent – Planning">🗓️ Not Urgent – Planning</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Honeypot anti-spam field (F3) — hidden from users, bots fill it -->
-            <input type="text" name="_gotcha" id="formHoneypot" style="display:none" tabindex="-1" autocomplete="off" />
-
-            <div class="form-group">
-              <label for="formMessage">Message <span class="required">*</span></label>
-              <div class="input-wrap textarea-wrap">
-                <i class="fas fa-comment-dots"></i>
-                <textarea id="formMessage" name="message" placeholder="Describe your requirement or issue in detail..."
-                  rows="4" required></textarea>
-              </div>
-              <span class="form-error" id="messageError"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-submit" id="submitFormBtn">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-
-            <div class="form-success" id="formSuccess" role="alert" aria-live="polite" style="display:none;">
-              <i class="fas fa-check-circle"></i>
-              <p>Your email client has opened with your message pre-filled. Please send it to complete your enquiry. If
-                it didn't open, email us directly at <a href="mailto:apoorvjainji@gmail.com">apoorvjainji@gmail.com</a>.
-              </p>
-            </div>
-            <div class="form-error-banner" id="formErrorBanner" role="alert" style="display:none;">
-              <i class="fas fa-exclamation-circle"></i>
-              <p>Submission failed. <a href="mailto:apoorvjainji@gmail.com" id="mailtoFallback">Click here to email us
-                  directly.</a></p>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Map — consent-gated Google Maps embed -->
-      <div class="map-wrapper" id="mapWrapper" style="margin-top: 40px;">
-        <!-- Map loads after cookie consent is accepted (see cookies.js) -->
-        <div id="mapConsentPlaceholder" class="map-consent-placeholder">
-          <i class="fas fa-map-marked-alt"></i>
-          <p>This map is provided by Google Maps.<br>Accept cookies to load the interactive map.</p>
-          <button class="btn btn-primary"
-            onclick="window.cookieConsent && window.cookieConsent.accept(); document.getElementById('mapConsentPlaceholder').style.display='none'; loadConsentedMap();"
-            style="margin-top: 12px;">
-            <i class="fas fa-check"></i> Accept &amp; Show Map
-          </button>
-        </div>
-        <iframe id="shopMapEmbed"
-          data-src="https://maps.google.com/maps?q=Everest+Electricals,+Saroorpur+Kalan,+Uttar+Pradesh+250619&t=&z=17&ie=UTF8&iwloc=&output=embed"
-          width="100%" height="350" style="border:0; display:none;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="Everest Electricals Location – Saroorpur Kalan, UP">
-        </iframe>
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" target="_blank" rel="noopener noreferrer"
-          class="map-open-link" aria-label="Open in Google Maps">
-          <i class="fas fa-directions"></i> Get Directions
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== NEWSLETTER SECTION (FIX 8) ========== -->
-  <section class="newsletter-section" id="newsletter">
-    <div class="container">
-      <div class="newsletter-inner">
-        <div class="newsletter-text">
-          <h2>Get Trade Deals &amp; Offers</h2>
-          <p>Subscribe for exclusive discounts, new arrivals and electrical tips straight to your inbox.</p>
+  <!-- ========== 2. TWO-TIER HARDWARE STORE HEADER (ZERO WRAPPING) ========== -->
+  <header id="navbar" class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm print:hidden">
+    <!-- Tier 1: Brand + Search + Primary Conversion Actions -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Authentic Trade Emblem -->
+      <a href="#home" class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-lg bg-brand-red text-white flex items-center justify-center text-lg font-bold shadow-sm">
+          <i class="fas fa-bolt"></i>
         </div>
         <div>
-          <form class="newsletter-form" id="newsletterForm" novalidate>
-            <input type="email" id="newsletterEmail" placeholder="Enter your email address" aria-label="Email address"
-              required />
-            <button type="submit" class="btn-newsletter" id="newsletterSubmit">
-              <i class="fas fa-paper-plane"></i> Get Trade Deals
+          <span class="font-extrabold text-lg tracking-tight text-slate-900 block leading-none">
+            EVEREST <span class="text-brand-red">ELECTRICALS</span>
+          </span>
+          <span class="text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-500 block mt-0.5">
+            EST. 1980 · MAIN MARKET, SAROORPUR KALAN
+          </span>
+        </div>
+      </a>
+
+      <!-- Wide B2B Search Bar with Voice Input -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input type="search" id="navSearchInput"
+            placeholder="Search Finolex 1.5mm, Legrand 32A MCB, BLDC fan…"
+            class="w-full pl-9 pr-9 py-2 text-xs bg-slate-100 border border-slate-300 rounded-lg focus:bg-white focus:border-slate-900 outline-none transition text-slate-900" />
+          <button type="button" id="voiceSearchBtn" title="Search by Voice" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-brand-red text-xs px-1">
+            <i class="fas fa-microphone"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Non-Wrapping Action Buttons -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <button type="button" onclick="openParchiModal()" class="hidden sm:inline-flex items-center gap-2 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-semibold text-xs px-3.5 py-2 rounded-lg whitespace-nowrap transition">
+          <i class="fas fa-camera text-amber-600"></i>
+          <span>Upload Parchi / List</span>
+        </button>
+
+        <button type="button" id="openCartBtn" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 font-semibold text-xs px-3.5 py-2 rounded-lg whitespace-nowrap transition">
+          <i class="fas fa-clipboard-list text-slate-700"></i>
+          <span>Estimate List</span>
+          <span id="cartCountBadge" class="bg-brand-red text-white font-mono font-bold text-[11px] px-1.5 py-0.2 rounded">0</span>
+        </button>
+
+        <a href="quote.html" class="hidden xl:inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-3.5 py-2 rounded-lg whitespace-nowrap transition">
+          <i class="fas fa-file-invoice text-amber-400"></i> Bulk Quote
+        </a>
+
+        <button id="hamburger" class="lg:hidden p-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tier 2: Clean Horizontal Navigation Strip (Desktop) -->
+    <div class="bg-slate-50 border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ul id="navMenu" class="hidden lg:flex items-center justify-between text-xs font-semibold text-slate-700 py-2">
+          <li class="flex items-center gap-1">
+            <a href="#home" class="nav-link px-3 py-1.5 rounded hover:bg-slate-200/70 whitespace-nowrap">Home</a>
+            <a href="#products" class="nav-link px-3 py-1.5 rounded hover:bg-slate-200/70 whitespace-nowrap">Product Catalog</a>
+            <a href="#calculator" class="nav-link px-3 py-1.5 rounded text-slate-900 bg-amber-100/80 hover:bg-amber-200/70 whitespace-nowrap">
+              <i class="fas fa-bolt text-amber-700 mr-1"></i>Wire & House Load Calculator
+            </a>
+            <a href="#repairs" class="nav-link px-3 py-1.5 rounded text-brand-red hover:bg-red-50 whitespace-nowrap">
+              <i class="fas fa-screwdriver-wrench mr-1"></i>Repair Workshop & Token Tracker
+            </a>
+            <a href="#about" class="nav-link px-3 py-1.5 rounded hover:bg-slate-200/70 whitespace-nowrap">Why Us & Reviews</a>
+            <a href="#faq" class="nav-link px-3 py-1.5 rounded hover:bg-slate-200/70 whitespace-nowrap">FAQs</a>
+            <a href="#contact" class="nav-link px-3 py-1.5 rounded hover:bg-slate-200/70 whitespace-nowrap">Visit Store</a>
+          </li>
+          <li class="hidden xl:flex items-center gap-2 text-[11px] font-mono text-slate-500">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Authorized Stockist: Havells · Finolex · Anchor · Legrand · Polycab</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 3. AUTHENTIC HARDWARE STORE HERO SECTION ========== -->
+  <section id="home" class="bg-white border-b border-slate-200 py-10 lg:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+
+        <!-- Left 7 Cols: Clear, Grounded Value Proposition -->
+        <div class="lg:col-span-7 flex flex-col justify-between bg-slate-900 text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden border border-slate-800">
+          <div>
+            <div class="inline-flex flex-wrap items-center gap-2 mb-5">
+              <span class="bg-amber-400 text-slate-950 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Serving Since 1980
+              </span>
+              <span class="bg-slate-800 text-slate-200 border border-slate-700 text-xs font-medium px-3 py-1 rounded">
+                <i class="fas fa-star text-amber-400 mr-1"></i> 4.8/5 Google Rating · 5,000+ Local Buyers
+              </span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.15] mb-4" data-i18n="heroTitle">
+              Wholesale ISI Electrical Supplies & Copper Winding Workshop
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl" data-i18n="heroSubtitle">
+              Direct counter for house-wiring FR copper coils, modular switch plates, MCB distribution boxes, and 5-star BLDC fans in <strong>Saroorpur Kalan, Baraut & Baghpat</strong>. Bring your electrician’s slip for instant wholesale billing.
+            </p>
+          </div>
+
+          <div>
+            <!-- Primary Action Bar -->
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+              <a href="#products" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm px-5 py-3 rounded-lg transition inline-flex items-center gap-2">
+                <i class="fas fa-th-large"></i> Browse Price Catalog
+              </a>
+              <button type="button" onclick="openParchiModal()" class="bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs sm:text-sm px-5 py-3 rounded-lg transition inline-flex items-center gap-2">
+                <i class="fas fa-camera text-brand-red"></i> Upload Electrician Parchi
+              </button>
+              <a href="#repairs" class="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold text-xs sm:text-sm px-4 py-3 rounded-lg transition inline-flex items-center gap-2">
+                <i class="fas fa-tools text-amber-400"></i> Track Repair Status
+              </a>
+            </div>
+
+            <!-- Bottom Trust Metrics -->
+            <div class="grid grid-cols-3 gap-4 pt-5 border-t border-slate-800 text-xs">
+              <div>
+                <strong class="block text-white font-mono text-sm">100% Original</strong>
+                <span class="text-slate-400 text-[11px]">Zero counterfeit guarantee</span>
+              </div>
+              <div>
+                <strong class="block text-white font-mono text-sm">7-Day Return</strong>
+                <span class="text-slate-400 text-[11px]">Exchange unused boxes</span>
+              </div>
+              <div>
+                <strong class="block text-white font-mono text-sm">Same-Day</strong>
+                <span class="text-slate-400 text-[11px]">Site delivery & repairs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Live Counter Rate Board & Quick Tools -->
+        <div class="lg:col-span-5 flex flex-col justify-between bg-slate-50 rounded-2xl border border-slate-300 p-6">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+              <div>
+                <span class="text-[11px] font-mono uppercase tracking-wider text-brand-red font-bold block">Live Counter Reference</span>
+                <h2 class="font-bold text-base text-slate-900">Today’s Popular House-Wiring Rates</h2>
+              </div>
+              <span class="text-[11px] font-mono bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded">
+                GST Paid Stock
+              </span>
+            </div>
+
+            <!-- Real Hardware Store Price Ticker Table -->
+            <div class="space-y-2.5 text-xs mb-5">
+              <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border border-slate-200">
+                <div>
+                  <strong class="text-slate-900 block">Finolex 1.5 sq.mm FR Wire (90m)</strong>
+                  <span class="text-[11px] text-slate-500">IS-694 Pure Electrolytic Copper</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-mono font-bold text-sm text-slate-900">₹1,150</span>
+                  <button onclick="addToQuoteCart('EE-WIR-010', 'Finolex 1.5 sq.mm FR Copper Wire (90m)', 1150)" class="block text-[11px] text-brand-red font-bold hover:underline">+ Add</button>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border border-slate-200">
+                <div>
+                  <strong class="text-slate-900 block">Legrand 32A SP C-Curve MCB</strong>
+                  <span class="text-[11px] text-slate-500">10kA Heavy AC / Geyser Breaker</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-mono font-bold text-sm text-slate-900">₹245</span>
+                  <button onclick="addToQuoteCart('EE-MCB-040', 'Legrand 32A Single Pole MCB', 245)" class="block text-[11px] text-brand-red font-bold hover:underline">+ Add</button>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border border-slate-200">
+                <div>
+                  <strong class="text-slate-900 block">Orient 28W BLDC Fan (5-Star)</strong>
+                  <span class="text-[11px] text-slate-500">With Remote · 50% Power Saving</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-mono font-bold text-sm text-slate-900">₹2,799</span>
+                  <button onclick="addToQuoteCart('EE-FAN-030', 'Orient BLDC Ceiling Fan 1200mm', 2799)" class="block text-[11px] text-brand-red font-bold hover:underline">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Jump Cards -->
+          <div class="grid grid-cols-2 gap-2.5 pt-3 border-t border-slate-200">
+            <a href="#calculator" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-slate-900 transition flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+                <i class="fas fa-calculator text-xs"></i>
+              </div>
+              <div class="text-xs">
+                <strong class="block text-slate-900">Wire Size Finder</strong>
+                <span class="text-[10px] text-slate-500">AC, Geyser, Motor</span>
+              </div>
+            </a>
+            <a href="#repairs" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-slate-900 transition flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-red-100 text-brand-red flex items-center justify-center shrink-0">
+                <i class="fas fa-fan text-xs"></i>
+              </div>
+              <div class="text-xs">
+                <strong class="block text-slate-900">Fan Winding</strong>
+                <span class="text-[10px] text-slate-500">Starts @ ₹450</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. AUTHORIZED BRAND FILTER BAR ========== -->
+  <section class="bg-slate-100 border-b border-slate-200 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+      <span class="text-xs font-bold uppercase tracking-wider text-slate-500">
+        Filter by Authorized Brand:
+      </span>
+      <div class="flex flex-wrap items-center gap-2" id="brandsTrack">
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="all">ALL BRANDS</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="havells">HAVELLS</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="finolex">FINOLEX</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="anchor">ANCHOR PANASONIC</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="legrand">LEGRAND</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="polycab">POLYCAB</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="orient">ORIENT</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="philips">PHILIPS</button>
+        <button type="button" class="brand-pill px-3 py-1.5 rounded bg-white border border-slate-300 hover:border-slate-900 text-xs font-bold text-slate-800 transition" data-brand="bajaj">BAJAJ</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. PRODUCT CATALOG (WITH RETAIL VS BULK SLAB RATES) ========== -->
+  <section id="products" class="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-wider text-brand-red font-bold block">In-Store & Wholesale Inventory</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Featured Electrical Supplies</h2>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-1.5" role="tablist">
+        <button class="filter-btn active px-3.5 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white transition" data-filter="all">All Items (8)</button>
+        <button class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-slate-900 transition" data-filter="wiring">Wires & Cables</button>
+        <button class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-slate-900 transition" data-filter="switches">Switches</button>
+        <button class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-slate-900 transition" data-filter="accessories">MCB & DB Box</button>
+        <button class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-slate-900 transition" data-filter="lighting">LED Lighting</button>
+        <button class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-slate-900 transition" data-filter="fans">Ceiling Fans</button>
+      </div>
+    </div>
+
+    <!-- Active Filter Status Bar -->
+    <div class="flex flex-wrap items-center justify-between bg-white px-4 py-2.5 rounded-lg border border-slate-200 mb-6 text-xs">
+      <div class="flex items-center gap-2 text-slate-600">
+        <span>Filter:</span>
+        <strong id="activeCategoryLabel" class="text-slate-900">All Items</strong>
+      </div>
+      <button type="button" onclick="openParchiModal()" class="text-brand-red font-bold hover:underline">
+        <i class="fas fa-camera mr-1"></i> Have a handwritten material list? Upload Parchi photo &rarr;
+      </button>
+    </div>
+
+    <!-- 8-Item Hardware Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" id="productsGrid">
+
+      <!-- ITEM 1: Finolex Wire -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="wiring" data-brand="finolex">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/copper_wire_coil.png" alt="Finolex 1.5 sq.mm FR PVC Copper Wire Coil" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-slate-900 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded">IS:694 FR</span>
+          <span class="absolute top-2.5 right-2.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">In Stock</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>FINOLEX</span>
+            <span>HSN: 8544</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">1.5 sq.mm FR Copper Wire (90m Coil)</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">Pure electrolytic grade flame-retardant house wire for room switchboards & points.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹1,150 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>5+ Coils Trade Rate:</span>
+              <span class="font-mono">₹1,095 / coil</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-WIR-010', 'Finolex 1.5 sq.mm FR Copper Wire (90m)', 1150)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
             </button>
-          </form>
-          <div class="newsletter-success" id="newsletterSuccess" style="display:none;">
-            <i class="fas fa-check-circle"></i> You're subscribed! Watch your inbox for deals.
+            <button type="button" onclick="openEnquiry('Finolex 1.5 sq.mm Copper Wire (90m)')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2: Havells LED Panel -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="lighting" data-brand="havells">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/led_panel_light.png" alt="Havells 15W Concealed LED Panel Light" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-brand-red text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded">Bestseller</span>
+          <span class="absolute top-2.5 right-2.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">In Stock</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>HAVELLS</span>
+            <span>HSN: 9405</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">15W Trimless Concealed LED Panel</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">Surge-protected slim POP/false-ceiling light. Cool Daylight (6500K) & Warm White.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹499 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>10+ Pcs Trade Rate:</span>
+              <span class="font-mono">₹465 / pc</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-LED-001', 'Havells 15W Concealed LED Panel Light', 499)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
+            </button>
+            <button type="button" onclick="openEnquiry('15W Concealed LED Panel Light (Havells)')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3: Anchor Modular Switch -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="switches" data-brand="anchor">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/modular_switch_plate.png" alt="Anchor Roma Modular Switch Plate" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-slate-900 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded">IS:3854</span>
+          <span class="absolute top-2.5 right-2.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">In Stock</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>ANCHOR ROMA</span>
+            <span>HSN: 8536</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">6M Modular Switch & Socket Plate</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">Spark-shield silver cadmium contacts, child-safety shuttered 6A/16A sockets.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹349 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>Full House Box Rate:</span>
+              <span class="font-mono">₹315 / set</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-SWT-020', 'Anchor Roma Modular Switch Plate', 349)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
+            </button>
+            <button type="button" onclick="openEnquiry('Anchor Modular Switch Plate')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 4: Orient BLDC Fan -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="fans" data-brand="orient">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/ceiling_fan.png" alt="Orient BLDC Ceiling Fan 1200mm" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-emerald-700 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded">5-Star BEE</span>
+          <span class="absolute top-2.5 right-2.5 bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">Few Left</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>ORIENT ELECTRIC</span>
+            <span>HSN: 8414</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">28W BLDC Ceiling Fan 1200mm</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">Runs 2x longer on inverter battery. Remote controlled with 3-year motor warranty.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹2,799 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>3+ Fans Rate:</span>
+              <span class="font-mono">₹2,650 / fan</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-FAN-030', 'Orient 28W BLDC Ceiling Fan 1200mm', 2799)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
+            </button>
+            <button type="button" onclick="openEnquiry('Orient BLDC Ceiling Fan 1200mm')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5: Legrand MCB -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="accessories" data-brand="legrand">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/mcb_breaker.png" alt="Legrand 32A Single Pole MCB" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-slate-900 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded">10kA C-Curve</span>
+          <span class="absolute top-2.5 right-2.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">In Stock</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>LEGRAND RX3</span>
+            <span>HSN: 8536</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">32A Single Pole MCB Breaker</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">IS/IEC 60898-1 certified overload & short-circuit protection for AC & geyser lines.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹245 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>Box of 12 Rate:</span>
+              <span class="font-mono">₹220 / pc</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-MCB-040', 'Legrand 32A Single Pole MCB', 245)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
+            </button>
+            <button type="button" onclick="openEnquiry('Legrand MCB 32A Single Pole')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 6: Polycab DB Box -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="accessories" data-brand="polycab">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/distribution_board.png" alt="Polycab 8-Way Double Door MCB Box" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-slate-900 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded">IP43 Steel</span>
+          <span class="absolute top-2.5 right-2.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">In Stock</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>POLYCAB</span>
+            <span>HSN: 8537</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">8-Way Double Door SPN DB Box</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">Heavy CRCA sheet enclosure with 100A tin-plated copper busbar, neutral & earth bar.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹1,890 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>Contractor Rate:</span>
+              <span class="font-mono">₹1,750 / unit</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-DB-050', 'Polycab 8-Way Double Door MCB DB', 1890)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
+            </button>
+            <button type="button" onclick="openEnquiry('Polycab 8-Way Distribution Board')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 7: Philips Bulb Pack -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="lighting" data-brand="philips">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/led_bulb_pack.png" alt="Philips 9W LED Bulbs Pack of 6" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 left-2.5 bg-amber-500 text-slate-950 text-[10px] font-mono font-bold px-2 py-0.5 rounded">Combo Pack</span>
+          <span class="absolute top-2.5 right-2.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">In Stock</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>PHILIPS</span>
+            <span>HSN: 8539</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">9W AceSaver LED Bulb (Pack of 6)</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">900 Lumens B22 pin cool daylight LED bulbs with 4kV voltage surge protection.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Pack of 6 Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹389 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-emerald-700 font-semibold mt-0.5">
+              <span>Warranty:</span>
+              <span class="font-mono">2-Yr Counter Replace</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-BLB-060', 'Philips 9W LED Bulb Pack of 6', 389)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Add to List
+            </button>
+            <button type="button" onclick="openEnquiry('Philips 9W LED Bulb Pack of 6')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 8: Bajaj Spike Guard -->
+      <div class="product-card bg-white rounded-xl border border-slate-300 overflow-hidden flex flex-col" data-category="accessories" data-brand="bajaj">
+        <div class="relative h-44 bg-white p-4 flex items-center justify-center border-b border-slate-100">
+          <img src="images/extension_board.png" alt="Bajaj 6-Socket Spike Guard Extension Board" class="max-h-full object-contain" loading="lazy" />
+          <span class="absolute top-2.5 right-2.5 bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded">Restocking</span>
+        </div>
+        <div class="p-4 flex-1 flex flex-col">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>BAJAJ</span>
+            <span>HSN: 8536</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 mb-1">6-Socket Surge Spike Guard (2m)</h3>
+          <p class="text-xs text-slate-600 mb-3 flex-1">Heavy brass sockets with MOV surge protection, master switch, and 2m 3-core cord.</p>
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] text-slate-500">Counter Rate:</span>
+              <span class="font-mono font-extrabold text-base text-slate-900">₹599 <small class="font-normal text-[10px]">inc. GST</small></span>
+            </div>
+            <div class="flex items-baseline justify-between text-[11px] text-rose-700 font-semibold mt-0.5">
+              <span>Status:</span>
+              <span class="font-mono">Arriving Friday</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="addToQuoteCart('EE-EXT-070', 'Bajaj 6-Socket Surge Spike Guard', 599)" class="py-2 px-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+              + Reserve
+            </button>
+            <button type="button" onclick="openEnquiry('Bajaj 6-Socket Extension Board')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition">
+              Enquire
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== 6. DUAL ENGINEERING CALCULATOR SUITE (BHK BOM + APPLIANCE WIRE SIZER) ========== -->
+  <section id="calculator" class="py-12 lg:py-16 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-brand-red font-bold block">IS-694 & IEC-60898 Engineering Tools</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">House Wiring & Wire Gauge Calculator</h2>
+        </div>
+        <!-- Tool Switcher Tabs -->
+        <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-300">
+          <button type="button" id="tabBtnBhk" onclick="switchCalcTab('bhk')" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white transition">
+            1. Full House Wiring Estimator
+          </button>
+          <button type="button" id="tabBtnWire" onclick="switchCalcTab('wire')" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 transition">
+            2. Appliance Wire & MCB Finder
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: Full House BHK Wiring Estimator -->
+      <div id="calcTabBhk" class="bg-slate-50 rounded-2xl border border-slate-300 p-6 sm:p-8">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 space-y-4">
+            <h3 class="font-bold text-lg text-slate-900">Estimate Complete House Wiring Material</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Select your building size and preferred brand tier to calculate the required 90m FR copper wire coils, modular switches, and MCB distribution boards.
+            </p>
+            <div>
+              <label for="calcBhk" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Building / House Size</label>
+              <select id="calcBhk" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm font-medium text-slate-900">
+                <option value="1">1 BHK / Market Shop (~500–700 sq.ft)</option>
+                <option value="2" selected>2 BHK Standard Home (~1,000–1,200 sq.ft)</option>
+                <option value="3">3 BHK Independent House (~1,500–2,000 sq.ft)</option>
+                <option value="4">4 BHK / Kothi / Farmhouse (2,500+ sq.ft)</option>
+              </select>
+            </div>
+            <div>
+              <label for="calcBrand" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Brand Combination Tier</label>
+              <select id="calcBrand" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm font-medium text-slate-900">
+                <option value="economy">Economy ISI (Polycab Wire + Anchor Penta)</option>
+                <option value="standard" selected>Standard Pro (Finolex Wire + Anchor Roma)</option>
+                <option value="premium">Heavy Duty (Havells LifeLine + Legrand MCB)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-xl border border-slate-300 p-6 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-4">
+              <div>
+                <span class="text-[11px] font-mono uppercase text-slate-500 block">Recommended Material Kit</span>
+                <strong id="calcSummaryTitle" class="text-lg font-extrabold text-slate-900">2 BHK Home · Standard Pro (Finolex/Roma)</strong>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] font-mono uppercase text-slate-500 block">Indicative Counter Estimate</span>
+                <strong id="calcTotalEstimate" class="font-mono text-2xl font-extrabold text-brand-red">₹18,500 – ₹21,300</strong>
+              </div>
+            </div>
+
+            <div id="calcBreakdown" class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono mb-5">
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">1.0 / 1.5 sq.mm</span><strong class="text-slate-900">5 Coils (90m)</strong></div>
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">2.5 / 4.0 sq.mm</span><strong class="text-slate-900">3 Coils (90m)</strong></div>
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">Modular Switches</span><strong class="text-slate-900">45–55 Modules</strong></div>
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><span class="text-slate-500 block">Distribution</span><strong class="text-slate-900">8-Way Double Door DB</strong></div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+              <span class="text-[11px] text-slate-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> Unused unopened coils/boxes returnable within 7 days.</span>
+              <button type="button" id="sendCalcToQuoteBtn" class="bg-slate-900 hover:bg-brand-red text-white font-bold text-xs px-5 py-2.5 rounded-lg transition">
+                Add Full Kit to Estimate List &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Appliance-to-Wire Gauge (sq.mm) & MCB Sizer -->
+      <div id="calcTabWire" class="hidden bg-slate-50 rounded-2xl border border-slate-300 p-6 sm:p-8">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 space-y-4">
+            <h3 class="font-bold text-lg text-slate-900">Appliance Wire Gauge (sq.mm) & MCB Finder</h3>
+            <p class="text-xs text-slate-600">Select the heavy appliance or farm motor you are installing to find the safest copper wire gauge and circuit breaker.</p>
+            <div>
+              <label for="applianceSelect" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Select Appliance / Load</label>
+              <select id="applianceSelect" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm font-medium text-slate-900">
+                <option value="ac15">1.5 Ton Split / Window AC (~1800W)</option>
+                <option value="ac20">2.0 Ton Heavy Duty AC (~2500W)</option>
+                <option value="geyser">25L Storage Water Geyser / Room Heater (~2000W)</option>
+                <option value="submersible">1.5 HP – 2.0 HP Submersible Borewell Pump</option>
+                <option value="inverter">Single Battery Inverter Connection Wire</option>
+                <option value="mainline">Main Meter-to-DB Service Load (Up to 5 kW)</option>
+              </select>
+            </div>
+            <div>
+              <label for="wireRunLength" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Wire Distance from DB Box</label>
+              <select id="wireRunLength" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm font-medium text-slate-900">
+                <option value="short">Standard Room Run (Under 15 Meters)</option>
+                <option value="long">Long Run / Upper Floor / Farm (15m – 40m)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-xl border border-slate-300 p-6">
+            <span class="text-[11px] font-mono uppercase text-brand-red font-bold block mb-1">IS-694 Safety Recommendation</span>
+            <h4 id="wireRecTitle" class="text-xl font-extrabold text-slate-900 mb-4">1.5 Ton Split / Window AC</h4>
+            <div class="grid sm:grid-cols-3 gap-4 mb-5 font-mono">
+              <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200">
+                <span class="text-[11px] text-amber-900 block">Recommended Wire</span>
+                <strong id="wireRecGauge" class="text-lg font-bold text-slate-900">2.5 sq.mm FR</strong>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[11px] text-slate-500 block">MCB Breaker Rating</span>
+                <strong id="wireRecMcb" class="text-lg font-bold text-slate-900">20A / 25A C-Curve</strong>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[11px] text-slate-500 block">Switch / Socket</span>
+                <strong id="wireRecSocket" class="text-lg font-bold text-slate-900">20A AC Power Unit</strong>
+              </div>
+            </div>
+            <p id="wireRecNote" class="text-xs text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-200">
+              Tip: Always run a dedicated 2.5 sq.mm phase + neutral from the DB box with a 1.5 sq.mm green earthing wire.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER (FIX 5 – accreditations) ========== -->
-  <footer class="footer" id="footer">
-    <div class="footer-top">
-      <div class="container footer-grid">
+  <!-- ========== 7. REPAIR WORKSHOP, TRANSPARENT RATE CARD & LIVE TOKEN TRACKER ========== -->
+  <section id="repairs" class="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-8">
 
-        <div class="footer-col footer-brand">
-          <a href="#home" class="footer-logo">
-            <i class="fas fa-bolt"></i> Everest <span>Electricals</span>
-          </a>
-          <p>Your trusted partner for quality electrical products and expert repair services. Serving homes and
-            businesses with reliability since 2005.</p>
+      <!-- Left 7 Cols: Workshop Services & Transparent Rate Card -->
+      <div class="lg:col-span-7 space-y-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-brand-red font-bold block">In-Shop Winding & Field Technicians</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Repair Workshop & Fixed Rate Card</h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">99.9% pure copper machine winding and genuine SKF/NBC bearings. No hidden charges.</p>
+        </div>
 
-          <!-- Accreditation badges -->
-          <div class="footer-accred">
-            <span class="accred-badge"><i class="fas fa-certificate"></i> ISI Marked</span>
-            <span class="accred-badge"><i class="fas fa-shield-alt"></i> BIS Approved</span>
-            <span class="accred-badge"><i class="fas fa-award"></i> Quality Assured</span>
+        <!-- Transparent Workshop Rate Table -->
+        <div class="bg-white rounded-xl border border-slate-300 overflow-hidden">
+          <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between text-xs font-bold">
+            <span>Standard Workshop Repair Item</span>
+            <span>Indicative Labour + Spare Rate</span>
+          </div>
+          <div class="divide-y divide-slate-200 text-xs">
+            <div class="p-3.5 flex items-center justify-between hover:bg-slate-50">
+              <div>
+                <strong class="text-slate-900 block">Ceiling Fan Pure Copper Rewinding</strong>
+                <span class="text-slate-500">Machine wound · Includes varnishing & testing</span>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-sm text-slate-900">₹450 – ₹550</span>
+                <button onclick="openRepairEnquiry('Ceiling Fan Copper Winding')" class="block text-[11px] text-brand-red font-bold hover:underline">Book Now</button>
+              </div>
+            </div>
+            <div class="p-3.5 flex items-center justify-between hover:bg-slate-50">
+              <div>
+                <strong class="text-slate-900 block">Fan Bearing (6201/6202) + Capacitor Overhaul</strong>
+                <span class="text-slate-500">Eliminates grinding noise & boosts slow speed</span>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-sm text-slate-900">₹180 – ₹240</span>
+                <button onclick="openRepairEnquiry('Fan Bearing & Capacitor Service')" class="block text-[11px] text-brand-red font-bold hover:underline">Book Now</button>
+              </div>
+            </div>
+            <div class="p-3.5 flex items-center justify-between hover:bg-slate-50">
+              <div>
+                <strong class="text-slate-900 block">Water Geyser Element & Thermostat Fix</strong>
+                <span class="text-slate-500">ISI copper heating element + tank descaling</span>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-sm text-slate-900">₹650 – ₹950</span>
+                <button onclick="openRepairEnquiry('Geyser Element & Thermostat Repair')" class="block text-[11px] text-brand-red font-bold hover:underline">Book Now</button>
+              </div>
+            </div>
+            <div class="p-3.5 flex items-center justify-between hover:bg-slate-50">
+              <div>
+                <strong class="text-slate-900 block">Doorstep Short-Circuit / MCB Fault Visit</strong>
+                <span class="text-slate-500">Saroorpur Kalan & nearby villages same-day visit</span>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-sm text-slate-900">₹150 Visit Charge</span>
+                <button onclick="openRepairEnquiry('Doorstep Short-Circuit Electrician Visit')" class="block text-[11px] text-brand-red font-bold hover:underline">Call Electrician</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right 5 Cols: Live Repair Job Token Status Tracker -->
+      <div class="lg:col-span-5">
+        <div class="bg-white rounded-2xl border-2 border-slate-900 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <span class="bg-amber-100 text-amber-900 text-[11px] font-mono font-bold px-2.5 py-0.5 rounded">LIVE WORKSHOP TRACKER</span>
+            <span class="text-xs font-mono text-slate-500">Counter Desk</span>
+          </div>
+          <h3 class="font-extrabold text-lg text-slate-900 mb-1">Track Your Repair Job Status</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Dropped off a fan, cooler motor, or geyser at our shop? Enter your slip token number (try <code class="font-mono font-bold text-brand-red">EE-101</code> or <code class="font-mono font-bold text-brand-red">EE-102</code>) to check live status.
+          </p>
+
+          <div class="flex gap-2 mb-4">
+            <input type="text" id="repairTokenInput" placeholder="e.g. EE-101 or EE-102" class="flex-1 px-3.5 py-2.5 text-xs font-mono uppercase rounded-lg border border-slate-300 focus:border-slate-900 outline-none" />
+            <button type="button" id="checkTokenBtn" class="bg-slate-900 hover:bg-brand-red text-white font-bold text-xs px-4 py-2.5 rounded-lg transition whitespace-nowrap">
+              Check Status
+            </button>
+          </div>
+
+          <div id="repairTokenResult" class="bg-slate-50 rounded-xl p-4 border border-slate-200 text-xs space-y-2">
+            <div class="flex items-center justify-between">
+              <strong class="text-slate-900 font-mono">Sample Token: #EE-101</strong>
+              <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[11px]">Ready for Pickup</span>
+            </div>
+            <p class="text-slate-600"><strong>Item:</strong> Crompton High-Speed Ceiling Fan (Copper Winding + 6202 Bearing)</p>
+            <p class="text-slate-600"><strong>Bench Test:</strong> Passed 240V insulation & speed test · Bill Amount: <strong>₹480</strong></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== 8. WHY CHOOSE US & VERIFIED LOCAL REVIEWS ========== -->
+  <section id="about" class="py-12 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-xs font-mono uppercase text-brand-red font-bold">Trusted Since 1980 · Saroorpur Kalan</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Why Local Contractors & Families Rely on Everest</h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Whether you are building a new house in Baraut or need a single capacitor in Saroorpur Kalan, we supply only 100% genuine ISI-certified cables and switchgear with transparent billing.
+          </p>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
+            <strong>Villages & Towns Covered:</strong> Saroorpur Kalan, Baraut, Baghpat, Chhaprauli, Pilana, Kirthali & nearby belt.
+          </div>
+        </div>
+        <div class="lg:col-span-7 grid sm:grid-cols-3 gap-4" id="googleReviewsGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9. FAQ SECTION ========== -->
+  <section id="faq" class="py-12 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-extrabold text-slate-900 text-center mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="bg-white rounded-xl border border-slate-300 p-4" open>
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer flex items-center justify-between">
+            <span>Are all your wires, MCBs, and switches 100% genuine and ISI certified?</span>
+            <i class="fas fa-chevron-down text-slate-500 text-xs"></i>
+          </summary>
+          <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">
+            Yes. Every coil of Finolex, Havells, and Polycab wire and every Anchor/Legrand switch box comes directly from authorized distributors with verifiable batch numbers and holograms.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl border border-slate-300 p-4">
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer flex items-center justify-between">
+            <span>Can I return extra unopened wire coils or switch boxes after house wiring finishes?</span>
+            <i class="fas fa-chevron-down text-slate-500 text-xs"></i>
+          </summary>
+          <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">
+            Yes! Unused, uncut coils and switches in clean original packaging can be exchanged or returned within 7 days with the counter bill.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10. CONTACT & STORE LOCATION ========== -->
+  <section id="contact" class="py-12 lg:py-16 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-xs font-mono uppercase text-amber-400 font-bold">Main Market Counter</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Visit Everest Electricals</h2>
+          <p class="text-xs sm:text-sm text-slate-300">Main Market, Saroorpur Kalan, Baghpat District, Uttar Pradesh – 250611</p>
+          <div class="rounded-xl overflow-hidden border border-slate-700 h-56">
+            <iframe title="Everest Electricals Map" src="https://www.google.com/maps?q=Saroorpur+Kalan,+Uttar+Pradesh&output=embed" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-            <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-            <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Repair Services</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-            <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-          </ul>
+        <div class="lg:col-span-7">
+          <form id="contactForm" class="bg-white text-slate-900 rounded-2xl p-6 sm:p-8 space-y-4" novalidate>
+            <h3 class="text-xl font-extrabold">Send Direct Counter Enquiry</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Your Name *</label>
+                <input type="text" id="customerName" required placeholder="e.g. Rajesh Kumar" class="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Phone / WhatsApp Number *</label>
+                <input type="tel" id="customerPhone" required placeholder="e.g. 98765 43210" class="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300" />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Enquiry Type</label>
+                <select id="enquiryType" class="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300 bg-white">
+                  <option value="Product Enquiry">Product Price / Availability</option>
+                  <option value="Repair Booking">Book Repair / Electrician</option>
+                  <option value="Bulk House Wiring">Bulk House Wiring Estimate</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Subject / Item</label>
+                <input type="text" id="enquirySubject" placeholder="e.g. Finolex 1.5mm Wire" class="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Items & Quantities Required *</label>
+              <textarea id="enquiryMessage" rows="3" required placeholder="List items or repair details..." class="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-lg bg-brand-red hover:bg-red-800 text-white font-bold text-sm transition">
+              Submit Enquiry to Counter
+            </button>
+            <p id="formStatus" class="text-xs font-bold text-center" role="status"></p>
+          </form>
         </div>
-
-        <div class="footer-col">
-          <h4>Repair Services</h4>
-          <ul class="footer-links">
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Appliance Repair</a></li>
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Wiring &amp; Fault Fix</a></li>
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Switch &amp; Socket Repair</a></li>
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Fan Repair</a></li>
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Troubleshooting</a></li>
-            <li><a href="#repairs"><i class="fas fa-chevron-right"></i> Light Fitting</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contact Us</h4>
-          <ul class="footer-contact">
-            <li>
-              <i class="fas fa-map-marker-alt"></i>
-              <span>26HJ+VM7, Saroorpur Kalan,<br>Sarurpur, Uttar Pradesh – 250619</span>
-            </li>
-            <li>
-              <i class="fas fa-map-marker-alt"></i>
-              <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" target="_blank" rel="noopener noreferrer">View on
-                Google Maps</a>
-            </li>
-            <li>
-              <i class="fas fa-envelope"></i>
-              <a href="mailto:apoorvjainji@gmail.com">apoorvjainji@gmail.com</a>
-            </li>
-            <li>
-              <i class="fas fa-clock"></i>
-              <span>Mon–Sat: 9 AM – 8 PM&nbsp;|&nbsp;Sun: 8 AM – 8 PM</span>
-            </li>
-          </ul>
-        </div>
-
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <p>&copy; <span id="footerYear"></span> Everest Electricals. All rights reserved.</p>
-
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800 text-xs print:hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <strong class="text-white">EVEREST ELECTRICALS</strong> · Main Market, Saroorpur Kalan, Baghpat (UP) – 250611
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="quote.html" class="hover:text-white">Bulk Quote</a>
+        <span>·</span>
+        <a href="privacy.html" class="hover:text-white">Privacy</a>
+        <span>·</span>
+        <a href="terms.html" class="hover:text-white">Terms</a>
+        <span>·</span>
+        <span>&copy; <span id="currentYear">2026</span></span>
       </div>
     </div>
   </footer>
 
-  <!-- ========== FLOATING CONTACT BUTTON ========== -->
-  <a href="mailto:apoorvjainji@gmail.com" class="whatsapp-float" rel="noopener" aria-label="Email us"
-    id="whatsappFloat">
-    <i class="fas fa-envelope"></i>
-    <span class="wa-tooltip">Email Us!</span>
-  </a>
-
-  <!-- ========== SCROLL TO TOP BUTTON ========== -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- ========== MOBILE FLOATING HELP BAR ========== -->
-  <div class="mobile-help-bar" id="mobileHelpBar">
-    <div class="mobile-help-inner">
-      <div class="mobile-help-text">
-        <strong>📍 Need help?</strong>
-        We're open Mon–Sat 9 AM – 8 PM
-      </div>
-      <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" class="btn-mobile-call" id="mobileCallBtn" target="_blank"
-        rel="noopener noreferrer">
-        <i class="fas fa-map-marker-alt"></i> Find Us
-      </a>
-    </div>
-  </div>
-
-  <!-- ========== ENQUIRY MODAL ========== -->
-  <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-box">
-      <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-      <div class="modal-icon" id="modalIconWrap"><i class="fas fa-comment-dots"></i></div>
-      <h3 id="modalTitle">Product Enquiry</h3>
-      <p id="modalProductName" class="modal-product-name">LED Lights</p>
-      <p id="modalDesc">Interested in this product? Contact us directly:</p>
-      <div class="modal-actions">
-        <a href="mailto:apoorvjainji@gmail.com" class="btn btn-whatsapp" id="modalEmail">
-          <i class="fas fa-envelope"></i> Email Us
-        </a>
-        <a href="https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8" class="btn btn-call" id="modalMaps" target="_blank"
-          rel="noopener noreferrer">
-          <i class="fas fa-map-marker-alt"></i> Find Us
-        </a>
-      </div>
-      <p class="modal-alt">Or <a href="#contact" onclick="closeModal()">send us a message</a> using the contact form.
+  <!-- ========== MODAL 1: UPLOAD HANDWRITTEN ELECTRICIAN PARCHI / SLIP ========== -->
+  <div id="parchiModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 relative">
+      <button type="button" onclick="closeParchiModal()" class="absolute top-4 right-4 w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
+        <i class="fas fa-times"></i>
+      </button>
+      <span class="text-[11px] font-mono uppercase text-brand-red font-bold">Fastest Way to Get House-Wiring Rates</span>
+      <h3 class="text-xl font-extrabold text-slate-900 mt-0.5 mb-2">Upload Electrician’s Handwritten Parchi / Slip</h3>
+      <p class="text-xs text-slate-600 mb-4">
+        Don't want to type 50 electrical items manually? Select or snap a photo of your electrician's handwritten material list. We will prepare your itemized wholesale bill.
       </p>
+
+      <form id="parchiForm" class="space-y-4">
+        <label class="block border-2 border-dashed border-slate-300 hover:border-brand-red rounded-xl p-6 text-center cursor-pointer bg-slate-50 transition">
+          <input type="file" id="parchiFileInput" accept="image/*,.pdf" class="hidden" />
+          <i class="fas fa-cloud-upload-alt text-2xl text-brand-red mb-2"></i>
+          <span id="parchiFileName" class="block text-xs font-bold text-slate-800">Click to Choose or Snap Photo of Parchi (JPG, PNG, PDF)</span>
+          <span class="block text-[11px] text-slate-500 mt-0.5">Clear photo of notebook page or contractor pad</span>
+        </label>
+
+        <div id="parchiPreviewWrap" class="hidden bg-slate-100 p-2 rounded-lg text-center">
+          <img id="parchiPreviewImg" src="" alt="Parchi Preview" class="max-h-36 mx-auto rounded" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <input type="text" id="parchiCustomerName" required placeholder="Your Name *" class="px-3 py-2 text-xs rounded-lg border border-slate-300" />
+          <input type="tel" id="parchiCustomerPhone" required placeholder="WhatsApp Number *" class="px-3 py-2 text-xs rounded-lg border border-slate-300" />
+        </div>
+        <input type="text" id="parchiBrandPref" placeholder="Preferred Brand (e.g. Finolex + Anchor Roma)" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300" />
+
+        <button type="submit" class="w-full py-3 rounded-lg bg-slate-900 hover:bg-brand-red text-white font-bold text-xs transition">
+          <i class="fas fa-paper-plane mr-1.5"></i> Send Parchi for Instant Counter Valuation
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- ========== JSON-LD STRUCTURED DATA ========== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ElectricalContractor",
-        "@id": "https://everest-electricals.vercel.app/#business",
-        "name": "Everest Electricals",
-        "description": "ISI-certified electrical shop offering quality products and expert repair services in Saroorpur Kalan, UP since 2005.",
-        "url": "https://everest-electricals.vercel.app/",
-        "email": "apoorvjainji@gmail.com",
-        "image": "https://everest-electricals.vercel.app/images/og-image.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "26HJ+VM7, Saroorpur Kalan",
-          "addressLocality": "Sarurpur",
-          "addressRegion": "Uttar Pradesh",
-          "postalCode": "250619",
-          "addressCountry": "IN"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "29.1000",
-          "longitude": "77.2167"
-        },
-        "hasMap": "https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8",
-        "openingHoursSpecification": [
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "20:00" },
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "20:00" }
-        ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "300",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "priceRange": "₹",
-        "areaServed": ["Saroorpur Kalan", "Baraut", "Baghpat", "Chhaprauli", "Pilana", "Kirthali"]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://everest-electricals.vercel.app/" },
-          { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://everest-electricals.vercel.app/#products" }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Do you offer home appliance repair services?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We repair ceiling fans, table fans, water heaters, geysers, room coolers, and small household electrical appliances with same-day service available." }
-          },
-          {
-            "@type": "Question",
-            "name": "What areas do you serve for electrical repair?",
-            "acceptedAnswer": { "@type": "Answer", "text": "We serve Saroorpur Kalan, Baraut, Baghpat, Chhaprauli, Pilana, Kirthali and surrounding villages in Western Uttar Pradesh." }
-          },
-          {
-            "@type": "Question",
-            "name": "Are your electrical products ISI certified?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We stock only ISI-marked, BIS-approved products from India's most trusted brands including Havells, Finolex, Legrand, Anchor, Philips, Bajaj, Orient, Crompton, Polycab and Syska." }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you offer same-day delivery?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Order before noon and get same-day delivery within our service area. Bulk orders are dispatched within 24 hours." }
-          },
-          {
-            "@type": "Question",
-            "name": "What is your return policy?",
-            "acceptedAnswer": { "@type": "Answer", "text": "We offer hassle-free returns and exchanges on all products within 7 days of purchase, no questions asked." }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you do wiring and fault repair?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our expert technicians handle short circuit repair, earthing solutions, MCB/fuse replacement, cable rewiring, and full electrical troubleshooting for homes and offices." }
-          }
-        ]
-      },
-      {
-        "@type": "Product",
-        "name": "LED Panel Lights",
-        "brand": { "@type": "Brand", "name": "Havells" },
-        "sku": "EE-LED-001",
-        "offers": { "@type": "Offer", "price": "499", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
-      },
-      {
-        "@type": "Product",
-        "name": "1.5 sq.mm Copper Wire",
-        "brand": { "@type": "Brand", "name": "Finolex" },
-        "sku": "EE-WIR-010",
-        "offers": { "@type": "Offer", "price": "1150", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
-      },
-      {
-        "@type": "Product",
-        "name": "Modular Switch Plate",
-        "brand": { "@type": "Brand", "name": "Anchor" },
-        "sku": "EE-SWT-020",
-        "offers": { "@type": "Offer", "price": "349", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
-      },
-      {
-        "@type": "Product",
-        "name": "BLDC Ceiling Fan 1200mm",
-        "brand": { "@type": "Brand", "name": "Orient" },
-        "sku": "EE-FAN-030",
-        "offers": { "@type": "Offer", "price": "2799", "priceCurrency": "INR", "availability": "https://schema.org/LimitedAvailability", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
-      },
-      {
-        "@type": "Product",
-        "name": "MCB 32A Single Pole",
-        "brand": { "@type": "Brand", "name": "Legrand" },
-        "sku": "EE-MCB-040",
-        "offers": { "@type": "Offer", "price": "245", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
-      },
-      {
-        "@type": "Product",
-        "name": "8-Way Distribution Board",
-        "brand": { "@type": "Brand", "name": "Polycab" },
-        "sku": "EE-DB-050",
-        "offers": { "@type": "Offer", "price": "1890", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Everest Electricals" } }
-      }
-    ]
-  }
-  </script>
+  <!-- ========== MODAL 2: ESTIMATE CART DRAWER (WITH PRINT GST ESTIMATE) ========== -->
+  <div id="quoteCartDrawer" class="fixed inset-0 z-50 hidden">
+    <div id="closeCartBackdrop" class="fixed inset-0 bg-slate-950/60"></div>
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col z-10">
+      <div class="p-4 bg-slate-900 text-white flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-base">Estimate Material List (BOM)</h3>
+          <p class="text-[11px] text-slate-400">Print official proforma or request trade discount</p>
+        </div>
+        <button id="closeCartBtn" class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-white hover:bg-slate-700">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
-  <!-- P3: script deferred so it never blocks rendering -->
+      <div id="cartItemsContainer" class="p-4 flex-1 overflow-y-auto space-y-2.5 text-xs"></div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 space-y-2.5">
+        <div class="flex items-center justify-between text-xs text-slate-600">
+          <span>Taxable Value (Excl. 18% GST):</span>
+          <span id="cartSubTotalValue" class="font-mono">₹0</span>
+        </div>
+        <div class="flex items-center justify-between font-extrabold text-sm text-slate-900 border-t border-slate-200 pt-2">
+          <span>Indicative Total (Inc. GST):</span>
+          <span id="cartTotalValue" class="font-mono text-lg text-brand-red">₹0</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button type="button" onclick="printGstEstimate()" class="py-2.5 px-3 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5">
+            <i class="fas fa-print"></i> Print Estimate
+          </button>
+          <button type="button" id="transferCartToFormBtn" class="py-2.5 px-3 rounded-lg bg-brand-red hover:bg-red-800 text-white font-bold text-xs flex items-center justify-center gap-1.5">
+            <i class="fas fa-check"></i> Get Bulk Discount
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== COMPACT CORNER COOKIE TOAST (DOES NOT BLOCK HERO) ========== -->
+  <div class="cookie-banner print:hidden" id="cookieBanner" role="region" aria-label="Cookie consent" hidden>
+    <div class="cookie-content">
+      <i class="fas fa-shield-alt cookie-icon"></i>
+      <p>Saves your Estimate List & language on this device.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn-cookie-accept" id="acceptCookies">OK</button>
+      <button class="btn-cookie-decline" id="declineCookies">✕</button>
+    </div>
+  </div>
+
   <script src="js/script.js" defer></script>
-  <!-- Cookie consent — loads after main script -->
   <script src="js/cookies.js" defer></script>
-
-  <!-- ============================================================
-       GOOGLE REVIEWS LOADER
-       API key is stored securely in Vercel Environment Variables
-       (GOOGLE_MAPS_API_KEY) and accessed via /api/reviews serverless
-       function. No secret is ever exposed in this public repository.
-       ============================================================ -->
-  <script>
-    /* ── Google Reviews: fires ONLY after cookie consent ─────────────── */
-    /* API key is stored in Vercel env var GOOGLE_MAPS_API_KEY.           */
-    /* The frontend calls /api/reviews — no secret in this file.          */
-    (function () {
-
-      var grid = document.getElementById('googleReviewsGrid');
-      var badge = document.getElementById('reviewBadgeText');
-      var note = document.getElementById('reviewsApiNote');
-      var loaded = false;
-
-      function loadReviews() {
-        if (loaded) return;
-        loaded = true;
-        fetch('/api/reviews')
-          .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
-          .then(function (data) {
-            var rating      = data.rating          ? String(data.rating)          : '4.8';
-            var totalCount  = data.userRatingCount  ? String(data.userRatingCount)  : '11';
-            var placeUrl    = data.placeUrl         || 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8';
-
-            if (badge) badge.textContent = rating + ' / 5 ★ · ' + totalCount + ' Google reviews';
-            var viewAllBtn = document.getElementById('viewAllReviewsBtn');
-            if (viewAllBtn) viewAllBtn.href = placeUrl;
-
-            renderReviews(data.reviews && data.reviews.length ? data.reviews : getFallbackReviews());
-            if (note) note.style.display = 'block';
-          })
-          .catch(function (err) {
-            // API unavailable (localhost dev, or server error) — show static reviews
-            console.info('Reviews API unavailable, showing verified reviews:', err);
-            if (badge) badge.textContent = '4.8 / 5 ★ · 11 Google reviews';
-            renderReviews(getFallbackReviews());
-            if (note) note.style.display = 'block';
-          });
-      }
-
-      /* Listen for consent granted by cookies.js */
-      document.addEventListener('cookieConsented', loadReviews);
-
-      /* Load immediately if consent was already accepted on a prior visit */
-      function checkConsentAndLoad() {
-        if (window.cookieConsent && window.cookieConsent.hasConsent()) {
-          loadReviews();
-        } else {
-          showFallback('Accept cookies to load live Google reviews, or click below to view on Google.');
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', checkConsentAndLoad);
-      } else {
-        checkConsentAndLoad();
-      }
-
-      function getFallbackReviews() {
-        return [
-          {
-            author_name: 'Tusti Jain',
-            author_url: 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8',
-            rating: 5,
-            text: 'Service is quality dekhke genuinely impressed Hui. issue ko properly Samjha aur Bina Kisi delay ke efficiently resolve kiya. Overall kaam kaafi smooth aur professional tareeke se handle kiya gya, jo kaafi satisfying experience rha ..',
-            relative_time_description: '4 months ago'
-          },
-          {
-            author_name: 'Shubham Tiwari',
-            author_url: 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8',
-            rating: 5,
-            text: 'Best service in the area. Minimal prices with A+ services....',
-            relative_time_description: '2 months ago'
-          },
-          {
-            author_name: 'Sachin Sharma',
-            author_url: 'https://maps.app.goo.gl/WtvUxrdgJvaw3oHG8',
-            rating: 5,
-            text: 'Best shop for electrical fittings and home wiring accessories in Saroorpur Kalan market. Polite behavior and honest guidance.',
-            relative_time_description: '5 months ago'
-          }
-        ];
-      }
-
-      function renderReviews(reviews) {
-        if (!grid) return;
-        if (!reviews || !reviews.length) {
-          reviews = getFallbackReviews();
-        }
-        grid.innerHTML = '';
-        reviews.forEach(function (r) {
-          var stars = buildStars(r.rating || 5);
-          var initials = (r.author_name || '?').split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2).toUpperCase();
-          var card = document.createElement('div');
-          card.className = 'google-review-card reveal';
-          card.innerHTML =
-            '<div class="gr-header">' +
-            '<div class="gr-avatar" aria-hidden="true">' + initials + '</div>' +
-            '<div class="gr-meta">' +
-            '<a href="' + (r.author_url || '#') + '" target="_blank" rel="noopener noreferrer" class="gr-author">' + escHtml(r.author_name || 'Google User') + '</a>' +
-            '<span class="gr-time">' + escHtml(r.relative_time_description || '') + '</span>' +
-            '</div>' +
-            '<img src="https://www.gstatic.com/images/branding/googleg/1x/googleg_standard_color_28dp.png" width="20" height="20" alt="Google" class="gr-google-icon" />' +
-            '</div>' +
-            '<div class="gr-stars" aria-label="' + (r.rating || 5) + ' out of 5 stars">' + stars + '</div>' +
-            '<p class="gr-text">' + escHtml(r.text || '') + '</p>';
-          grid.appendChild(card);
-        });
-        if (window.IntersectionObserver) {
-          var obs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-              if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-            });
-          }, { threshold: 0.1 });
-          grid.querySelectorAll('.google-review-card').forEach(function (el) { obs.observe(el); });
-        }
-      }
-
-      function buildStars(rating) {
-        var s = '';
-        for (var i = 1; i <= 5; i++) {
-          if (i <= rating) s += '<i class="fas fa-star"></i>';
-          else if (i - 0.5 <= rating) s += '<i class="fas fa-star-half-alt"></i>';
-          else s += '<i class="far fa-star"></i>';
-        }
-        return s;
-      }
-
-      function escHtml(str) {
-        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-      }
-
-      function showFallback(msg) {
-        if (badge) badge.textContent = msg;
-        if (!grid) return;
-        grid.innerHTML =
-          '<div class="gr-fallback">' +
-          '<i class="fas fa-star gr-fallback-icon"></i>' +
-          '<p>Our customers love us on Google.</p>' +
-          '<p>Click the button below to read real reviews &rarr;</p>' +
-          '</div>';
-      }
-    })();
-  </script>
 </body>
-
 </html>
